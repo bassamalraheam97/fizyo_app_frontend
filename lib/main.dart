@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:dynamic_color/dynamic_color.dart';
-import 'package:fizyo_app_frontend/src/users_managments/data/http_%20s_provider_repository.dart';
+import 'package:fizyo_app_frontend/src/users_managments/data/http_s_provider_repository.dart';
 import 'package:fizyo_app_frontend/src/users_managments/data/s_provider_repository.dart';
 import 'package:fizyo_app_frontend/src/users_managments/domain/service_provider.dart';
 import 'package:fizyo_app_frontend/theme/color_schemes.g.dart';

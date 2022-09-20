@@ -8,8 +8,9 @@ abstract class ClientFormState extends Equatable {
   const ClientFormState(this.value, this.currentStep, this.totalSteps);
 }
 
-class ClientFormStateIntial extends ClientFormState {
-  const ClientFormStateIntial(super.value, super.currentStep, super.totalSteps);
+class ClientFormStateInitial extends ClientFormState {
+  const ClientFormStateInitial(
+      super.value, super.currentStep, super.totalSteps);
 
   @override
   List<Object?> get props => [super.value, super.currentStep, super.totalSteps];

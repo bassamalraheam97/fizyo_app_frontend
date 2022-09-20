@@ -5,7 +5,7 @@ import 'package:fizyo_app_frontend/src/users_managments/blocs/client_form_bloc/c
 class ClientFormBloc extends Bloc<ClientFormEvent, ClientFormState> {
   // final AccountsService _accountsService;
   //ClientFormBloc(this._accountsService)
-  ClientFormBloc() : super(const ClientFormStateIntial(1 / 8, 1, 8)) {
+  ClientFormBloc() : super(const ClientFormStateInitial(1 / 8, 1, 8)) {
     on<ClientFormEventSubmit>((event, emit) async {
       emit(ClientFormStateSubmitting(
           event.currentStep / 8, event.currentStep, 8));

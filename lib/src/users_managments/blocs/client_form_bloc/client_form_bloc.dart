@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:fizyo_app_frontend/src/users_managments/blocs/client_form_event.dart';
-import 'package:fizyo_app_frontend/src/users_managments/blocs/client_form_state.dart';
+import 'package:fizyo_app_frontend/src/users_managments/blocs/client_form_bloc/client_form_event.dart';
+import 'package:fizyo_app_frontend/src/users_managments/blocs/client_form_bloc/client_form_state.dart';
 
 class ClientFormBloc extends Bloc<ClientFormEvent, ClientFormState> {
   // final AccountsService _accountsService;

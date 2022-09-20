@@ -1,4 +1,8 @@
+import 'package:dio/dio.dart';
 import 'package:dynamic_color/dynamic_color.dart';
+import 'package:fizyo_app_frontend/src/users_managments/data/http_s_provider_repository.dart';
+import 'package:fizyo_app_frontend/src/users_managments/data/s_provider_repository.dart';
+import 'package:fizyo_app_frontend/src/users_managments/domain/service_provider.dart';
 import 'package:fizyo_app_frontend/theme/color_schemes.g.dart';
 import 'package:fizyo_app_frontend/theme/custom_color.g.dart';
 import 'package:flutter/material.dart';
@@ -79,8 +83,16 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
-
-  void _incrementCounter() {
+  late Service_provider pro;
+  void _incrementCounter() async{
+  var options = BaseOptions(
+  baseUrl: 'http://localhost:8000',
+  connectTimeout: 5000,
+  receiveTimeout: 3000,
+);
+  Dio dio = Dio(options);
+  serviceProviderRepository _provider=HttpserviceProviderRepository(provider: dio);
+  
     setState(() {
       // This call to setState tells the Flutter framework that something has
       // changed in this State, which causes it to rerun the build method below

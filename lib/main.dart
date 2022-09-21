@@ -1,5 +1,9 @@
+// ignore_for_file: prefer_const_literals_to_create_immutables
+
 import 'package:dio/dio.dart';
 import 'package:dynamic_color/dynamic_color.dart';
+import 'package:fizyo_app_frontend/src/presentation/widgets/image_viewer.dart';
+import 'package:fizyo_app_frontend/src/presentation/widgets/title_description.dart';
 import 'package:fizyo_app_frontend/src/users_managments/data/http_s_provider_repository.dart';
 import 'package:fizyo_app_frontend/src/users_managments/data/s_provider_repository.dart';
 import 'package:fizyo_app_frontend/src/users_managments/domain/service_provider.dart';
@@ -7,6 +11,7 @@ import 'package:fizyo_app_frontend/theme/color_schemes.g.dart';
 import 'package:fizyo_app_frontend/theme/custom_color.g.dart';
 import 'package:flutter/material.dart';
 import 'package:bot_toast/bot_toast.dart';
+import './src/presentation/widgets/stepper.dart';
 
 void main() {
   runApp(const MyApp());
@@ -83,16 +88,16 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
-  late Service_provider pro;
-  void _incrementCounter() async{
-  var options = BaseOptions(
-  baseUrl: 'http://localhost:8000',
-  connectTimeout: 5000,
-  receiveTimeout: 3000,
-);
-  Dio dio = Dio(options);
-  serviceProviderRepository _provider=HttpserviceProviderRepository(provider: dio);
-  
+  // late Service_provider pro;
+  void _incrementCounter() async {
+//   var options = BaseOptions(
+//   baseUrl: 'http://localhost:8000',
+//   connectTimeout: 5000,
+//   receiveTimeout: 3000,
+// );
+//   Dio dio = Dio(options);
+//   serviceProviderRepository _provider=HttpserviceProviderRepository(provider: dio);
+//
     setState(() {
       // This call to setState tells the Flutter framework that something has
       // changed in this State, which causes it to rerun the build method below
@@ -137,13 +142,28 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+            // const Text(
+            //   'You have pushed the button this many times:',
+            // ),
+            // Text(
+            //   '$_counter',
+            //   style: Theme.of(context).textTheme.headline4,
+            // ),
+            const StepperWidget(startVal: 1, endVal: 8),
+            const SizedBox(
+              height: 15,
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+            const TitleDescription(
+              title: 'Registration',
+              description:
+                  'Please enter your information, then we will send OTP to verify',
+              phone: '+90 531 999 00 11',
             ),
+            const ImageViewer(
+                imageURL: 'images/home_fizyo.png',
+                height: 165.0,
+                width: 165.0,
+                radius: 25.0)
           ],
         ),
       ),

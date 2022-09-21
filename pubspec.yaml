@@ -38,14 +38,12 @@ dependencies:
   bot_toast: ^4.0.3
   freezed_annotation: ^0.14.2
   json_annotation: ^4.0.1
-  equatable: ^2.0.5
-  bloc: ^8.1.0
   flutter_bloc: ^8.1.1
+  reactive_forms: ^14.1.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_bloc: ^8.1.1
   flutter_lints: ^2.0.0
 
 # For information on the generic Dart part of this file, see the

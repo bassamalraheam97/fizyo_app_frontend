@@ -1,4 +1,5 @@
 import 'package:fizyo_app_frontend/src/presentation/widgets/patient_physio_card.dart';
+import 'package:fizyo_app_frontend/src/presentation/widgets/text_image.dart';
 import 'package:fizyo_app_frontend/src/users_managments/blocs/ui_chande_bloc/ui_change_bloc.dart';
 import 'package:fizyo_app_frontend/src/users_managments/blocs/ui_chande_bloc/ui_change_event.dart';
 // import 'package:fizyo_app_frontend/src/users_managments/blocs/ui_chande_bloc/ui_change_bloc.dart';
@@ -6,9 +7,9 @@ import 'package:fizyo_app_frontend/src/users_managments/blocs/ui_chande_bloc/ui_
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class RegisterStep3 extends StatelessWidget {
+class RegisterStep4 extends StatelessWidget {
   final UiChangeState uiState;
-  const RegisterStep3({super.key, required this.uiState});
+  const RegisterStep4({super.key, required this.uiState});
   // final FormGroup form;
   // FormGroup getForm() {
   //   return form;
@@ -25,32 +26,42 @@ class RegisterStep3 extends StatelessWidget {
     }
 
     // Color colorBack = Color(0xffF7F9FB);
-    return Column(
+    return Row(
       // mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         GestureDetector(
           onTap: () {
             context
                 .read<UiChangeBloc>()
-                .add(UiChangeEventChangeColor(Color(0xffF7F9FB), 'patient'));
+                .add(UiChangeEventChangeColor(Color(0xffF7F9FB), 'male'));
 
             // Color(0xffF7F9FB);
           },
-          child: PatientPhysioCard(
-              typeCard: 'patient', backColor: uiState.newColor),
+          child: TextImage(
+            typeCard: 'male',
+            widthWidget: 163,
+            heightWidget: 388.61,
+            listImage: [320.61, 100, 0],
+            backColor: uiState.newColor,
+          ),
         ),
         const SizedBox(
           height: 13,
         ),
         GestureDetector(
-            onTap: () {
-              context
-                  .read<UiChangeBloc>()
-                  .add(UiChangeEventChangeColor(Colors.white, 'physio'));
-            },
-            child: PatientPhysioCard(
-                typeCard: 'physio',
-                backColor: getAotherColor(uiState.newColor!))),
+          onTap: () {
+            context
+                .read<UiChangeBloc>()
+                .add(UiChangeEventChangeColor(Colors.white, 'female'));
+          },
+          child: TextImage(
+            typeCard: 'female',
+            widthWidget: 163,
+            heightWidget: 388.61,
+            listImage: [320.61, 100, 0],
+            backColor: getAotherColor(uiState.newColor!),
+          ),
+        ),
       ],
     );
     // });

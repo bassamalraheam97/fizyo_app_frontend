@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 class PatientPhysioCard extends StatelessWidget {
   final String typeCard;
-  final Color? backColor;
-  const PatientPhysioCard({super.key, required this.typeCard, this.backColor});
+  Color? backColor = Color(0xffF7F9FB);
+  PatientPhysioCard({super.key, required this.typeCard, this.backColor});
 
   List<String> getList(String typeCard) {
     switch (typeCard) {

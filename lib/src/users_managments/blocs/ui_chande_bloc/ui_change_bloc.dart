@@ -7,7 +7,8 @@ class UiChangeBloc extends Bloc<UiChangeEvent, UiChangeState> {
   // final AccountsService _accountsService;
   // UserFormBloc(this._accountsService)
 
-  UiChangeBloc() : super(const UiChangeStateInitial(Colors.white, 'patient')) {
+  UiChangeBloc()
+      : super(const UiChangeStateInitial(Color(0xffF7F9FB), 'patient')) {
     on<UiChangeEventChangeColor>((event, emit) async {
       emit(UiChangeStateChanged(event.newColor, event.widgetName));
     });

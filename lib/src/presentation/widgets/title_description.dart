@@ -29,6 +29,13 @@ class TitleDescription extends StatelessWidget {
           ""
         ];
         return list;
+      case 4:
+        list = [
+          "What is your gender?",
+          "To give you a better experience we need to know your Gender",
+          ""
+        ];
+        return list;
       default:
         return list;
     }

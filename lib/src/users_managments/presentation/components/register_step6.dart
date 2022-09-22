@@ -40,7 +40,7 @@ class RegisterStep6 extends StatelessWidget {
           },
           child: Container(
             decoration: BoxDecoration(
-              color: getAotherColor(uiState.widgetName),
+              color: getAotherColor('home'),
               border: Border.all(
                   width: 2, color: Color(0xffF7F9FB), style: BorderStyle.solid),
               borderRadius: BorderRadius.circular(25),
@@ -83,7 +83,7 @@ class RegisterStep6 extends StatelessWidget {
           },
           child: Container(
             decoration: BoxDecoration(
-              color: getAotherColor(uiState.widgetName),
+              color: getAotherColor('online'),
               border: Border.all(
                   width: 2, color: Color(0xffF7F9FB), style: BorderStyle.solid),
               borderRadius: BorderRadius.circular(25),
@@ -126,7 +126,7 @@ class RegisterStep6 extends StatelessWidget {
           },
           child: Container(
             decoration: BoxDecoration(
-              color: getAotherColor(uiState.widgetName),
+              color: getAotherColor('office'),
               border: Border.all(
                   width: 2, color: Color(0xffF7F9FB), style: BorderStyle.solid),
               borderRadius: BorderRadius.circular(25),

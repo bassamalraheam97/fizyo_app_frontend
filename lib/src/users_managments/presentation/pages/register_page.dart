@@ -134,6 +134,7 @@ class RegisterPage extends StatelessWidget {
           appBar: AppBar(
             title: Text("Fyzio App"),
           ),
+          backgroundColor: Colors.white,
           body: SingleChildScrollView(
               child: Column(
             mainAxisAlignment: MainAxisAlignment.start,

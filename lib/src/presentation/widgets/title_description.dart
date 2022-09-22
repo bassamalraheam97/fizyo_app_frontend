@@ -36,6 +36,13 @@ class TitleDescription extends StatelessWidget {
           ""
         ];
         return list;
+      case 5:
+        list = [
+          "Select Profile Picture",
+          "You can select photo from one of presetor add your own photo",
+          ""
+        ];
+        return list;
       default:
         return list;
     }

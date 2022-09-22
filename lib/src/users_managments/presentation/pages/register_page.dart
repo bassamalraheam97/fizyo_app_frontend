@@ -13,6 +13,7 @@ import 'package:fizyo_app_frontend/src/users_managments/presentation/components/
 import 'package:fizyo_app_frontend/src/users_managments/presentation/components/register_step2.dart';
 import 'package:fizyo_app_frontend/src/users_managments/presentation/components/register_step3.dart';
 import 'package:fizyo_app_frontend/src/users_managments/presentation/components/register_step4.dart';
+import 'package:fizyo_app_frontend/src/users_managments/presentation/components/register_step5.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:reactive_forms/reactive_forms.dart';
@@ -23,7 +24,8 @@ class RegisterPage extends StatelessWidget {
   Map<String, dynamic> stepsData = {
     'patient': 1,
     'physio': 0,
-    'gender': 'male'
+    'gender': 'male',
+    'imageURL': '',
   };
   UiChangeState? uiState;
   late FormGroup form = FormGroup({
@@ -94,10 +96,19 @@ class RegisterPage extends StatelessWidget {
           } else {
             stepsData['gender'] = 'female';
           }
-          print('$stepsData ****************************************');
+          // print('$stepsData ****************************************');
           return RegisterStep4(uiState: uiState);
         });
-
+      case 5:
+        return BlocBuilder<UiChangeBloc, UiChangeState>(
+            builder: (context, uiState) {
+          uiState = uiState;
+          if (uiState.widgetName.startsWith('pic')) {
+            stepsData['imageURL'] = 'assets/images/${uiState.widgetName}';
+          }
+          print('$stepsData ****************************************');
+          return RegisterStep5(uiState: uiState);
+        });
       default:
         return Container();
     }
@@ -142,7 +153,7 @@ class RegisterPage extends StatelessWidget {
                   onPressed: () {
                     if (state.currentStep == (1 | 2 | 8)) {
                       data.addAll(form.value);
-                    } else if (state.currentStep == 3) {
+                    } else if (state.currentStep == 4) {
                       data.addAll(stepsData);
                     }
                     context

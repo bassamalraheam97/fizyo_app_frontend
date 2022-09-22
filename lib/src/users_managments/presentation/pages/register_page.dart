@@ -12,6 +12,7 @@ import 'package:fizyo_app_frontend/src/presentation/widgets/progress_bar.dart';
 import 'package:fizyo_app_frontend/src/users_managments/presentation/components/register_step1.dart';
 import 'package:fizyo_app_frontend/src/users_managments/presentation/components/register_step2.dart';
 import 'package:fizyo_app_frontend/src/users_managments/presentation/components/register_step3.dart';
+import 'package:fizyo_app_frontend/src/users_managments/presentation/components/register_step4.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:reactive_forms/reactive_forms.dart';
@@ -19,7 +20,11 @@ import 'package:reactive_forms/reactive_forms.dart';
 class RegisterPage extends StatelessWidget {
   RegisterPage({super.key});
   Map<String, dynamic> data = {};
-  Map<String, dynamic> step3Data = {'patient': 1, 'physio': 0};
+  Map<String, dynamic> stepsData = {
+    'patient': 1,
+    'physio': 0,
+    'gender': 'male'
+  };
   UiChangeState? uiState;
   late FormGroup form = FormGroup({
     'firstName': FormControl<String>(
@@ -66,20 +71,35 @@ class RegisterPage extends StatelessWidget {
           });
           return RegisterStep2(form: form);
         }
-      default:
+      case 3:
         return BlocBuilder<UiChangeBloc, UiChangeState>(
             builder: (context, uiState) {
           uiState = uiState;
           if (uiState.widgetName == 'patient') {
-            step3Data['patient'] = 1;
-            step3Data['physio'] = 0;
+            stepsData['patient'] = 1;
+            stepsData['physio'] = 0;
           } else {
-            step3Data['patient'] = 0;
-            step3Data['physio'] = 1;
+            stepsData['patient'] = 0;
+            stepsData['physio'] = 1;
           }
-          print('$step3Data ****************************************');
+          // print('$step3Data ****************************************');
           return RegisterStep3(uiState: uiState);
         });
+      case 4:
+        return BlocBuilder<UiChangeBloc, UiChangeState>(
+            builder: (context, uiState) {
+          uiState = uiState;
+          if (uiState.widgetName == 'male') {
+            stepsData['gender'] = 'male';
+          } else {
+            stepsData['gender'] = 'female';
+          }
+          print('$stepsData ****************************************');
+          return RegisterStep4(uiState: uiState);
+        });
+
+      default:
+        return Container();
     }
   }
 
@@ -123,7 +143,7 @@ class RegisterPage extends StatelessWidget {
                     if (state.currentStep == (1 | 2 | 8)) {
                       data.addAll(form.value);
                     } else if (state.currentStep == 3) {
-                      data.addAll(step3Data);
+                      data.addAll(stepsData);
                     }
                     context
                         .read<UserFormBloc>()

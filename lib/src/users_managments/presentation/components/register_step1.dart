@@ -15,7 +15,7 @@ class RegisterStep1 extends StatelessWidget {
     return ReactiveForm(
         formGroup: form,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          // mainAxisAlignment: MainAxisAlignment.center,
           children: const <Widget>[
             FormTextField(
               formControlName: "firstName",

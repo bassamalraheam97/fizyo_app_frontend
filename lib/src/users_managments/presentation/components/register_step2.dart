@@ -14,23 +14,45 @@ class RegisterStep2 extends StatelessWidget {
     return ReactiveForm(
       formGroup: form,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: const <Widget>[
-          FormTextField(
+        // mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          const FormTextField(
             formControlName: "verificationCode",
             labelText: "Verification Code",
           ),
-          SizedBox(
+          const SizedBox(
             height: 13,
           ),
-          FormTextField(
+          Text.rich(
+            TextSpan(
+              text: 'Resend the OTP in ',
+              children: [
+                TextSpan(
+                  text: '5s',
+                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                      color: const Color(0xffEE9CDA),
+                      fontSize: 14,
+                      fontWeight: FontWeight.w700),
+                ),
+              ],
+              style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                    color: Theme.of(context).colorScheme.outline,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400,
+                  ),
+            ),
+          ),
+          const SizedBox(
+            height: 13,
+          ),
+          const FormTextField(
             formControlName: "password",
             labelText: "Password",
           ),
-          SizedBox(
+          const SizedBox(
             height: 13,
           ),
-          FormTextField(
+          const FormTextField(
             formControlName: "passwordConformation",
             labelText: "Password Conformation",
           ),

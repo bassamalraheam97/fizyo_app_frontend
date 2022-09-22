@@ -4,16 +4,21 @@ import 'package:dio/dio.dart';
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:fizyo_app_frontend/src/presentation/widgets/image_viewer.dart';
 import 'package:fizyo_app_frontend/src/presentation/widgets/title_description.dart';
+import 'package:fizyo_app_frontend/src/users_managments/blocs/user_form_bloc/user_form_bloc.dart';
 import 'package:fizyo_app_frontend/src/users_managments/data/http_s_provider_repository.dart';
 import 'package:fizyo_app_frontend/src/users_managments/data/s_provider_repository.dart';
 import 'package:fizyo_app_frontend/src/users_managments/domain/service_provider.dart';
+import 'package:fizyo_app_frontend/src/users_managments/presentation/pages/register_page.dart';
 import 'package:fizyo_app_frontend/theme/color_schemes.g.dart';
 import 'package:fizyo_app_frontend/theme/custom_color.g.dart';
+import 'package:fizyo_app_frontend/user_form_observer.dart';
 import 'package:flutter/material.dart';
 import 'package:bot_toast/bot_toast.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import './src/presentation/widgets/stepper.dart';
 
 void main() {
+  Bloc.observer = UserFormObserver();
   runApp(const MyApp());
 }
 
@@ -117,61 +122,29 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            // const Text(
-            //   'You have pushed the button this many times:',
-            // ),
-            // Text(
-            //   '$_counter',
-            //   style: Theme.of(context).textTheme.headline4,
-            // ),
-            const StepperWidget(startVal: 1, endVal: 8),
-            const SizedBox(
-              height: 15,
-            ),
-            const TitleDescription(
-              title: 'Registration',
-              description:
-                  'Please enter your information, then we will send OTP to verify',
-              phone: '+90 531 999 00 11',
-            ),
-            const ImageViewer(
-                imageURL: 'images/home_fizyo.png',
-                height: 165.0,
-                width: 165.0,
-                radius: 25.0)
-          ],
+        appBar: AppBar(
+          title: Text(widget.title),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+        body: SafeArea(
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: MultiBlocProvider(
+                providers: [
+                  BlocProvider(
+                      create: (context) => UserFormBloc(
+                          // AccountsService(userRepository: _userRepository)),
+                          )
+                      // BlocProvider(
+                      //   create: (context) => AuthBloc(_userRepository)
+                      //     ..add(AuthEventCheckCurrentState()),
+                      ),
+                ],
+                child: RegisterPage(),
+              ),
+            ),
+          ),
+          // This trailing comma makes auto-formatting nicer for build methods.
+        ));
   }
 }

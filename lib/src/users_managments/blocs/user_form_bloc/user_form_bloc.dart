@@ -5,18 +5,33 @@ import 'package:fizyo_app_frontend/src/users_managments/blocs/user_form_bloc/use
 class UserFormBloc extends Bloc<UserFormEvent, UserFormState> {
   // final AccountsService _accountsService;
   // UserFormBloc(this._accountsService)
+  // final
   UserFormBloc() : super(const UserFormStateInitial(1 / 8, 1, 8)) {
     on<UserFormEventSubmit>((event, emit) async {
       emit(
           UserFormStateSubmitting(event.currentStep / 8, event.currentStep, 8));
-      try {
-        // final user = User.fromJson(event.formData);
-        // await _accountsService.createAccount(user, null);
-        emit(UserFormStateSuccess(event.currentStep / 8, event.currentStep, 8));
-      } catch (e) {
-        emit(UserFormStateFailure(
-            e.toString(), event.currentStep / 8, event.currentStep, 8));
-      }
+      // try {
+      print('${event.formData}----------------------------------------');
+      // final user = User.fromJson(event.formData);
+      // await _accountsService.createAccount(user, null);
+      emit(UserFormStateSuccess((event.currentStep + 1) / 8, 2, 8));
+      // } catch (e) {
+      // emit(UserFormStateFailure(
+      //     e.toString(), event.currentStep / 8, event.currentStep, 8));
+      // }
+    });
+    on<UserFormEventProceed>((event, emit) async {
+      // emit(
+      //     UserFormStateSubmitting(event.currentStep / 8, event.currentStep, 8));
+      // try {
+      // print('${event.formData}----------------------------------------');
+      // final user = User.fromJson(event.formData);
+      // await _accountsService.createAccount(user, null);
+      emit(UserFormStateSuccess((event.currentStep + 1) / 8, 2, 8));
+      // } catch (e) {
+      // emit(UserFormStateFailure(
+      //     e.toString(), event.currentStep / 8, event.currentStep, 8));
+      // }
     });
   }
 }

@@ -22,6 +22,13 @@ class TitleDescription extends StatelessWidget {
           "+90 531 999 00 11"
         ];
         return list;
+      case 3:
+        list = [
+          "Type of Account",
+          "Choose the type of your account, be careful to hange it is impossible",
+          ""
+        ];
+        return list;
       default:
         return list;
     }

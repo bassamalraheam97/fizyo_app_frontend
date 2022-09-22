@@ -15,5 +15,5 @@ class UserFormEventProceed extends UserFormEvent {
   final int currentStep;
   UserFormEventProceed(this.currentStep);
   @override
-  List<Object?> get props => [currentStep + 1];
+  List<Object?> get props => [currentStep];
 }

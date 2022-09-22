@@ -27,7 +27,8 @@ class UserFormBloc extends Bloc<UserFormEvent, UserFormState> {
       // print('${event.formData}----------------------------------------');
       // final user = User.fromJson(event.formData);
       // await _accountsService.createAccount(user, null);
-      emit(UserFormStateSuccess((event.currentStep + 1) / 8, 2, 8));
+      emit(UserFormStateSuccess(
+          (event.currentStep + 1) / 8, event.currentStep + 1, 8));
       // } catch (e) {
       // emit(UserFormStateFailure(
       //     e.toString(), event.currentStep / 8, event.currentStep, 8));

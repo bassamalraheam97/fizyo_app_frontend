@@ -4,6 +4,8 @@ import 'package:dio/dio.dart';
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:fizyo_app_frontend/src/presentation/widgets/image_viewer.dart';
 import 'package:fizyo_app_frontend/src/presentation/widgets/title_description.dart';
+import 'package:fizyo_app_frontend/src/users_managments/blocs/ui_chande_bloc/ui_change_bloc.dart';
+// import 'package:fizyo_app_frontend/src/users_managments/blocs/ui_change_bloc/ui_change_bloc.dart';
 import 'package:fizyo_app_frontend/src/users_managments/blocs/user_form_bloc/user_form_bloc.dart';
 import 'package:fizyo_app_frontend/src/users_managments/data/http_s_provider_repository.dart';
 import 'package:fizyo_app_frontend/src/users_managments/data/s_provider_repository.dart';
@@ -132,13 +134,17 @@ class _MyHomePageState extends State<MyHomePage> {
               child: MultiBlocProvider(
                 providers: [
                   BlocProvider(
-                      create: (context) => UserFormBloc(
-                          // AccountsService(userRepository: _userRepository)),
-                          )
-                      // BlocProvider(
-                      //   create: (context) => AuthBloc(_userRepository)
-                      //     ..add(AuthEventCheckCurrentState()),
-                      ),
+                    create: (context) => UserFormBloc(
+                        // AccountsService(userRepository: _userRepository)),
+                        ),
+
+                    // BlocProvider(
+                    //   create: (context) => AuthBloc(_userRepository)
+                    //     ..add(AuthEventCheckCurrentState()),
+                  ),
+                  BlocProvider(
+                    create: (context) => UiChangeBloc(),
+                  ),
                 ],
                 child: RegisterPage(),
               ),

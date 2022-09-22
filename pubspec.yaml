@@ -42,6 +42,7 @@ dependencies:
   freezed_annotation: ^2.1.0
   json_annotation: ^4.6.0
   reactive_forms: ^14.1.0
+  font_awesome_flutter: ^9.0.0
 
 dev_dependencies:
   build_runner: ^2.2.0
@@ -62,9 +63,13 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
+
+   - assets/images/
+
    - images/home_fizyo.png
    - images/patient.png
    - images/physio.png
+
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

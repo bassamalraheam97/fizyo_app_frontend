@@ -2,6 +2,7 @@
 
 import 'package:dio/dio.dart';
 import 'package:dynamic_color/dynamic_color.dart';
+import 'package:fizyo_app_frontend/mobil.dart';
 import 'package:fizyo_app_frontend/src/presentation/widgets/image_viewer.dart';
 import 'package:fizyo_app_frontend/src/presentation/widgets/title_description.dart';
 import 'package:fizyo_app_frontend/src/users_managments/blocs/user_form_bloc/user_form_bloc.dart';
@@ -16,6 +17,7 @@ import 'package:flutter/material.dart';
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import './src/presentation/widgets/stepper.dart';
+import 'desktop.dart';
 
 void main() {
   Bloc.observer = UserFormObserver();
@@ -125,26 +127,12 @@ class _MyHomePageState extends State<MyHomePage> {
         appBar: AppBar(
           title: Text(widget.title),
         ),
-        body: SafeArea(
-          child: Center(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: MultiBlocProvider(
-                providers: [
-                  BlocProvider(
-                      create: (context) => UserFormBloc(
-                          // AccountsService(userRepository: _userRepository)),
-                          )
-                      // BlocProvider(
-                      //   create: (context) => AuthBloc(_userRepository)
-                      //     ..add(AuthEventCheckCurrentState()),
-                      ),
-                ],
-                child: RegisterPage(),
-              ),
-            ),
-          ),
-          // This trailing comma makes auto-formatting nicer for build methods.
-        ));
+        body: LayoutBuilder(builder: (context, constraint) {
+            if (constraint.maxWidth > 500) {
+              return DesktopScreen();
+            } else {
+              return mobilScreen();
+            }
+          }),);
   }
 }

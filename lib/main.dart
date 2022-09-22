@@ -2,8 +2,11 @@
 
 import 'package:dio/dio.dart';
 import 'package:dynamic_color/dynamic_color.dart';
+import 'package:fizyo_app_frontend/mobil.dart';
 import 'package:fizyo_app_frontend/src/presentation/widgets/image_viewer.dart';
 import 'package:fizyo_app_frontend/src/presentation/widgets/title_description.dart';
+import 'package:fizyo_app_frontend/src/users_managments/blocs/ui_chande_bloc/ui_change_bloc.dart';
+// import 'package:fizyo_app_frontend/src/users_managments/blocs/ui_change_bloc/ui_change_bloc.dart';
 import 'package:fizyo_app_frontend/src/users_managments/blocs/user_form_bloc/user_form_bloc.dart';
 import 'package:fizyo_app_frontend/src/users_managments/data/http_s_provider_repository.dart';
 import 'package:fizyo_app_frontend/src/users_managments/data/s_provider_repository.dart';
@@ -16,6 +19,7 @@ import 'package:flutter/material.dart';
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import './src/presentation/widgets/stepper.dart';
+import 'desktop.dart';
 
 void main() {
   Bloc.observer = UserFormObserver();
@@ -122,29 +126,16 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-        appBar: AppBar(
-          title: Text(widget.title),
-        ),
-        body: SafeArea(
-          child: Center(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: MultiBlocProvider(
-                providers: [
-                  BlocProvider(
-                      create: (context) => UserFormBloc(
-                          // AccountsService(userRepository: _userRepository)),
-                          )
-                      // BlocProvider(
-                      //   create: (context) => AuthBloc(_userRepository)
-                      //     ..add(AuthEventCheckCurrentState()),
-                      ),
-                ],
-                child: RegisterPage(),
-              ),
-            ),
-          ),
-          // This trailing comma makes auto-formatting nicer for build methods.
-        ));
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
+      body: LayoutBuilder(builder: (context, constraint) {
+        if (constraint.maxWidth > 500) {
+          return DesktopScreen();
+        } else {
+          return mobileScreen();
+        }
+      }),
+    );
   }
 }

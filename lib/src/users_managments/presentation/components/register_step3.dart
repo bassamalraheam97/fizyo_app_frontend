@@ -7,9 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class RegisterStep3 extends StatelessWidget {
-  const RegisterStep3({
-    super.key,
-  });
+  final UiChangeState uiState;
+  const RegisterStep3({super.key, required this.uiState});
   // final FormGroup form;
   // FormGroup getForm() {
   //   return form;
@@ -17,37 +16,43 @@ class RegisterStep3 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Color colorBack = Colors.white;
-    return BlocBuilder<UiChangeBloc, UiChangeState>(builder: (context, state) {
-      return Column(
-        // mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          GestureDetector(
-            onTap: () {
-              colorBack != state.newColor
-                  ? (context
-                      .read<UiChangeBloc>()
-                      .add(UiChangeEventChangeColor(Colors.white)))
-                  : (context
-                      .read<UiChangeBloc>()
-                      .add(UiChangeEventChangeColor(Colors.red)));
+    Color getAotherColor(Color c) {
+      if (c == Colors.white) {
+        return Color(0xffF7F9FB);
+      } else {
+        return Colors.white;
+      }
+    }
 
-              // Color(0xffF7F9FB);
+    // Color colorBack = Color(0xffF7F9FB);
+    return Column(
+      // mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        GestureDetector(
+          onTap: () {
+            context
+                .read<UiChangeBloc>()
+                .add(UiChangeEventChangeColor(Color(0xffF7F9FB), 'patient'));
+
+            // Color(0xffF7F9FB);
+          },
+          child: PatientPhysioCard(
+              typeCard: 'patient', backColor: uiState.newColor),
+        ),
+        const SizedBox(
+          height: 13,
+        ),
+        GestureDetector(
+            onTap: () {
+              context
+                  .read<UiChangeBloc>()
+                  .add(UiChangeEventChangeColor(Colors.white, 'physio'));
             },
             child: PatientPhysioCard(
-                typeCard: 'patient', backColor: state.newColor),
-          ),
-          const SizedBox(
-            height: 13,
-          ),
-          GestureDetector(
-              onTap: () {
-                colorBack != null ? null : colorBack = Color(0xffF7F9FB);
-              },
-              child:
-                  PatientPhysioCard(typeCard: 'physio', backColor: colorBack)),
-        ],
-      );
-    });
+                typeCard: 'physio',
+                backColor: getAotherColor(uiState.newColor!))),
+      ],
+    );
+    // });
   }
 }

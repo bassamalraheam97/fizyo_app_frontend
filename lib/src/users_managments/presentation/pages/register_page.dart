@@ -3,6 +3,8 @@
 import 'package:bot_toast/bot_toast.dart';
 import 'package:fizyo_app_frontend/src/presentation/widgets/stepper.dart';
 import 'package:fizyo_app_frontend/src/presentation/widgets/title_description.dart';
+import 'package:fizyo_app_frontend/src/users_managments/blocs/ui_chande_bloc/ui_change_bloc.dart';
+import 'package:fizyo_app_frontend/src/users_managments/blocs/ui_chande_bloc/ui_change_state.dart';
 import 'package:fizyo_app_frontend/src/users_managments/blocs/user_form_bloc/user_form_bloc.dart';
 import 'package:fizyo_app_frontend/src/users_managments/blocs/user_form_bloc/user_form_event.dart';
 import 'package:fizyo_app_frontend/src/users_managments/blocs/user_form_bloc/user_form_state.dart';
@@ -17,6 +19,8 @@ import 'package:reactive_forms/reactive_forms.dart';
 class RegisterPage extends StatelessWidget {
   RegisterPage({super.key});
   Map<String, dynamic> data = {};
+  Map<String, dynamic> step3Data = {'patient': 1, 'physio': 0};
+  UiChangeState? uiState;
   late FormGroup form = FormGroup({
     'firstName': FormControl<String>(
         // validators: [Validators.minLength(2), Validators.required],
@@ -63,7 +67,19 @@ class RegisterPage extends StatelessWidget {
           return RegisterStep2(form: form);
         }
       default:
-        return RegisterStep3();
+        return BlocBuilder<UiChangeBloc, UiChangeState>(
+            builder: (context, uiState) {
+          uiState = uiState;
+          if (uiState.widgetName == 'patient') {
+            step3Data['patient'] = 1;
+            step3Data['physio'] = 0;
+          } else {
+            step3Data['patient'] = 0;
+            step3Data['physio'] = 1;
+          }
+          print('$step3Data ****************************************');
+          return RegisterStep3(uiState: uiState);
+        });
     }
   }
 
@@ -106,6 +122,8 @@ class RegisterPage extends StatelessWidget {
                   onPressed: () {
                     if (state.currentStep == (1 | 2 | 8)) {
                       data.addAll(form.value);
+                    } else if (state.currentStep == 3) {
+                      data.addAll(step3Data);
                     }
                     context
                         .read<UserFormBloc>()

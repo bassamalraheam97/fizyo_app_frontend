@@ -12,13 +12,13 @@ class PatientPhysioCard extends StatelessWidget {
         return [
           'I am a patient',
           'Find a physiotherapist online,book a session,  and more',
-          'images/patient.png'
+          'assets/images/patient.png'
         ];
       case 'physio':
         return [
           'I am a physiotherapist',
           'Find  patients, agree on sessions, and more',
-          'images/physio.png'
+          'assets/images/physio.png'
         ];
       default:
         return ['', '', ''];

@@ -6,10 +6,10 @@ import 'package:flutter/material.dart';
 class UiChangeBloc extends Bloc<UiChangeEvent, UiChangeState> {
   // final AccountsService _accountsService;
   // UserFormBloc(this._accountsService)
-  // final
-  UiChangeBloc() : super(const UiChangeStateInitial(Colors.white)) {
+
+  UiChangeBloc() : super(const UiChangeStateInitial(Colors.white, 'patient')) {
     on<UiChangeEventChangeColor>((event, emit) async {
-      emit(UiChangeStateChanged(event.newColor));
+      emit(UiChangeStateChanged(event.newColor, event.widgetName));
     });
   }
 }

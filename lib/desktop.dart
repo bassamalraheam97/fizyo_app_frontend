@@ -3,7 +3,6 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-
 class DesktopScreen extends StatelessWidget {
   const DesktopScreen({super.key});
 
@@ -97,7 +96,14 @@ class DesktopScreen extends StatelessWidget {
             ),
           ),
           Row(
-            children: [Container(color: Color(0xffE1E2EC),child: SizedBox(height: 20,),)],
+            children: [
+              Container(
+                color: Color(0xffE1E2EC),
+                child: SizedBox(
+                  height: 20,
+                ),
+              )
+            ],
           )
         ],
       ),

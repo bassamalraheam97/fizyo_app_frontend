@@ -14,6 +14,7 @@ import 'package:fizyo_app_frontend/src/users_managments/presentation/components/
 import 'package:fizyo_app_frontend/src/users_managments/presentation/components/register_step3.dart';
 import 'package:fizyo_app_frontend/src/users_managments/presentation/components/register_step4.dart';
 import 'package:fizyo_app_frontend/src/users_managments/presentation/components/register_step5.dart';
+import 'package:fizyo_app_frontend/src/users_managments/presentation/components/register_step6.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:reactive_forms/reactive_forms.dart';
@@ -22,10 +23,10 @@ class RegisterPage extends StatelessWidget {
   RegisterPage({super.key});
   Map<String, dynamic> data = {};
   Map<String, dynamic> stepsData = {
-    'patient': 1,
-    'physio': 0,
+    'accountType': 'PT',
     'gender': 'male',
     'imageURL': '',
+    'preferredServiceType': '',
   };
   UiChangeState? uiState;
   late FormGroup form = FormGroup({
@@ -78,11 +79,9 @@ class RegisterPage extends StatelessWidget {
             builder: (context, uiState) {
           uiState = uiState;
           if (uiState.widgetName == 'patient') {
-            stepsData['patient'] = 1;
-            stepsData['physio'] = 0;
-          } else {
-            stepsData['patient'] = 0;
-            stepsData['physio'] = 1;
+            stepsData['accountType'] = 'PT';
+          } else if (uiState.widgetName == 'physio') {
+            stepsData['accountType'] = 'EM';
           }
           // print('$step3Data ****************************************');
           return RegisterStep3(uiState: uiState);
@@ -106,8 +105,20 @@ class RegisterPage extends StatelessWidget {
           if (uiState.widgetName.startsWith('pic')) {
             stepsData['imageURL'] = 'assets/images/${uiState.widgetName}';
           }
-          print('$stepsData ****************************************');
+          // print('$stepsData ****************************************');
           return RegisterStep5(uiState: uiState);
+        });
+      case 6:
+        return BlocBuilder<UiChangeBloc, UiChangeState>(
+            builder: (context, uiState) {
+          uiState = uiState;
+          if (uiState.widgetName == 'home' ||
+              uiState.widgetName == 'online' ||
+              uiState.widgetName == 'office') {
+            stepsData['preferredServiceType'] = uiState.widgetName;
+          }
+          print('$stepsData ****************************************');
+          return RegisterStep6(uiState: uiState);
         });
       default:
         return Container();
@@ -117,13 +128,15 @@ class RegisterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Map<String, dynamic> data;
-    return Padding(
-      padding: const EdgeInsets.all(0),
-      child: BlocBuilder<UserFormBloc, UserFormState>(
-        builder: (context, state) {
-          return SingleChildScrollView(
+    return BlocBuilder<UserFormBloc, UserFormState>(
+      builder: (context, state) {
+        return Scaffold(
+          appBar: AppBar(
+            title: Text("Fyzio App"),
+          ),
+          body: SingleChildScrollView(
               child: Column(
-            // mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               ProgressBar(value: state.value),
               const SizedBox(height: 13),
@@ -182,10 +195,10 @@ class RegisterPage extends StatelessWidget {
                 ),
               ),
             ],
-          ));
-        },
-        // ),
-      ),
+          )),
+        );
+      },
+      // ),
     );
     // }),
     // );

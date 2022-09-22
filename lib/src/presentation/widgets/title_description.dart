@@ -43,6 +43,13 @@ class TitleDescription extends StatelessWidget {
           ""
         ];
         return list;
+      case 6:
+        list = [
+          "Select Service Type",
+          "Please select prefered session location you can select one or more",
+          ""
+        ];
+        return list;
       default:
         return list;
     }

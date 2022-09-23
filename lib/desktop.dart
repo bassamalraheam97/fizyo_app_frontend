@@ -1,3 +1,4 @@
+import 'package:fizyo_app_frontend/mobil.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -10,19 +11,11 @@ class DesktopScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // bottom:
-        // const TabBar(
-        //   tabs: [
-        //     Tab(icon: Icon(Icons.directions_car)),
-        //     Tab(icon: Icon(Icons.directions_transit)),
-        //     Tab(icon: Icon(Icons.directions_bike)),
-        //   ],
-        // ),
-        title: Padding(
-          padding: const EdgeInsets.only(left: 10.0),
+        title: Container(
+          color: Color(0xFFC5C6D0),
           child: Row(
             children: [
-              Text("LOGO"),
+              Text("Logo"),
               Spacer(),
               IconButton(
                 onPressed: () {},
@@ -68,7 +61,7 @@ class DesktopScreen extends StatelessWidget {
           Expanded(
               flex: 2,
               child: Container(
-                color: Colors.white,
+                color: Color(0xFFFFFFFF),
                 child: Image.asset(
                   'images/bro.png',
                   fit: BoxFit.contain,
@@ -77,22 +70,7 @@ class DesktopScreen extends StatelessWidget {
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(20.0),
-              child: Column(
-                children: [
-                  TextFormField(
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'FirstName',
-                    ),
-                  ),
-                  TextFormField(
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'LastName',
-                    ),
-                  )
-                ],
-              ),
+              child: mobileScreen(),
             ),
           ),
           Row(

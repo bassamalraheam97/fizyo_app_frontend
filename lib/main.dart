@@ -68,7 +68,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           home: Scaffold(
             body: LayoutBuilder(builder: (context, constraint) {
-              if (constraint.maxWidth > 500) {
+              if (constraint.maxWidth > 700) {
                 return DesktopScreen();
               } else {
                 return mobileScreen();

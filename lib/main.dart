@@ -2,6 +2,7 @@
 
 import 'package:dio/dio.dart';
 import 'package:dynamic_color/dynamic_color.dart';
+import 'package:fizyo_app_frontend/desktop_register.dart';
 import 'package:fizyo_app_frontend/mobil.dart';
 import 'package:fizyo_app_frontend/src/presentation/widgets/image_viewer.dart';
 import 'package:fizyo_app_frontend/src/presentation/widgets/title_description.dart';
@@ -19,7 +20,7 @@ import 'package:flutter/material.dart';
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import './src/presentation/widgets/stepper.dart';
-import 'desktop.dart';
+
 
 void main() {
   Bloc.observer = UserFormObserver();
@@ -57,6 +58,8 @@ class MyApp extends StatelessWidget {
             colorScheme: lightScheme,
             extensions: [lightCustomColors],
             fontFamily: 'Recoleta',
+            //textTheme: TextTheme(headline1:TextStyle(fontSize:MediaQuery.of(context).size.width/100,)),
+            
           ),
           darkTheme: ThemeData(
             useMaterial3: true,

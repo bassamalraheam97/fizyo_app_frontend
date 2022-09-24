@@ -24,7 +24,7 @@ class UserFormBloc extends Bloc<UserFormEvent, UserFormState> {
       // emit(
       //     UserFormStateSubmitting(event.currentStep / 8, event.currentStep, 8));
       // try {
-      // print('${event.formData}----------------------------------------');
+      print('${event.formData}----------------------------------------');
       // final user = User.fromJson(event.formData);
       // await _accountsService.createAccount(user, null);
       emit(UserFormStateSuccess(
@@ -33,6 +33,11 @@ class UserFormBloc extends Bloc<UserFormEvent, UserFormState> {
       // emit(UserFormStateFailure(
       //     e.toString(), event.currentStep / 8, event.currentStep, 8));
       // }
+    });
+
+    on<UserFormEventBack>((event, emit) async {
+      emit(UserFormStateSuccess(
+          (event.currentStep - 1) / 8, event.currentStep - 1, 8));
     });
   }
 }

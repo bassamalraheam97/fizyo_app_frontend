@@ -15,6 +15,8 @@ import 'package:fizyo_app_frontend/src/users_managments/presentation/components/
 import 'package:fizyo_app_frontend/src/users_managments/presentation/components/register_step4.dart';
 import 'package:fizyo_app_frontend/src/users_managments/presentation/components/register_step5.dart';
 import 'package:fizyo_app_frontend/src/users_managments/presentation/components/register_step6.dart';
+import 'package:fizyo_app_frontend/src/users_managments/presentation/components/register_step7e.dart';
+import 'package:fizyo_app_frontend/src/users_managments/presentation/components/register_step7p.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:reactive_forms/reactive_forms.dart';
@@ -27,9 +29,11 @@ class RegisterPage extends StatelessWidget {
     'gender': 'male',
     'imageURL': '',
     'preferredServiceType': '',
+    'diseases': {},
+    'specialties': {},
   };
   UiChangeState? uiState;
-  late FormGroup form = FormGroup({
+  FormGroup form = FormGroup({
     'firstName': FormControl<String>(
         // validators: [Validators.minLength(2), Validators.required],
         ),
@@ -46,20 +50,21 @@ class RegisterPage extends StatelessWidget {
     switch (currentStep) {
       case 1:
         {
-          form = FormGroup({
-            'firstName': FormControl<String>(
-                // validators: [Validators.minLength(2), Validators.required],
-                ),
-            'lastName': FormControl<String>(
-                // validators: [Validators.minLength(2), Validators.required],
-                ),
-            'phoneNumber': FormControl<String>(),
-            'email': FormControl<String>(
-                // validators: [Validators.email],
-                ),
-          });
+          // form = FormGroup({
+          //   'firstName': FormControl<String>(
+          //       // validators: [Validators.minLength(2), Validators.required],
+          //       ),
+          //   'lastName': FormControl<String>(
+          //       // validators: [Validators.minLength(2), Validators.required],
+          //       ),
+          //   'phoneNumber': FormControl<String>(),
+          //   'email': FormControl<String>(
+          //       // validators: [Validators.email],
+          //       ),
+          // });
           // data = form as Map<String, dynamic>;
-          return RegisterStep1(form: form);
+          return ReactiveForm(
+              formGroup: form, child: RegisterStep1(form: form));
         }
       case 2:
         {
@@ -120,6 +125,37 @@ class RegisterPage extends StatelessWidget {
           print('$stepsData ****************************************');
           return RegisterStep6(uiState: uiState);
         });
+      case 7:
+        {
+          return BlocBuilder<UiChangeBloc, UiChangeState>(
+              builder: (context, uiState) {
+            uiState = uiState;
+
+            if (stepsData['accountType'] == 'PT') {
+              // print(
+              //     '${uiState.isColoredMap} ****************************************');
+              if (uiState.isColoredMap != null) {
+                stepsData['diseases'].containsKey(uiState.isColoredMap?.keys)
+                    ? stepsData['diseases']
+                        .updateAll(((key, value) => uiState.isColoredMap?[key]))
+                    : stepsData['diseases'].addAll(uiState.isColoredMap);
+              }
+
+              // print('$stepsData ****************************************');
+              return RegisterStep7p(uiState: uiState);
+            } else {
+              if (uiState.isColoredMap != null) {
+                stepsData['specialties'].containsKey(uiState.isColoredMap?.keys)
+                    ? stepsData['specialties']
+                        .updateAll(((key, value) => uiState.isColoredMap?[key]))
+                    : stepsData['specialties'].addAll(uiState.isColoredMap);
+              }
+
+              // print('$stepsData ****************************************');
+              return RegisterStep7e(uiState: uiState);
+            }
+          });
+        }
       default:
         return Container();
     }
@@ -130,13 +166,25 @@ class RegisterPage extends StatelessWidget {
     // Map<String, dynamic> data;
     return BlocBuilder<UserFormBloc, UserFormState>(
       builder: (context, state) {
-        return Scaffold(
-          appBar: AppBar(
-            title: Text("Fyzio App"),
-          ),
-          backgroundColor: Colors.white,
-          body: SingleChildScrollView(
-              child: Column(
+        return
+            // Scaffold(
+            //   appBar: AppBar(
+            //     title: Text("Fyzio App"),
+            //     leading: state.currentStep > 1
+            //         ? IconButton(
+            //             onPressed: () {
+            //               print('$data+++++++++++++++++++++++++++++++++++++++++');
+            //               context
+            //                   .read<UserFormBloc>()
+            //                   .add(UserFormEventBack(state.currentStep));
+            //             },
+            //             icon: Icon(Icons.arrow_back_ios_new))
+            //         : Container(),
+            //   ),
+            //   backgroundColor: Colors.white,
+            //   body:
+            SingleChildScrollView(
+          child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               ProgressBar(value: state.value),
@@ -148,7 +196,9 @@ class RegisterPage extends StatelessWidget {
               const SizedBox(
                 height: 13,
               ),
-              TitleDescription(currentStep: state.currentStep),
+              TitleDescription(
+                  currentStep: state.currentStep,
+                  accountType: stepsData['accountType']),
               const SizedBox(
                 height: 13,
               ),
@@ -165,14 +215,19 @@ class RegisterPage extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(vertical: 13),
                   ),
                   onPressed: () {
-                    if (state.currentStep == (1 | 2 | 8)) {
+                    if (state.currentStep == (1)) {
                       data.addAll(form.value);
+                      print(
+                          '${form.value} -------------------------------------');
+                    } else if (state.currentStep == (2)) {
+                      data.addAll(form.value);
+                      print(
+                          '${form.value} -------------------------------------');
                     } else if (state.currentStep == 4) {
                       data.addAll(stepsData);
                     }
-                    context
-                        .read<UserFormBloc>()
-                        .add(UserFormEventProceed(state.currentStep));
+                    context.read<UserFormBloc>().add(
+                        UserFormEventProceed(state.currentStep, form.value));
                     // data = state.formData;
                     // Future.delayed(Duration(milliseconds: 100), () {
                     //   formElements(state.currentStep + 1);
@@ -196,7 +251,8 @@ class RegisterPage extends StatelessWidget {
                 ),
               ),
             ],
-          )),
+          ),
+          // ),
         );
       },
       // ),

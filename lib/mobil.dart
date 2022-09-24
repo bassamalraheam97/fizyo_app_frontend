@@ -1,5 +1,6 @@
 import 'package:fizyo_app_frontend/src/users_managments/blocs/ui_chande_bloc/ui_change_bloc.dart';
 import 'package:fizyo_app_frontend/src/users_managments/blocs/user_form_bloc/user_form_bloc.dart';
+import 'package:fizyo_app_frontend/src/users_managments/presentation/pages/regester_page2.dart';
 import 'package:fizyo_app_frontend/src/users_managments/presentation/pages/register_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';

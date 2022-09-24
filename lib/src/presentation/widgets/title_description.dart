@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 class TitleDescription extends StatelessWidget {
   final int currentStep;
-  const TitleDescription({Key? key, required this.currentStep})
+  String? accountType;
+  TitleDescription({Key? key, required this.currentStep, this.accountType})
       : super(key: key);
 
   List<String> getTitleDesc(int currentStp) {
@@ -50,6 +51,24 @@ class TitleDescription extends StatelessWidget {
           ""
         ];
         return list;
+      case 7:
+        {
+          if (accountType == 'PT') {
+            list = [
+              "How do you feel?",
+              "Please select your diseases and symptoms, you can select one or more",
+              ""
+            ];
+          } else if (accountType == 'EM') {
+            list = [
+              "What is your Specialities?",
+              "Please select your specialities and skills, you can select one or more",
+              ""
+            ];
+          }
+
+          return list;
+        }
       default:
         return list;
     }
@@ -59,7 +78,7 @@ class TitleDescription extends StatelessWidget {
   Widget build(BuildContext context) {
     var list = getTitleDesc(currentStep);
     return SizedBox(
-      width: 236,
+      width: (list[0].length * 16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         // mainAxisAlignment: MainAxisAlignment.center,

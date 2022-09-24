@@ -13,11 +13,12 @@ class UiChangeEventChangeColor extends UiChangeEvent {
   List<Object?> get props => [newColor, widgetName];
 }
 
-class UiChangeEventChangeColor2 extends UiChangeEvent {
+class UiChangeEventMultiChangeColor extends UiChangeEvent {
   final Color? newColor;
   final String widgetName;
+  // Map<String, dynamic>? isColoredMap;
 
-  UiChangeEventChangeColor2(this.newColor, this.widgetName);
+  UiChangeEventMultiChangeColor(this.newColor, this.widgetName);
 
   @override
   List<Object?> get props => [newColor, widgetName];

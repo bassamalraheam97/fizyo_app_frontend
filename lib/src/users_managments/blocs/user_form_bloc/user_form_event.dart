@@ -11,9 +11,18 @@ class UserFormEventSubmit extends UserFormEvent {
 }
 
 class UserFormEventProceed extends UserFormEvent {
+  final Map<String, dynamic> formData;
+  final int currentStep;
+  UserFormEventProceed(this.currentStep, this.formData);
+
+  @override
+  List<Object?> get props => [currentStep, formData];
+}
+
+class UserFormEventBack extends UserFormEvent {
   // final Map<String, dynamic> formData;
   final int currentStep;
-  UserFormEventProceed(this.currentStep);
+  UserFormEventBack(this.currentStep);
   @override
   List<Object?> get props => [currentStep];
 }

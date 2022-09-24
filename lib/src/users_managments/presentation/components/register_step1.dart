@@ -12,37 +12,40 @@ class RegisterStep1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ReactiveForm(
-        formGroup: form,
-        child: Column(
-          // mainAxisAlignment: MainAxisAlignment.center,
-          children: const <Widget>[
-            FormTextField(
-              formControlName: "firstName",
-              labelText: "First Name",
-            ),
-            SizedBox(
-              height: 13,
-            ),
-            FormTextField(
-              formControlName: "lastName",
-              labelText: "Last Name",
-            ),
-            SizedBox(
-              height: 13,
-            ),
-            FormTextField(
-              formControlName: "phoneNumber",
-              labelText: "Phone Number",
-            ),
-            SizedBox(
-              height: 13,
-            ),
-            FormTextField(
-              formControlName: "email",
-              labelText: "email",
-            ),
-          ],
-        ));
+    return
+        // ReactiveForm(
+        //     formGroup: form,
+        //     child:
+        Column(
+      // mainAxisAlignment: MainAxisAlignment.center,
+      children: const <Widget>[
+        FormTextField(
+          formControlName: "firstName",
+          labelText: "First Name",
+        ),
+        SizedBox(
+          height: 13,
+        ),
+        FormTextField(
+          formControlName: "lastName",
+          labelText: "Last Name",
+        ),
+        SizedBox(
+          height: 13,
+        ),
+        FormTextField(
+          formControlName: "phoneNumber",
+          labelText: "Phone Number",
+        ),
+        SizedBox(
+          height: 13,
+        ),
+        FormTextField(
+          formControlName: "email",
+          labelText: "email",
+        ),
+      ],
+      // ),
+    );
   }
 }

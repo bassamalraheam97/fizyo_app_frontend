@@ -69,6 +69,13 @@ class TitleDescription extends StatelessWidget {
 
           return list;
         }
+      case 8:
+        list = [
+          "What makes you special?",
+          "Please  determine your session's fee range, tell us more about you",
+          ""
+        ];
+        return list;
       default:
         return list;
     }

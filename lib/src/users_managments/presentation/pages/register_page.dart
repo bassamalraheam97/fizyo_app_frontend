@@ -17,6 +17,7 @@ import 'package:fizyo_app_frontend/src/users_managments/presentation/components/
 import 'package:fizyo_app_frontend/src/users_managments/presentation/components/register_step6.dart';
 import 'package:fizyo_app_frontend/src/users_managments/presentation/components/register_step7e.dart';
 import 'package:fizyo_app_frontend/src/users_managments/presentation/components/register_step7p.dart';
+import 'package:fizyo_app_frontend/src/users_managments/presentation/components/register_step8.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:reactive_forms/reactive_forms.dart';
@@ -46,7 +47,7 @@ class RegisterPage extends StatelessWidget {
         ),
   });
   Widget getStep(int currentStep) {
-    // currentStep = 2;
+    // currentStep = 7;
     switch (currentStep) {
       case 1:
         {
@@ -156,6 +157,25 @@ class RegisterPage extends StatelessWidget {
             }
           });
         }
+      case 8:
+        return BlocBuilder<UiChangeBloc, UiChangeState>(
+            builder: (context, uiState) {
+          uiState = uiState;
+          // if (uiState.widgetName == 'male') {
+          //   stepsData['gender'] = 'male';
+          // } else {
+          //   stepsData['gender'] = 'female';
+          // }
+          // print('$stepsData ****************************************');
+          form = FormGroup({
+            'input': FormControl<RangeValues>(value: RangeValues(0, 1000)),
+            'min': FormControl<String>(),
+            'max': FormControl<String>(),
+          });
+          return ReactiveForm(
+              formGroup: form,
+              child: RegisterStep8(uiState: uiState, form: form));
+        });
       default:
         return Container();
     }
@@ -224,6 +244,8 @@ class RegisterPage extends StatelessWidget {
                       print(
                           '${form.value} -------------------------------------');
                     } else if (state.currentStep == 4) {
+                      data.addAll(stepsData);
+                    } else if (state.currentStep == 8) {
                       data.addAll(stepsData);
                     }
                     context.read<UserFormBloc>().add(

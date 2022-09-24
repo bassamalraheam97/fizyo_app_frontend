@@ -30,172 +30,191 @@ class RegisterStep7e extends StatelessWidget {
       }
     }
 
-    return Table(
-      // mainAxisAlignment: MainAxisAlignment.center,
-      children: <TableRow>[
-        TableRow(
-          children: [
-            GestureDetector(
-              onTap: () {
-                if (uiState.newColor != initColor) {
-                  // print(isColoredMap);
-                  context.read<UiChangeBloc>().add(
-                      UiChangeEventMultiChangeColor(initColor, 'Pediatrics'));
-                } else {
-                  context.read<UiChangeBloc>().add(
-                      UiChangeEventMultiChangeColor(secondColor, 'Pediatrics'));
-                }
-              },
-              child: SpecialitiesFeelings(
-                text: 'Pediatrics',
-                width: 150,
-                height: 50,
-                radius: 25,
-                colorWidget:
-                    getColor(uiState.isColoredMap?['Pediatrics'] ?? false),
-              ),
+    return Column(
+      children: [
+        Table(
+          // mainAxisAlignment: MainAxisAlignment.center,
+          children: <TableRow>[
+            TableRow(
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    if (uiState.newColor != initColor) {
+                      // print(isColoredMap);
+                      context.read<UiChangeBloc>().add(
+                          UiChangeEventMultiChangeColor(
+                              initColor, 'Pediatrics'));
+                    } else {
+                      context.read<UiChangeBloc>().add(
+                          UiChangeEventMultiChangeColor(
+                              secondColor, 'Pediatrics'));
+                    }
+                  },
+                  child: SpecialitiesFeelings(
+                    text: 'Pediatrics',
+                    width: 150,
+                    height: 50,
+                    radius: 25,
+                    colorWidget:
+                        getColor(uiState.isColoredMap?['Pediatrics'] ?? false),
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    if (uiState.newColor != initColor) {
+                      context.read<UiChangeBloc>().add(
+                          UiChangeEventMultiChangeColor(initColor, 'Sports'));
+                    } else {
+                      context.read<UiChangeBloc>().add(
+                          UiChangeEventMultiChangeColor(secondColor, 'Sports'));
+                    }
+                  },
+                  child: SpecialitiesFeelings(
+                    text: 'Sports',
+                    width: 150,
+                    height: 50,
+                    radius: 25,
+                    colorWidget:
+                        getColor(uiState.isColoredMap?['Sports'] ?? false),
+                  ),
+                ),
+              ],
             ),
-            GestureDetector(
-              onTap: () {
-                if (uiState.newColor != initColor) {
-                  context
-                      .read<UiChangeBloc>()
-                      .add(UiChangeEventMultiChangeColor(initColor, 'Sports'));
-                } else {
-                  context.read<UiChangeBloc>().add(
-                      UiChangeEventMultiChangeColor(secondColor, 'Sports'));
-                }
-              },
-              child: SpecialitiesFeelings(
-                text: 'Sports',
-                width: 150,
-                height: 50,
-                radius: 25,
-                colorWidget: getColor(uiState.isColoredMap?['Sports'] ?? false),
-              ),
+            TableRow(
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    if (uiState.newColor != initColor) {
+                      context.read<UiChangeBloc>().add(
+                          UiChangeEventMultiChangeColor(
+                              initColor, 'Womens health'));
+                    } else {
+                      context.read<UiChangeBloc>().add(
+                          UiChangeEventMultiChangeColor(
+                              secondColor, 'Womens health'));
+                    }
+                  },
+                  child: SpecialitiesFeelings(
+                    text: "Women's health",
+                    width: 150,
+                    height: 50,
+                    radius: 25,
+                    colorWidget: getColor(
+                        uiState.isColoredMap?['Womens health'] ?? false),
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    if (uiState.newColor != initColor) {
+                      context.read<UiChangeBloc>().add(
+                          UiChangeEventMultiChangeColor(
+                              initColor, 'Cardiovascular'));
+                    } else {
+                      context.read<UiChangeBloc>().add(
+                          UiChangeEventMultiChangeColor(
+                              secondColor, 'Cardiovascular'));
+                    }
+                  },
+                  child: SpecialitiesFeelings(
+                    text: 'Cardiovascular',
+                    width: 150,
+                    height: 50,
+                    radius: 25,
+                    colorWidget: getColor(
+                        uiState.isColoredMap?['Cardiovascular'] ?? false),
+                  ),
+                ),
+              ],
+            ),
+            TableRow(
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    if (uiState.newColor != initColor) {
+                      context.read<UiChangeBloc>().add(
+                          UiChangeEventMultiChangeColor(
+                              initColor, 'Neurology'));
+                    } else {
+                      context.read<UiChangeBloc>().add(
+                          UiChangeEventMultiChangeColor(
+                              secondColor, 'Neurology'));
+                    }
+                  },
+                  child: SpecialitiesFeelings(
+                    text: 'Neurology',
+                    width: 150,
+                    height: 50,
+                    radius: 25,
+                    colorWidget:
+                        getColor(uiState.isColoredMap?['Neurology'] ?? false),
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    if (uiState.newColor != initColor) {
+                      context.read<UiChangeBloc>().add(
+                          UiChangeEventMultiChangeColor(
+                              initColor, 'Geriatrics'));
+                      // isColored['soreness'] = 0;
+                    } else {
+                      context.read<UiChangeBloc>().add(
+                          UiChangeEventMultiChangeColor(
+                              secondColor, 'Geriatrics'));
+                    }
+                  },
+                  child: SpecialitiesFeelings(
+                    text: 'Geriatrics',
+                    width: 150,
+                    height: 50,
+                    radius: 25,
+                    colorWidget:
+                        getColor(uiState.isColoredMap?['Geriatrics'] ?? false),
+                  ),
+                ),
+              ],
+            ),
+            TableRow(
+              children: [
+                SpecialitiesFeelings(
+                  text: '',
+                  width: 150,
+                  height: 50,
+                  radius: 25,
+                  showBorder: false,
+                ),
+                GestureDetector(
+                  onTap: () {
+                    if (uiState.newColor != initColor) {
+                      context.read<UiChangeBloc>().add(
+                          UiChangeEventMultiChangeColor(
+                              initColor, 'Orthopedics'));
+                    } else {
+                      context.read<UiChangeBloc>().add(
+                          UiChangeEventMultiChangeColor(
+                              secondColor, 'Orthopedics'));
+                    }
+                  },
+                  child: SpecialitiesFeelings(
+                    text: 'Orthopedics',
+                    width: 150,
+                    height: 50,
+                    radius: 25,
+                    colorWidget:
+                        getColor(uiState.isColoredMap?['Orthopedics'] ?? false),
+                  ),
+                ),
+              ],
             ),
           ],
         ),
-        TableRow(
-          children: [
-            GestureDetector(
-              onTap: () {
-                if (uiState.newColor != initColor) {
-                  context.read<UiChangeBloc>().add(
-                      UiChangeEventMultiChangeColor(
-                          initColor, 'Womens health'));
-                } else {
-                  context.read<UiChangeBloc>().add(
-                      UiChangeEventMultiChangeColor(
-                          secondColor, 'Womens health'));
-                }
-              },
-              child: SpecialitiesFeelings(
-                text: "Women's health",
-                width: 150,
-                height: 50,
-                radius: 25,
-                colorWidget:
-                    getColor(uiState.isColoredMap?['Womens health'] ?? false),
-              ),
-            ),
-            GestureDetector(
-              onTap: () {
-                if (uiState.newColor != initColor) {
-                  context.read<UiChangeBloc>().add(
-                      UiChangeEventMultiChangeColor(
-                          initColor, 'Cardiovascular'));
-                } else {
-                  context.read<UiChangeBloc>().add(
-                      UiChangeEventMultiChangeColor(
-                          secondColor, 'Cardiovascular'));
-                }
-              },
-              child: SpecialitiesFeelings(
-                text: 'Cardiovascular',
-                width: 150,
-                height: 50,
-                radius: 25,
-                colorWidget:
-                    getColor(uiState.isColoredMap?['Cardiovascular'] ?? false),
-              ),
-            ),
-          ],
+        SizedBox(
+          height: 30,
         ),
-        TableRow(
-          children: [
-            GestureDetector(
-              onTap: () {
-                if (uiState.newColor != initColor) {
-                  context.read<UiChangeBloc>().add(
-                      UiChangeEventMultiChangeColor(initColor, 'Neurology'));
-                } else {
-                  context.read<UiChangeBloc>().add(
-                      UiChangeEventMultiChangeColor(secondColor, 'Neurology'));
-                }
-              },
-              child: SpecialitiesFeelings(
-                text: 'Neurology',
-                width: 150,
-                height: 50,
-                radius: 25,
-                colorWidget:
-                    getColor(uiState.isColoredMap?['Neurology'] ?? false),
-              ),
-            ),
-            GestureDetector(
-              onTap: () {
-                if (uiState.newColor != initColor) {
-                  context.read<UiChangeBloc>().add(
-                      UiChangeEventMultiChangeColor(initColor, 'Geriatrics'));
-                  // isColored['soreness'] = 0;
-                } else {
-                  context.read<UiChangeBloc>().add(
-                      UiChangeEventMultiChangeColor(secondColor, 'Geriatrics'));
-                }
-              },
-              child: SpecialitiesFeelings(
-                text: 'Geriatrics',
-                width: 150,
-                height: 50,
-                radius: 25,
-                colorWidget:
-                    getColor(uiState.isColoredMap?['Geriatrics'] ?? false),
-              ),
-            ),
-          ],
-        ),
-        TableRow(
-          children: [
-            SpecialitiesFeelings(
-              text: '',
-              width: 150,
-              height: 50,
-              radius: 25,
-              showBorder: false,
-            ),
-            GestureDetector(
-              onTap: () {
-                if (uiState.newColor != initColor) {
-                  context.read<UiChangeBloc>().add(
-                      UiChangeEventMultiChangeColor(initColor, 'Orthopedics'));
-                } else {
-                  context.read<UiChangeBloc>().add(
-                      UiChangeEventMultiChangeColor(
-                          secondColor, 'Orthopedics'));
-                }
-              },
-              child: SpecialitiesFeelings(
-                text: 'Orthopedics',
-                width: 150,
-                height: 50,
-                radius: 25,
-                colorWidget:
-                    getColor(uiState.isColoredMap?['Orthopedics'] ?? false),
-              ),
-            ),
-          ],
-        ),
+        ImageViewer(
+            imageURL: "assets/images/ph.png",
+            height: 245.45,
+            width: 213.59,
+            radius: 0),
       ],
     );
     // });

@@ -1,6 +1,7 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:bot_toast/bot_toast.dart';
+import 'package:fizyo_app_frontend/src/presentation/widgets/form_text_field.dart';
 import 'package:fizyo_app_frontend/src/presentation/widgets/stepper.dart';
 import 'package:fizyo_app_frontend/src/presentation/widgets/title_description.dart';
 import 'package:fizyo_app_frontend/src/users_managments/blocs/ui_chande_bloc/ui_change_bloc.dart';
@@ -34,18 +35,6 @@ class RegisterPage extends StatelessWidget {
     'specialties': {},
   };
   UiChangeState? uiState;
-  FormGroup form = FormGroup({
-    'firstName': FormControl<String>(
-        // validators: [Validators.minLength(2), Validators.required],
-        ),
-    'lastName': FormControl<String>(
-        // validators: [Validators.minLength(2), Validators.required],
-        ),
-    'phoneNumber': FormControl<String>(),
-    'email': FormControl<String>(
-        // validators: [Validators.email],
-        ),
-  });
   Widget getStep(int currentStep) {
     // currentStep = 7;
     switch (currentStep) {
@@ -53,129 +42,139 @@ class RegisterPage extends StatelessWidget {
         {
           // form = FormGroup({
           //   'firstName': FormControl<String>(
-          //       // validators: [Validators.minLength(2), Validators.required],
-          //       ),
+          //     validators: [Validators.minLength(3), Validators.required],
+          //   ),
           //   'lastName': FormControl<String>(
-          //       // validators: [Validators.minLength(2), Validators.required],
-          //       ),
-          //   'phoneNumber': FormControl<String>(),
+          //     validators: [Validators.minLength(3), Validators.required],
+          //   ),
+          //   'phoneNumber': FormControl<String>(validators: [
+          //     Validators.pattern(RegExp(
+          //         r'(^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$)'))
+          //   ]),
           //   'email': FormControl<String>(
-          //       // validators: [Validators.email],
-          //       ),
+          //     validators: [Validators.email, Validators.required],
+          //   ),
           // });
           // data = form as Map<String, dynamic>;
-          return ReactiveForm(
-              formGroup: form, child: RegisterStep1(form: form));
+          return RegisterStep1();
         }
       case 2:
         {
-          form = FormGroup({
-            'verificationCode': FormControl<String>(
-                // validators: [Validators.minLength(2), Validators.required],
-                ),
-            'password': FormControl<String>(
-                // validators: [Validators.minLength(2), Validators.required],
-                ),
-            'passwordConformation': FormControl<String>(),
-          });
-          return RegisterStep2(form: form);
+          // form = FormGroup({
+          //   'verificationCode': FormControl<String>(
+          //       // validators: [Validators.minLength(2), Validators.required],
+          //       ),
+          //   'password': FormControl<String>(
+          //     validators: [
+          //       Validators.minLength(2),
+          //       Validators.required,
+          //     ],
+          //   ),
+          //   'passwordConformation': FormControl<String>(
+          //     validators: [
+          //       Validators.minLength(2),
+          //       Validators.required,
+          //       // Validators.mustMatch('password', 'passwordConformation')
+          //     ],
+          //   ),
+          // });
+          return RegisterStep2();
         }
-      case 3:
-        return BlocBuilder<UiChangeBloc, UiChangeState>(
-            builder: (context, uiState) {
-          uiState = uiState;
-          if (uiState.widgetName == 'patient') {
-            stepsData['accountType'] = 'PT';
-          } else if (uiState.widgetName == 'physio') {
-            stepsData['accountType'] = 'EM';
-          }
-          // print('$step3Data ****************************************');
-          return RegisterStep3(uiState: uiState);
-        });
-      case 4:
-        return BlocBuilder<UiChangeBloc, UiChangeState>(
-            builder: (context, uiState) {
-          uiState = uiState;
-          if (uiState.widgetName == 'male') {
-            stepsData['gender'] = 'male';
-          } else {
-            stepsData['gender'] = 'female';
-          }
-          // print('$stepsData ****************************************');
-          return RegisterStep4(uiState: uiState);
-        });
-      case 5:
-        return BlocBuilder<UiChangeBloc, UiChangeState>(
-            builder: (context, uiState) {
-          uiState = uiState;
-          if (uiState.widgetName.startsWith('pic')) {
-            stepsData['imageURL'] = 'assets/images/${uiState.widgetName}';
-          }
-          // print('$stepsData ****************************************');
-          return RegisterStep5(uiState: uiState);
-        });
-      case 6:
-        return BlocBuilder<UiChangeBloc, UiChangeState>(
-            builder: (context, uiState) {
-          uiState = uiState;
-          if (uiState.widgetName == 'home' ||
-              uiState.widgetName == 'online' ||
-              uiState.widgetName == 'office') {
-            stepsData['preferredServiceType'] = uiState.widgetName;
-          }
-          print('$stepsData ****************************************');
-          return RegisterStep6(uiState: uiState);
-        });
-      case 7:
-        {
-          return BlocBuilder<UiChangeBloc, UiChangeState>(
-              builder: (context, uiState) {
-            uiState = uiState;
+      // case 3:
+      //   return BlocBuilder<UiChangeBloc, UiChangeState>(
+      //       builder: (context, uiState) {
+      //     uiState = uiState;
+      //     if (uiState.widgetName == 'patient') {
+      //       stepsData['accountType'] = 'PT';
+      //     } else if (uiState.widgetName == 'physio') {
+      //       stepsData['accountType'] = 'EM';
+      //     }
+      //     return RegisterStep3(uiState: uiState);
+      //   });
+      // case 4:
+      //   return BlocBuilder<UiChangeBloc, UiChangeState>(
+      //       builder: (context, uiState) {
+      //     uiState = uiState;
+      //     if (uiState.widgetName == 'male') {
+      //       stepsData['gender'] = 'male';
+      //     } else {
+      //       stepsData['gender'] = 'female';
+      //     }
+      //     print('$stepsData ****************************************');
+      //     return RegisterStep4(uiState: uiState);
+      //   });
+      // case 5:
+      //   return BlocBuilder<UiChangeBloc, UiChangeState>(
+      //       builder: (context, uiState) {
+      //     uiState = uiState;
+      //     if (uiState.widgetName.startsWith('pic')) {
+      //       stepsData['imageURL'] = 'assets/images/${uiState.widgetName}';
+      //     }
+      //     print('$stepsData ****************************************');
+      //     return RegisterStep5(uiState: uiState);
+      //   });
+      // case 6:
+      //   return BlocBuilder<UiChangeBloc, UiChangeState>(
+      //       builder: (context, uiState) {
+      //     uiState = uiState;
+      //     if (uiState.widgetName == 'home' ||
+      //         uiState.widgetName == 'online' ||
+      //         uiState.widgetName == 'office') {
+      //       stepsData['preferredServiceType'] = uiState.widgetName;
+      //     }
+      //     print('$stepsData ****************************************');
+      //     return RegisterStep6(uiState: uiState);
+      //   });
+      // case 7:
+      //   {
+      //     return BlocBuilder<UiChangeBloc, UiChangeState>(
+      //         builder: (context, uiState) {
+      //       uiState = uiState;
 
-            if (stepsData['accountType'] == 'PT') {
-              // print(
-              //     '${uiState.isColoredMap} ****************************************');
-              if (uiState.isColoredMap != null) {
-                stepsData['diseases'].containsKey(uiState.isColoredMap?.keys)
-                    ? stepsData['diseases']
-                        .updateAll(((key, value) => uiState.isColoredMap?[key]))
-                    : stepsData['diseases'].addAll(uiState.isColoredMap);
-              }
+      //       if (stepsData['accountType'] == 'PT') {
+      //         // print(
+      //         //     '${uiState.isColoredMap} ****************************************');
+      //         if (uiState.isColoredMap != null) {
+      //           stepsData['diseases'].containsKey(uiState.isColoredMap?.keys)
+      //               ? stepsData['diseases']
+      //                   .updateAll(((key, value) => uiState.isColoredMap?[key]))
+      //               : stepsData['diseases'].addAll(uiState.isColoredMap);
+      //         }
 
-              // print('$stepsData ****************************************');
-              return RegisterStep7p(uiState: uiState);
-            } else {
-              if (uiState.isColoredMap != null) {
-                stepsData['specialties'].containsKey(uiState.isColoredMap?.keys)
-                    ? stepsData['specialties']
-                        .updateAll(((key, value) => uiState.isColoredMap?[key]))
-                    : stepsData['specialties'].addAll(uiState.isColoredMap);
-              }
+      //         print('$stepsData ****************************************');
+      //         return RegisterStep7p(uiState: uiState);
+      //       } else {
+      //         if (uiState.isColoredMap != null) {
+      //           stepsData['specialties'].containsKey(uiState.isColoredMap?.keys)
+      //               ? stepsData['specialties']
+      //                   .updateAll(((key, value) => uiState.isColoredMap?[key]))
+      //               : stepsData['specialties'].addAll(uiState.isColoredMap);
+      //         }
 
-              // print('$stepsData ****************************************');
-              return RegisterStep7e(uiState: uiState);
-            }
-          });
-        }
-      case 8:
-        return BlocBuilder<UiChangeBloc, UiChangeState>(
-            builder: (context, uiState) {
-          uiState = uiState;
-          // if (uiState.widgetName == 'male') {
-          //   stepsData['gender'] = 'male';
-          // } else {
-          //   stepsData['gender'] = 'female';
-          // }
-          // print('$stepsData ****************************************');
-          form = FormGroup({
-            'input': FormControl<RangeValues>(value: RangeValues(0, 1000)),
-            'min': FormControl<String>(),
-            'max': FormControl<String>(),
-          });
-          return ReactiveForm(
-              formGroup: form,
-              child: RegisterStep8(uiState: uiState, form: form));
-        });
+      //         print('$stepsData ****************************************');
+      //         return RegisterStep7e(uiState: uiState);
+      //       }
+      //     });
+      //   }
+      // case 8:
+      //   return BlocBuilder<UiChangeBloc, UiChangeState>(
+      //       builder: (context, uiState) {
+      //     uiState = uiState;
+      //     // if (uiState.widgetName == 'male') {
+      //     //   stepsData['gender'] = 'male';
+      //     // } else {
+      //     //   stepsData['gender'] = 'female';
+      //     // }
+      //     // print('$stepsData ****************************************');
+      //     form = FormGroup({
+      //       'input': FormControl<RangeValues>(value: RangeValues(0, 1000)),
+      //       'min': FormControl<String>(),
+      //       'max': FormControl<String>(),
+      //     });
+      //     return ReactiveForm(
+      //         formGroup: form,
+      //         child: RegisterStep8(uiState: uiState, form: form));
+      //   });
       default:
         return Container();
     }
@@ -183,7 +182,7 @@ class RegisterPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Map<String, dynamic> data;
+    //==============================================================================
     return BlocBuilder<UserFormBloc, UserFormState>(
       builder: (context, state) {
         return
@@ -204,7 +203,11 @@ class RegisterPage extends StatelessWidget {
             //   backgroundColor: Colors.white,
             //   body:
             SingleChildScrollView(
-          child: Column(
+          child:
+              // ReactiveForm(
+              //   formGroup: form,
+              //   child:
+              Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               ProgressBar(value: state.value),
@@ -223,6 +226,9 @@ class RegisterPage extends StatelessWidget {
                 height: 13,
               ),
               getStep(state.currentStep),
+
+              // ),
+              // ),
               const SizedBox(
                 height: 13,
               ),
@@ -235,28 +241,28 @@ class RegisterPage extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(vertical: 13),
                   ),
                   onPressed: () {
-                    if (state.currentStep == (1)) {
-                      data.addAll(form.value);
-                      print(
-                          '${form.value} -------------------------------------');
-                    } else if (state.currentStep == (2)) {
-                      data.addAll(form.value);
-                      print(
-                          '${form.value} -------------------------------------');
-                    } else if (state.currentStep == 4) {
-                      data.addAll(stepsData);
-                    } else if (state.currentStep == 8) {
-                      data.addAll(stepsData);
-                    }
-                    context.read<UserFormBloc>().add(
-                        UserFormEventProceed(state.currentStep, form.value));
+                    // if (state.currentStep == (1)) {
+                    //   // data.addAll(form.value);
+                    //   print(
+                    //       '${form.value} -------------------------------------');
+                    // } else if (state.currentStep == (2)) {
+                    //   data.addAll(form.value);
+                    //   print(
+                    //       '${form.value} -------------------------------------');
+                    // } else if (state.currentStep == 4) {
+                    //   data.addAll(stepsData);
+                    // } else if (state.currentStep == 8) {
+                    //   data.addAll(stepsData);
+                    // }
+                    // context.read<UserFormBloc>().add(
+                    //     UserFormEventProceed(state.currentStep, form.value));
                     // data = state.formData;
                     // Future.delayed(Duration(milliseconds: 100), () {
                     //   formElements(state.currentStep + 1);
                     // });
 
-                    print(
-                        '${data}---------------------------------------------');
+                    // print(
+                    // '${data}---------------------------------------------');
                     // Navigator.of(context).push(MaterialPageRoute(
                     //     builder: (_) => RegisterPage2(
                     //           currentStep: (state.currentStep + 1),
@@ -271,6 +277,7 @@ class RegisterPage extends StatelessWidget {
                         .copyWith(color: Color(0xffF7F9FB), fontSize: 16),
                   ),
                 ),
+                // }),
               ),
             ],
           ),

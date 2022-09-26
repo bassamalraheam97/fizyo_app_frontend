@@ -2,9 +2,33 @@ import 'package:flutter/material.dart';
 import 'package:fizyo_app_frontend/src/presentation/widgets/form_text_field.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
+final FormGroup form = FormGroup({
+  'verificationCode': FormControl<String>(
+      // validators: [Validators.minLength(2), Validators.required],
+      ),
+  'password': FormControl<String>(
+    validators: [
+      Validators.minLength(6),
+      Validators.required,
+    ],
+  ),
+  'passwordConformation': FormControl<String>(
+    validators: [
+      Validators.minLength(6),
+      Validators.required,
+      // Validators.mustMatch('password', 'passwordConformation')
+    ],
+  )
+}, validators: [
+  Validators.mustMatch('password', 'passwordConformation'),
+]);
+
 class RegisterStep2 extends StatelessWidget {
-  const RegisterStep2({super.key, required this.form});
-  final FormGroup form;
+  const RegisterStep2({
+    super.key,
+    //  required this.form
+  });
+  // final FormGroup form;
   // FormGroup getForm() {
   //   return form;
   // }

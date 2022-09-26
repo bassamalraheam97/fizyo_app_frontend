@@ -110,14 +110,14 @@ class RegisterStep8 extends StatelessWidget {
                 ),
                 // ),
                 const SizedBox(height: 16),
-                ElevatedButton(
-                  child: const Text('Sign Up'),
-                  onPressed: () {
-                    print(form.value);
+                // ElevatedButton(
+                //   child: const Text('Sign Up'),
+                //   onPressed: () {
+                //     print(form.value);
 
-                    form.markAllAsTouched();
-                  },
-                ),
+                //     form.markAllAsTouched();
+                //   },
+                // ),
               ],
             )));
 

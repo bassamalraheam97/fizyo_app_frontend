@@ -1,24 +1,45 @@
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
+
+import 'package:fizyo_app_frontend/src/users_managments/blocs/user_form_bloc/user_form_bloc.dart';
+import 'package:fizyo_app_frontend/src/users_managments/presentation/pages/regester_page2.dart';
 import 'package:flutter/material.dart';
 import 'package:fizyo_app_frontend/src/presentation/widgets/form_text_field.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
-class RegisterStep1 extends StatelessWidget {
-  const RegisterStep1({super.key, required this.form});
-  final FormGroup form;
+// final FormGroup form = FormGroup({
+//   'firstName': FormControl<String>(
+//       // validators: [Validators.minLength(3), Validators.required],
+//       ),
+//   'lastName': FormControl<String>(
+//       // validators: [Validators.minLength(3), Validators.required],
+//       ),
+//   'phoneNumber': FormControl<String>(
+//       // validators: [
+//       //   Validators.pattern(RegExp(
+//       //       r'(^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$)'))
+//       // ],
+//       ),
+//   'email': FormControl<String>(
+//       //   validators: [Validators.email, Validators.required],
+//       ),
+// });
 
+class RegisterStep1 extends StatelessWidget {
+  RegisterStep1({
+    super.key,
+    // required this.form,
+  });
   // FormGroup getForm() {
   //   return form;
   // }
+  // FormGroup form;
 
   @override
   Widget build(BuildContext context) {
-    return
-        // ReactiveForm(
-        //     formGroup: form,
-        //     child:
-        Column(
+    return Column(
       // mainAxisAlignment: MainAxisAlignment.center,
-      children: const <Widget>[
+      children: <Widget>[
         FormTextField(
           formControlName: "firstName",
           labelText: "First Name",
@@ -45,7 +66,8 @@ class RegisterStep1 extends StatelessWidget {
           labelText: "email",
         ),
       ],
-      // ),
     );
+    // ),
+    // });
   }
 }

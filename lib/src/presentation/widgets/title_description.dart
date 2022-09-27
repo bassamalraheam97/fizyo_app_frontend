@@ -3,11 +3,14 @@ import 'package:flutter/material.dart';
 class TitleDescription extends StatelessWidget {
   final int currentStep;
   String? accountType;
-  TitleDescription({Key? key, required this.currentStep, this.accountType})
+  String? phone;
+  TitleDescription(
+      {Key? key, required this.currentStep, this.accountType, this.phone})
       : super(key: key);
 
   List<String> getTitleDesc(int currentStp) {
     List<String> list = ["", "", ""];
+
     switch (currentStp) {
       case 1:
         list = [
@@ -20,7 +23,7 @@ class TitleDescription extends StatelessWidget {
         list = [
           "Verification",
           "Please enter the code that we send to ",
-          "+90 531 999 00 11"
+          "$phone"
         ];
         return list;
       case 3:

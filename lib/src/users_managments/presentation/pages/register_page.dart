@@ -10,6 +10,9 @@ import 'package:fizyo_app_frontend/src/users_managments/blocs/user_form_bloc/use
 import 'package:fizyo_app_frontend/src/users_managments/blocs/user_form_bloc/user_form_event.dart';
 import 'package:fizyo_app_frontend/src/users_managments/blocs/user_form_bloc/user_form_state.dart';
 import 'package:fizyo_app_frontend/src/presentation/widgets/progress_bar.dart';
+import 'package:fizyo_app_frontend/src/users_managments/presentation/components/new_register_step5.dart';
+import 'package:fizyo_app_frontend/src/users_managments/presentation/components/new_register_step6.dart';
+import 'package:fizyo_app_frontend/src/users_managments/presentation/components/new_register_step7e.dart';
 import 'package:fizyo_app_frontend/src/users_managments/presentation/components/register_step1.dart';
 import 'package:fizyo_app_frontend/src/users_managments/presentation/components/register_step2.dart';
 import 'package:fizyo_app_frontend/src/users_managments/presentation/components/register_step3.dart';
@@ -23,6 +26,10 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:reactive_forms/reactive_forms.dart';
+
+import '../components/new_register_step3.dart';
+import '../components/new_register_step4.dart';
+import '../components/new_register_step7p.dart';
 
 class RegisterPage extends StatelessWidget {
   RegisterPage({super.key});
@@ -102,6 +109,7 @@ class RegisterPage extends StatelessWidget {
           return const RegisterStep2();
         }
       case 3:
+
         return BlocBuilder<UiChangeBloc, UiChangeState>(
             builder: (context, uiState) {
           uiState = uiState;

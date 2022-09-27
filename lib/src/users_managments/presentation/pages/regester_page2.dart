@@ -25,6 +25,7 @@ import 'package:reactive_forms/reactive_forms.dart';
 class RegisterPage2 extends StatelessWidget {
   RegisterPage2({super.key});
   Map<String, dynamic> data = {};
+  bool isLoading = false;
   Map<String, dynamic> stepsData = {
     'accountType': 'PT',
     'gender': 'male',
@@ -221,6 +222,7 @@ class RegisterPage2 extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(vertical: 13),
                   ),
                   onPressed: () {
+                    isLoading = true;
                     if (state.currentStep == (1)) {
                       data.addAll(form.value);
                       print(

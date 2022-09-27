@@ -15,25 +15,22 @@ class mobileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Center(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0),
-          child: MultiBlocProvider(
-            providers: [
-              BlocProvider(
-                create: (context) => UserFormBloc(
-                    // AccountsService(userRepository: _userRepository)),
-                    ),
+        child: MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (context) => UserFormBloc(
+                  // AccountsService(userRepository: _userRepository)),
+                  ),
 
-                // BlocProvider(
-                //   create: (context) => AuthBloc(_userRepository)
-                //     ..add(AuthEventCheckCurrentState()),
-              ),
-              BlocProvider(
-                create: (context) => UiChangeBloc(),
-              ),
-            ],
-            child: Register(),
-          ),
+              // BlocProvider(
+              //   create: (context) => AuthBloc(_userRepository)
+              //     ..add(AuthEventCheckCurrentState()),
+            ),
+            BlocProvider(
+              create: (context) => UiChangeBloc(),
+            ),
+          ],
+          child: RegisterPage(),
         ),
       ),
       // This trailing comma makes auto-formatting nicer for build methods.

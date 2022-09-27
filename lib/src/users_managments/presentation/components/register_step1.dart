@@ -1,24 +1,29 @@
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
+
+import 'package:fizyo_app_frontend/src/users_managments/blocs/user_form_bloc/user_form_bloc.dart';
+import 'package:fizyo_app_frontend/src/users_managments/presentation/pages/regester_page2.dart';
 import 'package:flutter/material.dart';
 import 'package:fizyo_app_frontend/src/presentation/widgets/form_text_field.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
-FormGroup form = FormGroup({
-  'firstName': FormControl<String>(
-      // validators: [Validators.minLength(3), Validators.required],
-      ),
-  'lastName': FormControl<String>(
-      // validators: [Validators.minLength(3), Validators.required],
-      ),
-  'phoneNumber': FormControl<String>(
-      // validators: [
-      //   Validators.pattern(RegExp(
-      //       r'(^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$)'))
-      // ],
-      ),
-  'email': FormControl<String>(
-      //   validators: [Validators.email, Validators.required],
-      ),
-});
+// final FormGroup form = FormGroup({
+//   'firstName': FormControl<String>(
+//       // validators: [Validators.minLength(3), Validators.required],
+//       ),
+//   'lastName': FormControl<String>(
+//       // validators: [Validators.minLength(3), Validators.required],
+//       ),
+//   'phoneNumber': FormControl<String>(
+//       // validators: [
+//       //   Validators.pattern(RegExp(
+//       //       r'(^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$)'))
+//       // ],
+//       ),
+//   'email': FormControl<String>(
+//       //   validators: [Validators.email, Validators.required],
+//       ),
+// });
 
 class RegisterStep1 extends StatelessWidget {
   RegisterStep1({
@@ -28,43 +33,41 @@ class RegisterStep1 extends StatelessWidget {
   // FormGroup getForm() {
   //   return form;
   // }
-  // final FormGroup form;
+  // FormGroup form;
 
   @override
   Widget build(BuildContext context) {
-    return ReactiveForm(
-      formGroup: form,
-      child: Column(
-        // mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          FormTextField(
-            formControlName: "firstName",
-            labelText: "First Name",
-          ),
-          SizedBox(
-            height: 13,
-          ),
-          FormTextField(
-            formControlName: "lastName",
-            labelText: "Last Name",
-          ),
-          SizedBox(
-            height: 13,
-          ),
-          FormTextField(
-            formControlName: "phoneNumber",
-            labelText: "Phone Number",
-          ),
-          SizedBox(
-            height: 13,
-          ),
-          FormTextField(
-            formControlName: "email",
-            labelText: "email",
-          ),
-        ],
-        // ),
-      ),
+    return Column(
+      // mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        FormTextField(
+          formControlName: "firstName",
+          labelText: "First Name",
+        ),
+        SizedBox(
+          height: 13,
+        ),
+        FormTextField(
+          formControlName: "lastName",
+          labelText: "Last Name",
+        ),
+        SizedBox(
+          height: 13,
+        ),
+        FormTextField(
+          formControlName: "phoneNumber",
+          labelText: "Phone Number",
+        ),
+        SizedBox(
+          height: 13,
+        ),
+        FormTextField(
+          formControlName: "email",
+          labelText: "email",
+        ),
+      ],
     );
+    // ),
+    // });
   }
 }

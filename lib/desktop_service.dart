@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:fizyo_app_frontend/src/users_managments/presentation/components/bottom_bar.dart';
 import 'package:fizyo_app_frontend/src/users_managments/presentation/components/nav_bar.dart';
 import 'package:fizyo_app_frontend/src/users_managments/presentation/components/top_bar.dart';
@@ -33,7 +31,9 @@ class DesktopServices extends StatelessWidget {
                         fit: BoxFit.contain,
                       ),
                       Padding(
-                        padding: EdgeInsets.only(top: size.height*0.03,),
+                        padding: EdgeInsets.only(
+                          top: size.height * 0.03,
+                        ),
                         child: Row(
                           children: [
                             Padding(
@@ -44,7 +44,8 @@ class DesktopServices extends StatelessWidget {
                                 children: [
                                   Text(
                                     '+500',
-                                    style: TextStyle(fontSize: size.width * 0.01),
+                                    style:
+                                        TextStyle(fontSize: size.width * 0.01),
                                   ),
                                   Text('Patients',
                                       style: TextStyle(
@@ -60,7 +61,8 @@ class DesktopServices extends StatelessWidget {
                                 children: [
                                   Text(
                                     '5',
-                                    style: TextStyle(fontSize: size.width * 0.01),
+                                    style:
+                                        TextStyle(fontSize: size.width * 0.01),
                                   ),
                                   Text('Sessions',
                                       style: TextStyle(
@@ -76,7 +78,8 @@ class DesktopServices extends StatelessWidget {
                                 children: [
                                   Text(
                                     '10 years',
-                                    style: TextStyle(fontSize: size.width * 0.01),
+                                    style:
+                                        TextStyle(fontSize: size.width * 0.01),
                                   ),
                                   Text('Expiriance',
                                       style: TextStyle(
@@ -92,7 +95,8 @@ class DesktopServices extends StatelessWidget {
                                 children: [
                                   Text(
                                     " 40\$ to 80\$",
-                                    style: TextStyle(fontSize: size.width * 0.01),
+                                    style:
+                                        TextStyle(fontSize: size.width * 0.01),
                                   ),
                                   Text('Price',
                                       style: TextStyle(
@@ -104,8 +108,10 @@ class DesktopServices extends StatelessWidget {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(top: size.height*0.03,
-                            left: size.width * 0.1, right: size.width * 0.1),
+                        padding: EdgeInsets.only(
+                            top: size.height * 0.03,
+                            left: size.width * 0.1,
+                            right: size.width * 0.1),
                         child: Row(
                           children: [
                             Column(
@@ -152,7 +158,8 @@ class DesktopServices extends StatelessWidget {
                       ),
 
                       Padding(
-                        padding: EdgeInsets.only(top: size.height * 0.03,right: size.width*0.2),
+                        padding: EdgeInsets.only(
+                            top: size.height * 0.03, right: size.width * 0.2),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [

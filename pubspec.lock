@@ -230,6 +230,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.4"
+  flutter_multi_select_items:
+    dependency: "direct main"
+    description:
+      name: flutter_multi_select_items
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.4.2"
   flutter_secure_storage:
     dependency: "direct main"
     description:
@@ -492,6 +499,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.3.4"
+  selectable_container:
+    dependency: "direct main"
+    description:
+      name: selectable_container
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.6"
   shelf:
     dependency: transitive
     description:

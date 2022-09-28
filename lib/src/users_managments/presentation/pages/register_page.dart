@@ -1,6 +1,3 @@
-// ignore_for_file: must_be_immutable
-
-import 'package:bot_toast/bot_toast.dart';
 import 'package:fizyo_app_frontend/src/presentation/widgets/stepper.dart';
 import 'package:fizyo_app_frontend/src/presentation/widgets/title_description.dart';
 import 'package:fizyo_app_frontend/src/users_managments/blocs/ui_chande_bloc/ui_change_bloc.dart';
@@ -13,6 +10,9 @@ import 'package:fizyo_app_frontend/src/users_managments/presentation/components/
 import 'package:fizyo_app_frontend/src/users_managments/presentation/components/register_step2.dart';
 import 'package:fizyo_app_frontend/src/users_managments/presentation/components/register_step3.dart';
 import 'package:fizyo_app_frontend/src/users_managments/presentation/components/register_step4.dart';
+import 'package:fizyo_app_frontend/src/users_managments/presentation/components/register_step5.dart';
+import 'package:fizyo_app_frontend/src/users_managments/presentation/components/register_step6.dart';
+import 'package:fizyo_app_frontend/src/users_managments/presentation/pages/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:reactive_forms/reactive_forms.dart';
@@ -21,29 +21,19 @@ class RegisterPage extends StatelessWidget {
   RegisterPage({super.key});
   Map<String, dynamic> data = {};
   Map<String, dynamic> stepsData = {
-    'patient': 1,
-    'physio': 0,
-    'gender': 'male'
+    'accountType': 'PT',
+    'gender': 'male',
+    'imageURL': '',
+    'preferredServiceType': '',
   };
   UiChangeState? uiState;
-  late FormGroup form = FormGroup({
-    'firstName': FormControl<String>(
-        // validators: [Validators.minLength(2), Validators.required],
-        ),
-    'lastName': FormControl<String>(
-        // validators: [Validators.minLength(2), Validators.required],
-        ),
-    'phoneNumber': FormControl<String>(),
-    'email': FormControl<String>(
-        // validators: [Validators.email],
-        ),
-  });
+  late FormGroup formGroup;
   Widget getStep(int currentStep) {
     // currentStep = 2;
     switch (currentStep) {
       case 1:
         {
-          form = FormGroup({
+          formGroup = FormGroup({
             'firstName': FormControl<String>(
                 // validators: [Validators.minLength(2), Validators.required],
                 ),
@@ -56,11 +46,11 @@ class RegisterPage extends StatelessWidget {
                 ),
           });
           // data = form as Map<String, dynamic>;
-          return RegisterStep1(form: form);
+          return RegisterStep1(form: formGroup);
         }
       case 2:
         {
-          form = FormGroup({
+          formGroup = FormGroup({
             'verificationCode': FormControl<String>(
                 // validators: [Validators.minLength(2), Validators.required],
                 ),
@@ -69,18 +59,16 @@ class RegisterPage extends StatelessWidget {
                 ),
             'passwordConformation': FormControl<String>(),
           });
-          return RegisterStep2(form: form);
+          return RegisterStep2(form: formGroup);
         }
       case 3:
         return BlocBuilder<UiChangeBloc, UiChangeState>(
             builder: (context, uiState) {
           uiState = uiState;
           if (uiState.widgetName == 'patient') {
-            stepsData['patient'] = 1;
-            stepsData['physio'] = 0;
-          } else {
-            stepsData['patient'] = 0;
-            stepsData['physio'] = 1;
+            stepsData['accountType'] = 'PT';
+          } else if (uiState.widgetName == 'physio') {
+            stepsData['accountType'] = 'EM';
           }
           // print('$step3Data ****************************************');
           return RegisterStep3(uiState: uiState);
@@ -94,10 +82,31 @@ class RegisterPage extends StatelessWidget {
           } else {
             stepsData['gender'] = 'female';
           }
-          print('$stepsData ****************************************');
+          // print('$stepsData ****************************************');
           return RegisterStep4(uiState: uiState);
         });
-
+      case 5:
+        return BlocBuilder<UiChangeBloc, UiChangeState>(
+            builder: (context, uiState) {
+          uiState = uiState;
+          if (uiState.widgetName.startsWith('pic')) {
+            stepsData['imageURL'] = 'assets/images/${uiState.widgetName}';
+          }
+          // print('$stepsData ****************************************');
+          return RegisterStep5(uiState: uiState);
+        });
+      case 6:
+        return BlocBuilder<UiChangeBloc, UiChangeState>(
+            builder: (context, uiState) {
+          uiState = uiState;
+          if (uiState.widgetName == 'home' ||
+              uiState.widgetName == 'online' ||
+              uiState.widgetName == 'office') {
+            stepsData['preferredServiceType'] = uiState.widgetName;
+          }
+          print('$stepsData ****************************************');
+          return RegisterStep6(uiState: uiState);
+        });
       default:
         return Container();
     }
@@ -106,13 +115,16 @@ class RegisterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Map<String, dynamic> data;
-    return Padding(
-      padding: const EdgeInsets.all(0),
-      child: BlocBuilder<UserFormBloc, UserFormState>(
-        builder: (context, state) {
-          return SingleChildScrollView(
+    return BlocBuilder<UserFormBloc, UserFormState>(
+      builder: (context, state) {
+        return Scaffold(
+          appBar: AppBar(
+            title: Text("Fyzio App"),
+          ),
+          backgroundColor: Colors.white,
+          body: SingleChildScrollView(
               child: Column(
-            // mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               ProgressBar(value: state.value),
               const SizedBox(height: 13),
@@ -140,9 +152,13 @@ class RegisterPage extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(vertical: 13),
                   ),
                   onPressed: () {
+                    print(
+                        '$data ---------------------------------------------');
+                    print('${formGroup.value} **************************');
+
                     if (state.currentStep == (1 | 2 | 8)) {
-                      data.addAll(form.value);
-                    } else if (state.currentStep == 3) {
+                      data.addAll(formGroup.value);
+                    } else if (state.currentStep == 4) {
                       data.addAll(stepsData);
                     }
                     context
@@ -153,10 +169,8 @@ class RegisterPage extends StatelessWidget {
                     //   formElements(state.currentStep + 1);
                     // });
 
-                    print(
-                        '${data}---------------------------------------------');
                     // Navigator.of(context).push(MaterialPageRoute(
-                    //     builder: (_) => RegisterPage2(
+                    //     builder: ( ) => RegisterPage2(
                     //           currentStep: (state.currentStep + 1),
                     //           state: state,
                     //         )));
@@ -170,11 +184,21 @@ class RegisterPage extends StatelessWidget {
                   ),
                 ),
               ),
+              const SizedBox(
+                height: 13,
+              ),
+              TextButton(
+                onPressed:( () {
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context){ return LoginPage();}
+    ));
+    }),
+                child: Text("Already Have Account Login"),
+              )
             ],
-          ));
-        },
-        // ),
-      ),
+          )),
+        );
+      },
+      // ),
     );
     // }),
     // );

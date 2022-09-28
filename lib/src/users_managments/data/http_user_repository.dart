@@ -28,7 +28,11 @@ class HttpUserRepository implements UserRepository {
   }
 
   @override
-  Future<List<User>?> getUsers() async {
+  Future<List<User>?> getUsers(String token) async {
+    client.options.headers = {
+      'Content-Type': 'application/json',
+      'x-token': token
+    };
     final response = await client.get<List<dynamic>>("/users");
     if (response.statusCode == 404 || response.data == null) {
       throw Exception("user not found");
@@ -45,5 +49,23 @@ class HttpUserRepository implements UserRepository {
     final response =
         await client.put("/users/update/${user.id}", data: user.toJson());
     return response;
+  }
+
+  @override
+  Future<String> login(
+      {required String email, required String password}) async {
+    try {
+      final response = await client.post(
+        "/users/login",
+        data: {"email": email, "password": password},
+      );
+      if (response.statusCode == 200) {
+        return response.data["token"];
+      } else {
+        throw Exception(response.statusMessage);
+      }
+    } catch (e) {
+      rethrow;
+    }
   }
 }

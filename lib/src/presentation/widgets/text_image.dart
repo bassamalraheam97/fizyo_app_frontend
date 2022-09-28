@@ -23,6 +23,12 @@ class TextImage extends StatelessWidget {
           return ['Male', 'assets/images/male.png', ''];
         case 'female':
           return ['Female', 'assets/images/female.png', ''];
+        case 'home':
+          return ['', 'assets/images/home.png', 'Home'];
+        case 'online':
+          return ['', 'assets/images/online.png', 'Online'];
+        case 'center':
+          return ['', 'assets/images/center.png', 'Center'];
         default:
           return ['', '', ''];
       }
@@ -61,7 +67,9 @@ class TextImage extends StatelessWidget {
           Text(
             list[2],
             style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                color: Theme.of(context).colorScheme.outline, fontSize: 16),
+                color: Theme.of(context).colorScheme.onBackground,
+                fontSize: 16,
+                fontWeight: FontWeight.w400),
             textAlign: TextAlign.left,
           ),
         ],

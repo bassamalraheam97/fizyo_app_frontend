@@ -1,5 +1,4 @@
-import 'package:equatable/equatable.dart';
-import 'package:fizyo_app_frontend/src/users_managments/domain/user.dart';
+part of 'auth_bloc.dart';
 
 abstract class AuthState extends Equatable {
   final User? currentUser;
@@ -7,8 +6,8 @@ abstract class AuthState extends Equatable {
   const AuthState(this.currentUser);
 }
 
-class AuthStateInitial extends AuthState {
-  const AuthStateInitial(super.currentUser);
+class AuthStateIntial extends AuthState {
+  const AuthStateIntial(super.currentUser);
 
   @override
   List<Object?> get props => [

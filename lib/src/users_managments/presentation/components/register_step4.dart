@@ -1,4 +1,4 @@
-import 'package:fizyo_app_frontend/src/presentation/widgets/patient_physio_card.dart';
+
 import 'package:fizyo_app_frontend/src/presentation/widgets/text_image.dart';
 import 'package:fizyo_app_frontend/src/users_managments/blocs/ui_chande_bloc/ui_change_bloc.dart';
 import 'package:fizyo_app_frontend/src/users_managments/blocs/ui_chande_bloc/ui_change_event.dart';
@@ -18,10 +18,10 @@ class RegisterStep4 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Color getAotherColor(Color c) {
-      if (c == Color(0xffF7F9FB)) {
+      if (c == const Color(0xffF7F9FB)) {
         return Colors.white;
       } else {
-        return Color(0xffF7F9FB);
+        return const Color(0xffF7F9FB);
       }
     }
 
@@ -33,7 +33,7 @@ class RegisterStep4 extends StatelessWidget {
           onTap: () {
             context
                 .read<UiChangeBloc>()
-                .add(UiChangeEventChangeColor(Color(0xffF7F9FB), 'male'));
+                .add(UiChangeEventChangeColor(const Color(0xffF7F9FB), 'male'));
 
             // Color(0xffF7F9FB);
           },

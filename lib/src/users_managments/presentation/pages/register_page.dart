@@ -12,7 +12,10 @@ import 'package:fizyo_app_frontend/src/users_managments/presentation/components/
 import 'package:fizyo_app_frontend/src/users_managments/presentation/components/register_step4.dart';
 import 'package:fizyo_app_frontend/src/users_managments/presentation/components/register_step5.dart';
 import 'package:fizyo_app_frontend/src/users_managments/presentation/components/register_step6.dart';
+<<<<<<< HEAD
 import 'package:fizyo_app_frontend/src/users_managments/presentation/pages/login_page.dart';
+=======
+>>>>>>> 2a1ee7a71a34da2b4edf00e8af769dbb09f07ea0
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:reactive_forms/reactive_forms.dart';
@@ -157,7 +160,11 @@ class RegisterPage extends StatelessWidget {
                     print('${formGroup.value} **************************');
 
                     if (state.currentStep == (1 | 2 | 8)) {
+<<<<<<< HEAD
                       data.addAll(formGroup.value);
+=======
+                      data.addAll(form.value);
+>>>>>>> 2a1ee7a71a34da2b4edf00e8af769dbb09f07ea0
                     } else if (state.currentStep == 4) {
                       data.addAll(stepsData);
                     }

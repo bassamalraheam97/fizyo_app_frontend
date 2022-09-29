@@ -1,6 +1,8 @@
+import 'package:fizyo_app_frontend/src/presentation/widgets/title_homepage.dart';
 import 'package:fizyo_app_frontend/src/users_managments/presentation/components/bottom_bar.dart';
 import 'package:fizyo_app_frontend/src/users_managments/presentation/components/nav_bar.dart';
 import 'package:fizyo_app_frontend/src/users_managments/presentation/components/top_bar.dart';
+import 'package:fizyo_app_frontend/src/users_managments/presentation/components/top_bar_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -17,7 +19,7 @@ class DesktopHomePage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            TopBar(),
+            TopBarRegIcon(icon: Icon(Icons.person,size: 35.0,)),
             NavBar(),
             Container(
               color: const Color(0xFFFFFFFF),
@@ -49,7 +51,9 @@ class DesktopHomePage extends StatelessWidget {
                                         shape: CircleBorder(),
                                       ),
                                       child: IconButton(
-                                        icon: const Icon(Icons.arrow_circle_left_rounded,size: 50),
+                                        icon: const Icon(
+                                            Icons.arrow_circle_left_rounded,
+                                            size: 50),
                                         color: Colors.blue,
                                         onPressed: () {},
                                       ),
@@ -80,7 +84,9 @@ class DesktopHomePage extends StatelessWidget {
                                         shape: CircleBorder(),
                                       ),
                                       child: IconButton(
-                                        icon: const Icon(Icons.arrow_circle_right_rounded,size: 50),
+                                        icon: const Icon(
+                                            Icons.arrow_circle_right_rounded,
+                                            size: 50),
                                         color: Colors.blue,
                                         onPressed: () {},
                                       ),
@@ -103,16 +109,27 @@ class DesktopHomePage extends StatelessWidget {
                               fontSize: size.width * 0.02,
                               color: Color(0xff757780)),
                         ),
+                        Container(
+                            color: Colors.red, width: 20, child: SizedBox()),
                       ],
                     ),
                   ),
                 ),
-                const Expanded(
-                  child: Padding(
-                    padding: EdgeInsets.all(20.0),
-                    child: mobileScreen(),
-                  ),
-                ),
+                Expanded(
+                    child: Column(
+                                      children: [
+                      TitleHomePage(image: "images/hospital.png"),
+                      SizedBox(height: 2.0),
+                      TitleHomePage(image: "images/amico.png"),
+                      SizedBox(height: 2.0),
+                      TitleHomePage(image: "images/chair.png"),
+                      SizedBox(height: 2.0),
+                      TitleHomePage(image: "images/onlinedoctor.png"),
+                                      ],
+                                    ),
+                    ),
+
+                // TitleHomePage(image: "images/rifiki.png"),
               ]),
             ),
             BottomBar(),

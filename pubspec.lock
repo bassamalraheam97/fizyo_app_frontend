@@ -244,6 +244,7 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "8.1.1"
+<<<<<<< HEAD
   flutter_email_sender:
     dependency: "direct main"
     description:
@@ -251,6 +252,8 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "5.1.0"
+=======
+>>>>>>> origin/MakeenFinal
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -421,7 +424,11 @@ packages:
       name: json_serializable
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< HEAD
     version: "6.4.0"
+=======
+    version: "6.4.1"
+>>>>>>> origin/MakeenFinal
   lints:
     dependency: transitive
     description:
@@ -449,7 +456,11 @@ packages:
       name: material_color_utilities
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< HEAD
     version: "0.1.5"
+=======
+    version: "0.2.0"
+>>>>>>> origin/MakeenFinal
   meta:
     dependency: transitive
     description:
@@ -471,6 +482,7 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.0"
+<<<<<<< HEAD
   open_file:
     dependency: "direct main"
     description:
@@ -478,6 +490,8 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.1"
+=======
+>>>>>>> origin/MakeenFinal
   package_config:
     dependency: transitive
     description:
@@ -594,7 +608,11 @@ packages:
       name: source_span
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< HEAD
     version: "1.9.0"
+=======
+    version: "1.9.1"
+>>>>>>> origin/MakeenFinal
   stack_trace:
     dependency: transitive
     description:
@@ -608,7 +626,11 @@ packages:
       name: stream_channel
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< HEAD
     version: "2.1.0"
+=======
+    version: "2.1.1"
+>>>>>>> origin/MakeenFinal
   stream_transform:
     dependency: transitive
     description:
@@ -636,7 +658,11 @@ packages:
       name: test_api
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< HEAD
     version: "0.4.12"
+=======
+    version: "0.4.14"
+>>>>>>> origin/MakeenFinal
   timing:
     dependency: transitive
     description:
@@ -657,7 +683,11 @@ packages:
       name: vector_math
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< HEAD
     version: "2.1.2"
+=======
+    version: "2.1.4"
+>>>>>>> origin/MakeenFinal
   watcher:
     dependency: transitive
     description:

@@ -1,13 +1,14 @@
 import 'dart:html';
 
+import 'package:fizyo_app_frontend/src/presentation/widgets/right_side_service.dart';
 import 'package:fizyo_app_frontend/src/users_managments/presentation/components/bottom_bar.dart';
 import 'package:fizyo_app_frontend/src/users_managments/presentation/components/nav_bar.dart';
-import 'package:fizyo_app_frontend/src/users_managments/presentation/components/top_bar.dart';
+import 'package:fizyo_app_frontend/src/users_managments/presentation/components/top_bar_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
-import 'mobil.dart';
+
 
 class DesktopServices extends StatelessWidget {
   const DesktopServices({super.key});
@@ -19,7 +20,7 @@ class DesktopServices extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            TopBar(),
+            TopBarRegIcon(icon: Icon(Icons.person,size: 35.0,)),
             NavBar(),
             Container(
               color: const Color(0xFFFFFFFF),
@@ -33,7 +34,9 @@ class DesktopServices extends StatelessWidget {
                         fit: BoxFit.contain,
                       ),
                       Padding(
-                        padding: EdgeInsets.only(top: size.height*0.03,),
+                        padding: EdgeInsets.only(
+                          top: size.height * 0.03,
+                        ),
                         child: Row(
                           children: [
                             Padding(
@@ -44,7 +47,8 @@ class DesktopServices extends StatelessWidget {
                                 children: [
                                   Text(
                                     '+500',
-                                    style: TextStyle(fontSize: size.width * 0.01),
+                                    style:
+                                        TextStyle(fontSize: size.width * 0.01),
                                   ),
                                   Text('Patients',
                                       style: TextStyle(
@@ -60,7 +64,8 @@ class DesktopServices extends StatelessWidget {
                                 children: [
                                   Text(
                                     '5',
-                                    style: TextStyle(fontSize: size.width * 0.01),
+                                    style:
+                                        TextStyle(fontSize: size.width * 0.01),
                                   ),
                                   Text('Sessions',
                                       style: TextStyle(
@@ -76,7 +81,8 @@ class DesktopServices extends StatelessWidget {
                                 children: [
                                   Text(
                                     '10 years',
-                                    style: TextStyle(fontSize: size.width * 0.01),
+                                    style:
+                                        TextStyle(fontSize: size.width * 0.01),
                                   ),
                                   Text('Expiriance',
                                       style: TextStyle(
@@ -92,7 +98,8 @@ class DesktopServices extends StatelessWidget {
                                 children: [
                                   Text(
                                     " 40\$ to 80\$",
-                                    style: TextStyle(fontSize: size.width * 0.01),
+                                    style:
+                                        TextStyle(fontSize: size.width * 0.01),
                                   ),
                                   Text('Price',
                                       style: TextStyle(
@@ -104,8 +111,10 @@ class DesktopServices extends StatelessWidget {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(top: size.height*0.03,
-                            left: size.width * 0.1, right: size.width * 0.1),
+                        padding: EdgeInsets.only(
+                            top: size.height * 0.03,
+                            left: size.width * 0.06,
+                            right: size.width * 0.06),
                         child: Row(
                           children: [
                             Column(
@@ -116,9 +125,11 @@ class DesktopServices extends StatelessWidget {
                                 )
                               ],
                             ),
-                            Spacer(),
+                            SizedBox(
+                              width: 40,
+                            ),
                             Expanded(
-                                flex: 2,
+                                flex: 4,
                                 child: Column(
                                   children: [
                                     Container(
@@ -130,20 +141,26 @@ class DesktopServices extends StatelessWidget {
                                           ),
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(15))),
-                                      child: Center(
-                                          child: Column(
-                                        children: [
-                                          Text(
-                                              'Detailed explanation of the doctor'),
-                                          Text(
-                                              'Detailed explanation of the doctor'),
-                                          Text(
-                                            'see more',
-                                            style: TextStyle(
-                                                color: Colors.red[500]),
-                                          ),
-                                        ],
-                                      )),
+                                      child: Padding(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            20, 10, 20, 10),
+                                        child: Center(
+                                            child: Column(
+                                          children: [
+                                            Text(
+                                                'Detailed explanation of the doctor'),
+                                            Text(
+                                                'Detailed explanation of the doctor'),
+                                            TextButton(
+                                                onPressed: () {},
+                                                child: Text(
+                                                  "see more..",
+                                                  style: TextStyle(
+                                                      color: Colors.red[500]),
+                                                )),
+                                          ],
+                                        )),
+                                      ),
                                     ),
                                   ],
                                 ))
@@ -152,7 +169,8 @@ class DesktopServices extends StatelessWidget {
                       ),
 
                       Padding(
-                        padding: EdgeInsets.only(top: size.height * 0.03,right: size.width*0.2),
+                        padding: EdgeInsets.only(
+                            top: size.height * 0.03, right: size.width * 0.2),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
@@ -181,19 +199,47 @@ class DesktopServices extends StatelessWidget {
                                   ),
                                 ),
                               ],
-                            )
+                            ),
                           ],
                         ),
                       ),
-
                       // Expanded(child: SizedBox(height: size.height*0.5,)),
                     ],
                   ),
                 ),
-                const Expanded(
-                  child: Padding(
-                    padding: EdgeInsets.all(20.0),
-                    child: mobileScreen(),
+                
+                // Container(
+                //                   width: 10,
+                //                   height: size.height-30.0 ,
+                //                   decoration: BoxDecoration(
+                //                       color: Colors.grey[500],
+                                      
+                //                       borderRadius: BorderRadius.all(
+                //                           Radius.circular(10))),
+                //                   child: SizedBox(
+                                    
+                //                   ),
+                //                 ),
+                
+                Expanded(
+                  flex: 1,
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        RightSideServices(image: ""),
+                        // Divider(
+                        //       thickness: 5,
+                        //       color: Colors.red,
+                        //     ),
+                        SizedBox(height: 10),
+                        RightSideServices(image: ""),
+                        SizedBox(height: 10),
+                        RightSideServices(image: ""),
+                        SizedBox(height: 10),
+                        RightSideServices(image: ""),
+                        SizedBox(height: 10),
+                      ],
+                    ),
                   ),
                 ),
               ]),

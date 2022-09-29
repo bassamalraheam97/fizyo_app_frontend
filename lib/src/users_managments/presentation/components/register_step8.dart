@@ -3,7 +3,8 @@ import 'dart:io';
 import 'package:fizyo_app_frontend/src/presentation/widgets/form_text_field.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:reactive_range_slider/reactive_range_slider.dart';
-import 'package:fizyo_app_frontend/src/users_managments/blocs/ui_chande_bloc/ui_change_state.dart';
+
+import 'package:open_file/open_file.dart';
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:reactive_forms/reactive_forms.dart';
@@ -14,9 +15,24 @@ class RegisterStep8 extends StatelessWidget {
   RegisterStep8({super.key, required this.onChanged, required this.form});
 
   File? _pickedFile;
+
   @override
   Widget build(BuildContext context) {
-    // Color colorBack = Color(0xffF7F9FB);
+    void _openFile() async {
+      await OpenFile.open(
+        form.control('attachmentName.url').value.toString(),
+        // type: form.control('attachmentName.type').value.toString(),
+      );
+    }
+
+    void _deleteFile() async {
+      form.control('attachmentName').updateValue({
+        'url': '',
+        'name': '',
+        'type': '',
+      });
+    }
+
     return FormField<File>(
         // validator: validator,
         builder: (formFieldState) {
@@ -36,22 +52,12 @@ class RegisterStep8 extends StatelessWidget {
                 contentPadding: EdgeInsets.fromLTRB(0, 0, 0, 0),
               ),
               onChangeEnd: (value) {
-                // form.control('min')=[value:'f'];
-                form.updateValue({
-                  'firstName': form.control('firstName').value.toString(),
-                  'lastName': form.control('lastName').value.toString(),
-                  'phoneNumber': form.control('phoneNumber').value.toString(),
-                  'email': form.control('email').value.toString(),
-                  'verificationCode':
-                      form.control('verificationCode').value.toString(),
-                  'password': form.control('password').value.toString(),
-                  'passwordConformation':
-                      form.control('passwordConformation').value.toString(),
-                  'input': RangeValues(value.start, value.end),
-                  'min': value.start.round().toString(),
-                  'max': value.end.round().toString(),
-                  'bio': form.control('bio').value.toString(),
-                });
+                form.control('max').updateValue(
+                      value.end.round().toString(),
+                    );
+                form.control('min').updateValue(
+                      value.start.round().toString(),
+                    );
                 print(form.value);
               },
             ),
@@ -73,6 +79,12 @@ class RegisterStep8 extends StatelessWidget {
                     fillColor: Theme.of(context).colorScheme.surfaceVariant,
                     filled: true,
                   ),
+                  onChanged: (control) {
+                    form.control('input').updateValue(
+                          RangeValues(double.parse(form.control('min').value),
+                              double.parse(form.control('max').value)),
+                        );
+                  },
                 ),
               ),
               Text(
@@ -97,24 +109,10 @@ class RegisterStep8 extends StatelessWidget {
                     filled: true,
                   ),
                   onChanged: (control) {
-                    form.updateValue({
-                      'firstName': form.control('firstName').value.toString(),
-                      'lastName': form.control('lastName').value.toString(),
-                      'phoneNumber':
-                          form.control('phoneNumber').value.toString(),
-                      'email': form.control('email').value.toString(),
-                      'verificationCode':
-                          form.control('verificationCode').value.toString(),
-                      'password': form.control('password').value.toString(),
-                      'passwordConformation':
-                          form.control('passwordConformation').value.toString(),
-                      'input': RangeValues(
-                          double.parse(form.control('min').value),
-                          double.parse(form.control('max').value)),
-                      'min': form.control('min').value.toString(),
-                      'max': form.control('max').value.toString(),
-                      'bio': form.control('bio').value.toString(),
-                    });
+                    form.control('input').updateValue(
+                          RangeValues(double.parse(form.control('min').value),
+                              double.parse(form.control('max').value)),
+                        );
                     print(control);
                   },
                 ),
@@ -172,7 +170,9 @@ class RegisterStep8 extends StatelessWidget {
                   color: Theme.of(context).colorScheme.tertiary,
                 ),
                 child: IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      _openFile();
+                    },
                     icon: Icon(
                       CupertinoIcons.eye,
                       color: Color(0xffF7F9FB),
@@ -187,7 +187,9 @@ class RegisterStep8 extends StatelessWidget {
                   color: Theme.of(context).colorScheme.error,
                 ),
                 child: IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      _deleteFile();
+                    },
                     icon: Icon(
                       CupertinoIcons.delete,
                       color: Color(0xffF7F9FB),
@@ -202,7 +204,7 @@ class RegisterStep8 extends StatelessWidget {
                   // width: 229,
                   height: 40,
                   child: ReactiveTextField(
-                    formControlName: 'attachmentName',
+                    formControlName: 'attachmentName.name',
                     decoration: InputDecoration(
                       labelText: 'Attachment Name',
                       labelStyle: Theme.of(context)
@@ -231,13 +233,24 @@ class RegisterStep8 extends StatelessWidget {
                 ),
                 child: IconButton(
                     onPressed: () async {
-                      FilePickerResult? file = await FilePicker.platform
-                          .pickFiles(
-                              type: FileType.image, allowMultiple: false);
+                      FilePickerResult? file =
+                          await FilePicker.platform.pickFiles(
+                        type: FileType.custom,
+                        allowedExtensions: ['jpg', 'pdf'],
+                      );
                       if (file != null) {
-                        _pickedFile = File(file.files.first.path!);
-                        // onChanged.call(_pickedFile!);
+                        _pickedFile = File(file.files.single.path!);
+                        onChanged.call(_pickedFile!);
+
+                        String fileName = file.files.single.name;
+                        form.control('attachmentName').updateValue({
+                          'url': _pickedFile!.uri.toFilePath(),
+                          'name': fileName,
+                          'type': fileName.substring(
+                              fileName.lastIndexOf('.') + 1, fileName.length),
+                        });
                       }
+                      print(form.value);
                     },
                     icon: Icon(
                       CupertinoIcons.cloud_upload,
@@ -258,7 +271,7 @@ class RegisterStep8 extends StatelessWidget {
                     height: 0.5),
               ),
             ),
-          const SizedBox(height: 57),
+          const SizedBox(height: 30),
         ],
       );
     });

@@ -34,7 +34,8 @@ class DesktopScreen extends StatelessWidget {
                 const Expanded(
                   child: Padding(
                     padding: EdgeInsets.all(20.0),
-                    child: mobileScreen(),
+                    child:SizedBox() 
+                    //mobileScreen(),
                   ),
                 ),
               ]),

@@ -5,26 +5,29 @@ abstract class UserFormState extends Equatable {
   final int currentStep;
   final int totalSteps;
 
-  const UserFormState(this.value, this.currentStep, this.totalSteps);
+  UserFormState(
+    this.value,
+    this.currentStep,
+    this.totalSteps,
+  );
 }
 
 class UserFormStateInitial extends UserFormState {
-  const UserFormStateInitial(super.value, super.currentStep, super.totalSteps);
+  UserFormStateInitial(super.value, super.currentStep, super.totalSteps);
 
   @override
   List<Object?> get props => [super.value, super.currentStep, super.totalSteps];
 }
 
 class UserFormStateSubmitting extends UserFormState {
-  const UserFormStateSubmitting(
-      super.value, super.currentStep, super.totalSteps);
+  UserFormStateSubmitting(super.value, super.currentStep, super.totalSteps);
 
   @override
   List<Object?> get props => [super.value, super.currentStep, super.totalSteps];
 }
 
 class UserFormStateSuccess extends UserFormState {
-  const UserFormStateSuccess(super.value, super.currentStep, super.totalSteps);
+  UserFormStateSuccess(super.value, super.currentStep, super.totalSteps);
 
   @override
   List<Object?> get props => [super.value, super.currentStep, super.totalSteps];
@@ -32,7 +35,7 @@ class UserFormStateSuccess extends UserFormState {
 
 class UserFormStateFailure extends UserFormState {
   final String errorMassage;
-  const UserFormStateFailure(
+  UserFormStateFailure(
       this.errorMassage, super.value, super.currentStep, super.totalSteps);
   @override
   List<Object?> get props =>

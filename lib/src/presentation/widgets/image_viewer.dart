@@ -20,9 +20,9 @@ class ImageViewer extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: backColor,
-        border: Border.all(
-            width: 2, color: Color(0xffF7F9FB), style: BorderStyle.solid),
-        borderRadius: BorderRadius.circular(25),
+        // border: Border.all(
+        //     width: 2, color: Color(0xffF7F9FB), style: BorderStyle.solid),
+        // borderRadius: BorderRadius.circular(25),
       ),
       child: ClipRRect(
         borderRadius: BorderRadius.all(Radius.circular(radius)),

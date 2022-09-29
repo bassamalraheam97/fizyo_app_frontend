@@ -88,7 +88,7 @@ class TitleDescription extends StatelessWidget {
   Widget build(BuildContext context) {
     var list = getTitleDesc(currentStep);
     return SizedBox(
-      width: (list[0].length * 16),
+      width: (list[0].length * 15),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         // mainAxisAlignment: MainAxisAlignment.center,
@@ -97,7 +97,8 @@ class TitleDescription extends StatelessWidget {
             list[0],
             style: Theme.of(context).textTheme.headlineSmall!.copyWith(
                 color: Theme.of(context).colorScheme.onBackground,
-                fontSize: 24),
+                fontSize: 24,
+                fontWeight: FontWeight.w700),
           ),
           Text(
             list[1],

@@ -1,32 +1,17 @@
-import 'package:fizyo_app_frontend/src/presentation/widgets/image_viewer.dart';
-import 'package:fizyo_app_frontend/src/presentation/widgets/patient_physio_card.dart';
-import 'package:fizyo_app_frontend/src/presentation/widgets/text_image.dart';
-import 'package:fizyo_app_frontend/src/users_managments/blocs/ui_chande_bloc/ui_change_bloc.dart';
-import 'package:fizyo_app_frontend/src/users_managments/blocs/ui_chande_bloc/ui_change_event.dart';
-// import 'package:fizyo_app_frontend/src/users_managments/blocs/ui_chande_bloc/ui_change_bloc.dart';
-import 'package:fizyo_app_frontend/src/users_managments/blocs/ui_chande_bloc/ui_change_state.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_multi_select_items/flutter_multi_select_items.dart';
+
+import '../../../presentation/widgets/image_viewer.dart';
+import '../../../presentation/widgets/patient_card.dart';
+import '../../../presentation/widgets/text_image.dart';
 
 class RegisterStep5 extends StatelessWidget {
-  final UiChangeState uiState;
-  const RegisterStep5({super.key, required this.uiState});
-  // final FormGroup form;
-  // FormGroup getForm() {
-  //   return form;
-  // }
-
+  RegisterStep5({super.key});
+  final MultiSelectController<String> _controller =
+      MultiSelectController(deSelectPerpetualSelectedItems: true);
+  // bool isSelected(String val)
   @override
   Widget build(BuildContext context) {
-    Color getAotherColor(String c) {
-      if (c == uiState.widgetName) {
-        return Color(0xffF7F9FB);
-      } else {
-        return Colors.white;
-      }
-    }
-
-    // Color colorBack = Color(0xffF7F9FB);
     return Column(
       children: [
         Stack(
@@ -62,90 +47,61 @@ class RegisterStep5 extends StatelessWidget {
             ),
           ],
         ),
-        Row(
-          // mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Column(
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    context.read<UiChangeBloc>().add(
-                        UiChangeEventChangeColor(Color(0xffF7F9FB), 'pic1'));
-
-                    // Color(0xffF7F9FB);
-                  },
-                  child: ImageViewer(
-                    imageURL: 'assets/images/pic1.png',
-                    height: 165,
-                    width: 165,
-                    radius: 25,
-                    backColor: getAotherColor('pic1'),
-                  ),
-                ),
-                const SizedBox(
-                  height: 14,
-                ),
-                GestureDetector(
-                  onTap: () {
-                    context.read<UiChangeBloc>().add(
-                        UiChangeEventChangeColor(Color(0xffF7F9FB), 'pic2'));
-
-                    // Color(0xffF7F9FB);
-                  },
-                  child: ImageViewer(
-                    imageURL: 'assets/images/pic2.png',
-                    height: 165,
-                    width: 165,
-                    radius: 25,
-                    backColor: getAotherColor('pic2'),
-                  ),
-                ),
-              ],
+        MultiSelectContainer(
+          controller: _controller,
+          itemsDecoration: MultiSelectDecorations(
+            selectedDecoration: BoxDecoration(
+              color: Color.fromARGB(255, 225, 226, 236),
+              borderRadius: BorderRadius.circular(25),
             ),
-            const SizedBox(
-              width: 20,
+          ),
+          singleSelectedItem: true,
+          // listViewSettings: ListViewSettings(scrollDirection: Axis.horizontal),
+          items: [
+            MultiSelectCard(
+              value: 'assets/images/pic1.png',
+              child: ImageViewer(
+                imageURL: 'assets/images/pic1.png',
+                height: 165,
+                width: 165,
+                radius: 25,
+              ),
             ),
-            Column(
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    context.read<UiChangeBloc>().add(
-                        UiChangeEventChangeColor(Color(0xffF7F9FB), 'pic4'));
-
-                    // Color(0xffF7F9FB);
-                  },
-                  child: ImageViewer(
-                    imageURL: 'assets/images/pic4.png',
-                    height: 165,
-                    width: 165,
-                    radius: 25,
-                    backColor: getAotherColor('pic4'),
-                  ),
-                ),
-                const SizedBox(
-                  height: 14,
-                ),
-                GestureDetector(
-                  onTap: () {
-                    context.read<UiChangeBloc>().add(
-                        UiChangeEventChangeColor(Color(0xffF7F9FB), 'pic3'));
-
-                    // Color(0xffF7F9FB);
-                  },
-                  child: ImageViewer(
-                    imageURL: 'assets/images/pic3.png',
-                    height: 165,
-                    width: 165,
-                    radius: 25,
-                    backColor: getAotherColor('pic3'),
-                  ),
-                ),
-              ],
+            MultiSelectCard(
+              value: 'assets/images/pic4.png',
+              child: ImageViewer(
+                imageURL: 'assets/images/pic4.png',
+                height: 165,
+                width: 165,
+                radius: 25,
+              ),
+            ),
+            MultiSelectCard(
+              value: 'assets/images/pic2.png',
+              child: ImageViewer(
+                imageURL: 'assets/images/pic2.png',
+                height: 165,
+                width: 165,
+                radius: 25,
+              ),
+            ),
+            MultiSelectCard(
+              value: 'assets/images/pic3.png',
+              child: ImageViewer(
+                imageURL: 'assets/images/pic3.png',
+                height: 165,
+                width: 165,
+                radius: 25,
+              ),
             ),
           ],
+          onChange: (List<dynamic> selectedItems, selectedItem) {
+            for (var element in _controller.getSelectedItems()) {
+              print(element);
+            }
+          },
         ),
       ],
     );
-    // });
   }
 }

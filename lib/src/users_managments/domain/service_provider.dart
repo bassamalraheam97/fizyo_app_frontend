@@ -4,7 +4,13 @@ import 'documents.dart';
 part 'service_provider.freezed.dart';
 part 'service_provider.g.dart';
 
-enum verificationStatus {notSubmitted,pendingReview,inReview,verified,rejected}
+enum verificationStatus {
+  notSubmitted,
+  pendingReview,
+  inReview,
+  verified,
+  rejected
+}
 
 @freezed
 // 4. define a class with a mixin
@@ -23,9 +29,10 @@ class Service_provider with _$Service_provider {
     required verificationStatus verified,
     DateTime? verificationDate,
     String? verifiedByUID,
-  // 7. assign it with the `_Review` class constructor
+    // 7. assign it with the `_Review` class constructor
   }) = _Service_provider;
 
   // 8. define another factory constructor to parse from json
-  factory Service_provider.fromJson(Map<String, dynamic> json) => _$Service_providerFromJson(json);
+  factory Service_provider.fromJson(Map<String, dynamic> json) =>
+      _$Service_providerFromJson(json);
 }

@@ -38,8 +38,8 @@ class TextImage extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: backColor,
-        border: Border.all(
-            width: 2, color: Color(0xffF7F9FB), style: BorderStyle.solid),
+        // border: Border.all(
+        //     width: 2, color: Color(0xffF7F9FB), style: BorderStyle.solid),
         borderRadius: BorderRadius.circular(25),
       ),
       // color: Colors.white,
@@ -56,6 +56,9 @@ class TextImage extends StatelessWidget {
                     fontSize: 24,
                   ),
               textAlign: TextAlign.left),
+          SizedBox(
+            height: 10,
+          ),
           Expanded(
             child: ImageViewer(
               imageURL: list[1],
@@ -64,14 +67,16 @@ class TextImage extends StatelessWidget {
               radius: listImage[2],
             ),
           ),
-          Text(
-            list[2],
-            style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                color: Theme.of(context).colorScheme.onBackground,
-                fontSize: 16,
-                fontWeight: FontWeight.w400),
-            textAlign: TextAlign.left,
-          ),
+          list[2].isNotEmpty
+              ? Text(
+                  list[2],
+                  style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                      color: Theme.of(context).colorScheme.onBackground,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400),
+                  textAlign: TextAlign.left,
+                )
+              : Container(),
         ],
       ),
     );

@@ -1,69 +1,58 @@
-import 'package:fizyo_app_frontend/src/presentation/widgets/patient_physio_card.dart';
-import 'package:fizyo_app_frontend/src/presentation/widgets/text_image.dart';
-import 'package:fizyo_app_frontend/src/users_managments/blocs/ui_chande_bloc/ui_change_bloc.dart';
-import 'package:fizyo_app_frontend/src/users_managments/blocs/ui_chande_bloc/ui_change_event.dart';
-// import 'package:fizyo_app_frontend/src/users_managments/blocs/ui_chande_bloc/ui_change_bloc.dart';
-import 'package:fizyo_app_frontend/src/users_managments/blocs/ui_chande_bloc/ui_change_state.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_multi_select_items/flutter_multi_select_items.dart';
+import 'package:reactive_forms/reactive_forms.dart';
+
+import '../../../presentation/widgets/patient_card.dart';
+import '../../../presentation/widgets/text_image.dart';
 
 class RegisterStep4 extends StatelessWidget {
-  final UiChangeState uiState;
-  const RegisterStep4({super.key, required this.uiState});
-  // final FormGroup form;
-  // FormGroup getForm() {
-  //   return form;
-  // }
+  final FormGroup form;
+  RegisterStep4({super.key, required this.form});
+  final MultiSelectController<String> _controller =
+      MultiSelectController(deSelectPerpetualSelectedItems: true);
 
   @override
   Widget build(BuildContext context) {
-    Color getAotherColor(Color c) {
-      if (c == Color(0xffF7F9FB)) {
-        return Colors.white;
-      } else {
-        return Color(0xffF7F9FB);
-      }
-    }
-
-    // Color colorBack = Color(0xffF7F9FB);
-    return Row(
-      // mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        GestureDetector(
-          onTap: () {
-            context
-                .read<UiChangeBloc>()
-                .add(UiChangeEventChangeColor(Color(0xffF7F9FB), 'male'));
-
-            // Color(0xffF7F9FB);
-          },
-          child: TextImage(
-            typeCard: 'male',
-            widthWidget: 163,
-            heightWidget: 388.61,
-            listImage: [320.61, 100, 0],
-            backColor: uiState.newColor,
+    return Container(
+      child: MultiSelectContainer(
+        controller: _controller,
+        itemsDecoration: MultiSelectDecorations(
+          selectedDecoration: BoxDecoration(
+            color: Color.fromARGB(255, 225, 226, 236),
+            borderRadius: BorderRadius.circular(25),
           ),
         ),
-        const SizedBox(
-          height: 13,
-        ),
-        GestureDetector(
-          onTap: () {
-            context
-                .read<UiChangeBloc>()
-                .add(UiChangeEventChangeColor(Colors.white, 'female'));
-          },
-          child: TextImage(
-            typeCard: 'female',
-            widthWidget: 163,
-            heightWidget: 388.61,
-            listImage: [320.61, 100, 0],
-            backColor: getAotherColor(uiState.newColor!),
+        singleSelectedItem: true,
+        listViewSettings: ListViewSettings(scrollDirection: Axis.horizontal),
+        items: [
+          MultiSelectCard(
+            selected: form.control('gender').value == 'male' ? true : false,
+            value: 'male',
+            child: TextImage(
+              typeCard: 'male',
+              widthWidget: 163,
+              heightWidget: 388.61,
+              listImage: [320.61, 127, 0],
+            ),
           ),
-        ),
-      ],
+          MultiSelectCard(
+            selected: form.control('gender').value == 'female' ? true : false,
+            value: 'female',
+            child: TextImage(
+              typeCard: 'female',
+              widthWidget: 163,
+              heightWidget: 388.61,
+              listImage: [320.61, 127, 0],
+            ),
+          ),
+        ],
+        onChange: (List<dynamic> selectedItems, selectedItem) {
+          for (var element in _controller.getSelectedItems()) {
+            form.control('gender').updateValue(element);
+            print(form.value);
+          }
+        },
+      ),
     );
-    // });
   }
 }

@@ -10,27 +10,27 @@ class RegisterStep2 extends StatelessWidget {
   // FormGroup getForm() {
   //   return form;
   // }
-  FormGroup form() {
-    return FormGroup({
-      'verificationCode': FormControl<String>(
-        validators: [Validators.minLength(2), Validators.required],
-      ),
-      'password': FormControl<String>(
-        validators: [
-          Validators.minLength(6),
-          Validators.required,
-        ],
-      ),
-      'passwordConformation': FormControl<String>(
-        validators: [
-          Validators.minLength(6),
-          Validators.required,
-        ],
-      )
-    }, validators: [
-      Validators.mustMatch('password', 'passwordConformation'),
-    ]);
-  }
+  // FormGroup form() {
+  //   return FormGroup({
+  //     'verificationCode': FormControl<String>(
+  //       validators: [Validators.minLength(2), Validators.required],
+  //     ),
+  //     'password': FormControl<String>(
+  //       validators: [
+  //         Validators.minLength(6),
+  //         Validators.required,
+  //       ],
+  //     ),
+  //     'passwordConformation': FormControl<String>(
+  //       validators: [
+  //         Validators.minLength(6),
+  //         Validators.required,
+  //       ],
+  //     )
+  //   }, validators: [
+  //     Validators.mustMatch('password', 'passwordConformation'),
+  //   ]);
+  // }
 
   @override
   Widget build(BuildContext context) {

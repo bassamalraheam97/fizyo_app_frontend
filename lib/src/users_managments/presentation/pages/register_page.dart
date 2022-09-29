@@ -149,7 +149,7 @@ class RegisterPage extends StatelessWidget {
       case 8:
         return RegisterStep8(
           form: form,
-          onChanged: ((_pickedFile) {}),
+          // onChanged: ((_pickedFile) {}),
         );
       default:
         return Container();

@@ -10,9 +10,13 @@ import 'package:file_picker/file_picker.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 class RegisterStep8 extends StatelessWidget {
-  final Function(File) onChanged;
+  // final Function(File) onChanged;
   final FormGroup form;
-  RegisterStep8({super.key, required this.onChanged, required this.form});
+  RegisterStep8({
+    super.key,
+    // required this.onChanged,
+    required this.form,
+  });
 
   File? _pickedFile;
 
@@ -240,7 +244,7 @@ class RegisterStep8 extends StatelessWidget {
                       );
                       if (file != null) {
                         _pickedFile = File(file.files.single.path!);
-                        onChanged.call(_pickedFile!);
+                        // onChanged.call(_pickedFile!);
 
                         String fileName = file.files.single.name;
                         form.control('attachmentName').updateValue({

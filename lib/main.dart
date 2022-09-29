@@ -12,6 +12,7 @@ import 'package:fizyo_app_frontend/src/users_managments/blocs/user_form_bloc/use
 import 'package:fizyo_app_frontend/src/users_managments/data/http_s_provider_repository.dart';
 import 'package:fizyo_app_frontend/src/users_managments/data/s_provider_repository.dart';
 import 'package:fizyo_app_frontend/src/users_managments/domain/service_provider.dart';
+import 'package:fizyo_app_frontend/src/users_managments/presentation/components/layout.dart';
 import 'package:fizyo_app_frontend/src/users_managments/presentation/pages/register_page.dart';
 import 'package:fizyo_app_frontend/theme/color_schemes.g.dart';
 import 'package:fizyo_app_frontend/theme/custom_color.g.dart';
@@ -69,15 +70,8 @@ class MyApp extends StatelessWidget {
           ),
           navigatorObservers: [BotToastNavigatorObserver()],
           debugShowCheckedModeBanner: false,
-          home: Scaffold(
-            body: LayoutBuilder(builder: (context, constraint) {
-              if (constraint.maxWidth > 700) {
-                return DesktopScreen();
-              } else {
-                return mobileScreen();
-              }
-            }),
-          ));
+          home: LayoutSelection(desktop: DesktopScreen(),mobil: mobileScreen(),),
+          );
     });
   }
 }

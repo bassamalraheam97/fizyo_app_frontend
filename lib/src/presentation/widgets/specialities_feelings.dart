@@ -19,15 +19,14 @@ class SpecialitiesFeelings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: width,
+      height: height,
       decoration: BoxDecoration(
-        border: showBorder
-            ? Border.all(color: Theme.of(context).colorScheme.surfaceVariant)
-            : null,
+        border: Border.all(color: Theme.of(context).colorScheme.surfaceVariant),
         borderRadius: BorderRadius.circular(radius),
-        color: colorWidget ?? Theme.of(context).colorScheme.surface,
       ),
       padding: EdgeInsets.symmetric(vertical: 13, horizontal: 14),
-      margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+      // margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
       child: Text(text,
           style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                 color: Theme.of(context).colorScheme.onBackground,

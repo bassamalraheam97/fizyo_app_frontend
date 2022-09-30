@@ -1,222 +1,140 @@
-import 'package:fizyo_app_frontend/src/presentation/widgets/image_viewer.dart';
-import 'package:fizyo_app_frontend/src/presentation/widgets/patient_physio_card.dart';
-import 'package:fizyo_app_frontend/src/presentation/widgets/specialities_feelings.dart';
-import 'package:fizyo_app_frontend/src/presentation/widgets/text_image.dart';
-import 'package:fizyo_app_frontend/src/users_managments/blocs/ui_chande_bloc/ui_change_bloc.dart';
-import 'package:fizyo_app_frontend/src/users_managments/blocs/ui_chande_bloc/ui_change_event.dart';
-// import 'package:fizyo_app_frontend/src/users_managments/blocs/ui_chande_bloc/ui_change_bloc.dart';
-import 'package:fizyo_app_frontend/src/users_managments/blocs/ui_chande_bloc/ui_change_state.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_multi_select_items/flutter_multi_select_items.dart';
+import 'package:reactive_forms/reactive_forms.dart';
+
+import '../../../presentation/widgets/image_viewer.dart';
+import '../../../presentation/widgets/patient_card.dart';
+import '../../../presentation/widgets/specialities_feelings.dart';
+import '../../../presentation/widgets/text_image.dart';
 
 class RegisterStep7e extends StatelessWidget {
-  final UiChangeState uiState;
-  RegisterStep7e({super.key, required this.uiState});
-  // final FormGroup form;
-  // FormGroup getForm() {
-  //   return form;
-  // }
+  final FormGroup form;
+  RegisterStep7e({super.key, required this.form});
+  final MultiSelectController<String> _controller =
+      MultiSelectController(deSelectPerpetualSelectedItems: true);
 
   @override
   Widget build(BuildContext context) {
-    Color initColor = Theme.of(context).colorScheme.surface;
-    Color secondColor = Theme.of(context).colorScheme.surfaceVariant;
-
-    Color getColor(bool c) {
-      if (c) {
-        return secondColor;
-      } else {
-        return initColor;
+    List li;
+    bool isSelected(String val) {
+      li = form
+          .control('diseasesOrSpecialties')
+          .value
+          .where((item) => val == item)
+          .toList();
+      if (li.isNotEmpty) {
+        return true;
       }
+      return false;
     }
 
     return Column(
       children: [
-        Table(
-          // mainAxisAlignment: MainAxisAlignment.center,
-          children: <TableRow>[
-            TableRow(
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    if (uiState.newColor != initColor) {
-                      // print(isColoredMap);
-                      context.read<UiChangeBloc>().add(
-                          UiChangeEventMultiChangeColor(
-                              initColor, 'Pediatrics'));
-                    } else {
-                      context.read<UiChangeBloc>().add(
-                          UiChangeEventMultiChangeColor(
-                              secondColor, 'Pediatrics'));
-                    }
-                  },
-                  child: SpecialitiesFeelings(
-                    text: 'Pediatrics',
-                    width: 150,
-                    height: 50,
-                    radius: 25,
-                    colorWidget:
-                        getColor(uiState.isColoredMap?['Pediatrics'] ?? false),
-                  ),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    if (uiState.newColor != initColor) {
-                      context.read<UiChangeBloc>().add(
-                          UiChangeEventMultiChangeColor(initColor, 'Sports'));
-                    } else {
-                      context.read<UiChangeBloc>().add(
-                          UiChangeEventMultiChangeColor(secondColor, 'Sports'));
-                    }
-                  },
-                  child: SpecialitiesFeelings(
-                    text: 'Sports',
-                    width: 150,
-                    height: 50,
-                    radius: 25,
-                    colorWidget:
-                        getColor(uiState.isColoredMap?['Sports'] ?? false),
-                  ),
-                ),
-              ],
+        Directionality(
+          textDirection: TextDirection.rtl,
+          child: MultiSelectContainer(
+            controller: _controller,
+
+            itemsDecoration: MultiSelectDecorations(
+              selectedDecoration: BoxDecoration(
+                color: Color.fromARGB(255, 225, 226, 236),
+                borderRadius: BorderRadius.circular(25),
+              ),
             ),
-            TableRow(
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    if (uiState.newColor != initColor) {
-                      context.read<UiChangeBloc>().add(
-                          UiChangeEventMultiChangeColor(
-                              initColor, 'Womens health'));
-                    } else {
-                      context.read<UiChangeBloc>().add(
-                          UiChangeEventMultiChangeColor(
-                              secondColor, 'Womens health'));
-                    }
-                  },
-                  child: SpecialitiesFeelings(
-                    text: "Women's health",
-                    width: 150,
-                    height: 50,
-                    radius: 25,
-                    colorWidget: getColor(
-                        uiState.isColoredMap?['Womens health'] ?? false),
-                  ),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    if (uiState.newColor != initColor) {
-                      context.read<UiChangeBloc>().add(
-                          UiChangeEventMultiChangeColor(
-                              initColor, 'Cardiovascular'));
-                    } else {
-                      context.read<UiChangeBloc>().add(
-                          UiChangeEventMultiChangeColor(
-                              secondColor, 'Cardiovascular'));
-                    }
-                  },
-                  child: SpecialitiesFeelings(
-                    text: 'Cardiovascular',
-                    width: 150,
-                    height: 50,
-                    radius: 25,
-                    colorWidget: getColor(
-                        uiState.isColoredMap?['Cardiovascular'] ?? false),
-                  ),
-                ),
-              ],
-            ),
-            TableRow(
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    if (uiState.newColor != initColor) {
-                      context.read<UiChangeBloc>().add(
-                          UiChangeEventMultiChangeColor(
-                              initColor, 'Neurology'));
-                    } else {
-                      context.read<UiChangeBloc>().add(
-                          UiChangeEventMultiChangeColor(
-                              secondColor, 'Neurology'));
-                    }
-                  },
-                  child: SpecialitiesFeelings(
-                    text: 'Neurology',
-                    width: 150,
-                    height: 50,
-                    radius: 25,
-                    colorWidget:
-                        getColor(uiState.isColoredMap?['Neurology'] ?? false),
-                  ),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    if (uiState.newColor != initColor) {
-                      context.read<UiChangeBloc>().add(
-                          UiChangeEventMultiChangeColor(
-                              initColor, 'Geriatrics'));
-                      // isColored['soreness'] = 0;
-                    } else {
-                      context.read<UiChangeBloc>().add(
-                          UiChangeEventMultiChangeColor(
-                              secondColor, 'Geriatrics'));
-                    }
-                  },
-                  child: SpecialitiesFeelings(
-                    text: 'Geriatrics',
-                    width: 150,
-                    height: 50,
-                    radius: 25,
-                    colorWidget:
-                        getColor(uiState.isColoredMap?['Geriatrics'] ?? false),
-                  ),
-                ),
-              ],
-            ),
-            TableRow(
-              children: [
-                SpecialitiesFeelings(
-                  text: '',
+            // showInListView: true,
+            // listViewSettings:
+            //     ListViewSettings(scrollDirection: Axis.horizontal),
+            items: [
+              MultiSelectCard(
+                selected: isSelected('Pediatrics'),
+                clipBehavior: Clip.none,
+                value: 'Pediatrics',
+                child: SpecialitiesFeelings(
+                  text: 'Pediatrics',
                   width: 150,
                   height: 50,
                   radius: 25,
-                  showBorder: false,
                 ),
-                GestureDetector(
-                  onTap: () {
-                    if (uiState.newColor != initColor) {
-                      context.read<UiChangeBloc>().add(
-                          UiChangeEventMultiChangeColor(
-                              initColor, 'Orthopedics'));
-                    } else {
-                      context.read<UiChangeBloc>().add(
-                          UiChangeEventMultiChangeColor(
-                              secondColor, 'Orthopedics'));
-                    }
-                  },
-                  child: SpecialitiesFeelings(
-                    text: 'Orthopedics',
-                    width: 150,
-                    height: 50,
-                    radius: 25,
-                    colorWidget:
-                        getColor(uiState.isColoredMap?['Orthopedics'] ?? false),
-                  ),
+              ),
+              MultiSelectCard(
+                selected: isSelected('Sports'),
+                value: 'Sports',
+                child: SpecialitiesFeelings(
+                  text: 'Sports',
+                  width: 150,
+                  height: 50,
+                  radius: 25,
                 ),
-              ],
-            ),
-          ],
+              ),
+              MultiSelectCard(
+                selected: isSelected("Womens health"),
+                value: "Womens health",
+                child: SpecialitiesFeelings(
+                  text: "Women's health",
+                  width: 150,
+                  height: 50,
+                  radius: 25,
+                ),
+              ),
+              MultiSelectCard(
+                selected: isSelected('Cardiovascular'),
+                value: 'Cardiovascular',
+                child: SpecialitiesFeelings(
+                  text: 'Cardiovascular',
+                  width: 150,
+                  height: 50,
+                  radius: 25,
+                ),
+              ),
+              MultiSelectCard(
+                selected: isSelected('Neurology'),
+                value: 'Neurology',
+                child: SpecialitiesFeelings(
+                  text: 'Neurology',
+                  width: 150,
+                  height: 50,
+                  radius: 25,
+                ),
+              ),
+              MultiSelectCard(
+                selected: isSelected('Geriatrics'),
+                value: 'Geriatrics',
+                child: SpecialitiesFeelings(
+                  text: 'Geriatrics',
+                  width: 150,
+                  height: 50,
+                  radius: 25,
+                ),
+              ),
+              MultiSelectCard(
+                selected: isSelected('Orthopedics'),
+                value: 'Orthopedics',
+                child: SpecialitiesFeelings(
+                  text: 'Orthopedics',
+                  width: 150,
+                  height: 50,
+                  radius: 25,
+                ),
+              ),
+            ],
+            onChange: (List<dynamic> selectedItems, selectedItem) {
+              List<String> li = [];
+              for (var element in _controller.getSelectedItems()) {
+                li.add(element);
+              }
+              form.control('diseasesOrSpecialties').updateValue(li);
+            },
+          ),
         ),
         SizedBox(
           height: 30,
         ),
-        ImageViewer(
-            imageURL: "assets/images/ph.png",
-            height: 245.45,
-            width: 213.59,
-            radius: 0),
+        Image.asset(
+          "assets/images/ph.jpg",
+          width: 213.59,
+          height: 245.45,
+        ),
       ],
     );
-    // });
   }
 }

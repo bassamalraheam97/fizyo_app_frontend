@@ -4,7 +4,10 @@ import 'package:fizyo_app_frontend/src/users_managments/domain/user.dart';
 
 class HttpUserRepository implements UserRepository {
   final Dio client;
-  HttpUserRepository({required this.client});
+
+  HttpUserRepository(
+    this.client,
+  );
 
   @override
   Future<Response> createUser({required User user}) async {

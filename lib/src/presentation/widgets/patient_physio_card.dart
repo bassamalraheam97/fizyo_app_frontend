@@ -31,8 +31,8 @@ class PatientPhysioCard extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: backColor,
-        border: Border.all(
-            width: 2, color: Color(0xffF7F9FB), style: BorderStyle.solid),
+        // border: Border.all(
+        //     width: 2, color: Color(0xffF7F9FB), style: BorderStyle.solid),
         borderRadius: BorderRadius.circular(25),
       ),
       // color: Colors.white,
@@ -48,7 +48,7 @@ class PatientPhysioCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               SizedBox(
-                width: 188,
+                width: 200,
                 child: Wrap(
                   direction: Axis.horizontal,
                   children: [

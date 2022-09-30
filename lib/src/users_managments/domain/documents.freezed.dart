@@ -1,5 +1,7 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'documents.dart';
 
@@ -10,32 +12,11 @@ part of 'documents.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 Documents _$DocumentsFromJson(Map<String, dynamic> json) {
   return _Documents.fromJson(json);
 }
-
-/// @nodoc
-class _$DocumentsTearOff {
-  const _$DocumentsTearOff();
-
-  _Documents call(
-      {required String url, required String name, required String attType}) {
-    return _Documents(
-      url: url,
-      name: name,
-      attType: attType,
-    );
-  }
-
-  Documents fromJson(Map<String, Object> json) {
-    return Documents.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $Documents = _$DocumentsTearOff();
 
 /// @nodoc
 mixin _$Documents {
@@ -89,22 +70,23 @@ class _$DocumentsCopyWithImpl<$Res> implements $DocumentsCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$DocumentsCopyWith<$Res> implements $DocumentsCopyWith<$Res> {
-  factory _$DocumentsCopyWith(
-          _Documents value, $Res Function(_Documents) then) =
-      __$DocumentsCopyWithImpl<$Res>;
+abstract class _$$_DocumentsCopyWith<$Res> implements $DocumentsCopyWith<$Res> {
+  factory _$$_DocumentsCopyWith(
+          _$_Documents value, $Res Function(_$_Documents) then) =
+      __$$_DocumentsCopyWithImpl<$Res>;
   @override
   $Res call({String url, String name, String attType});
 }
 
 /// @nodoc
-class __$DocumentsCopyWithImpl<$Res> extends _$DocumentsCopyWithImpl<$Res>
-    implements _$DocumentsCopyWith<$Res> {
-  __$DocumentsCopyWithImpl(_Documents _value, $Res Function(_Documents) _then)
-      : super(_value, (v) => _then(v as _Documents));
+class __$$_DocumentsCopyWithImpl<$Res> extends _$DocumentsCopyWithImpl<$Res>
+    implements _$$_DocumentsCopyWith<$Res> {
+  __$$_DocumentsCopyWithImpl(
+      _$_Documents _value, $Res Function(_$_Documents) _then)
+      : super(_value, (v) => _then(v as _$_Documents));
 
   @override
-  _Documents get _value => super._value as _Documents;
+  _$_Documents get _value => super._value as _$_Documents;
 
   @override
   $Res call({
@@ -112,7 +94,7 @@ class __$DocumentsCopyWithImpl<$Res> extends _$DocumentsCopyWithImpl<$Res>
     Object? name = freezed,
     Object? attType = freezed,
   }) {
-    return _then(_Documents(
+    return _then(_$_Documents(
       url: url == freezed
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
@@ -135,9 +117,10 @@ class _$_Documents implements _Documents {
   _$_Documents({required this.url, required this.name, required this.attType});
 
   factory _$_Documents.fromJson(Map<String, dynamic> json) =>
-      _$_$_DocumentsFromJson(json);
+      _$$_DocumentsFromJson(json);
 
-  @override // 6. list all the arguments/properties
+// 6. list all the arguments/properties
+  @override
   final String url;
   @override
   final String name;
@@ -152,50 +135,51 @@ class _$_Documents implements _Documents {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Documents &&
-            (identical(other.url, url) ||
-                const DeepCollectionEquality().equals(other.url, url)) &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)) &&
-            (identical(other.attType, attType) ||
-                const DeepCollectionEquality().equals(other.attType, attType)));
+        (other.runtimeType == runtimeType &&
+            other is _$_Documents &&
+            const DeepCollectionEquality().equals(other.url, url) &&
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality().equals(other.attType, attType));
   }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(url) ^
-      const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(attType);
 
   @JsonKey(ignore: true)
   @override
-  _$DocumentsCopyWith<_Documents> get copyWith =>
-      __$DocumentsCopyWithImpl<_Documents>(this, _$identity);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(url),
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(attType));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_DocumentsCopyWith<_$_Documents> get copyWith =>
+      __$$_DocumentsCopyWithImpl<_$_Documents>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_DocumentsToJson(this);
+    return _$$_DocumentsToJson(
+      this,
+    );
   }
 }
 
 abstract class _Documents implements Documents {
   factory _Documents(
-      {required String url,
-      required String name,
-      required String attType}) = _$_Documents;
+      {required final String url,
+      required final String name,
+      required final String attType}) = _$_Documents;
 
   factory _Documents.fromJson(Map<String, dynamic> json) =
       _$_Documents.fromJson;
 
   @override // 6. list all the arguments/properties
-  String get url => throw _privateConstructorUsedError;
+  String get url;
   @override
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
-  String get attType => throw _privateConstructorUsedError;
+  String get attType;
   @override
   @JsonKey(ignore: true)
-  _$DocumentsCopyWith<_Documents> get copyWith =>
+  _$$_DocumentsCopyWith<_$_Documents> get copyWith =>
       throw _privateConstructorUsedError;
 }

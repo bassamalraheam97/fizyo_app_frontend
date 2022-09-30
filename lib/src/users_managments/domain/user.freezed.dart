@@ -1,5 +1,7 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'user.dart';
 
@@ -10,62 +12,11 @@ part of 'user.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 User _$UserFromJson(Map<String, dynamic> json) {
   return _User.fromJson(json);
 }
-
-/// @nodoc
-class _$UserTearOff {
-  const _$UserTearOff();
-
-  _User call(
-      {@JsonKey(name: '_id') String? id,
-      String? email,
-      String? phoneNumber,
-      required String password,
-      String? profilePicture,
-      required String firstName,
-      required String lastName,
-      required Gender gender,
-      required DateTime DOB,
-      List<Address>? address,
-      required VerificationStatus verified,
-      required Status status,
-      required AccountType accountType,
-      DateTime? lastLoginDate,
-      Map<String, Object>? accountSetting,
-      List<String>? languages,
-      required MaritalStatus maritalStatus}) {
-    return _User(
-      id: id,
-      email: email,
-      phoneNumber: phoneNumber,
-      password: password,
-      profilePicture: profilePicture,
-      firstName: firstName,
-      lastName: lastName,
-      gender: gender,
-      DOB: DOB,
-      address: address,
-      verified: verified,
-      status: status,
-      accountType: accountType,
-      lastLoginDate: lastLoginDate,
-      accountSetting: accountSetting,
-      languages: languages,
-      maritalStatus: maritalStatus,
-    );
-  }
-
-  User fromJson(Map<String, Object> json) {
-    return User.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $User = _$UserTearOff();
 
 /// @nodoc
 mixin _$User {
@@ -219,9 +170,9 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
-  factory _$UserCopyWith(_User value, $Res Function(_User) then) =
-      __$UserCopyWithImpl<$Res>;
+abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
+  factory _$$_UserCopyWith(_$_User value, $Res Function(_$_User) then) =
+      __$$_UserCopyWithImpl<$Res>;
   @override
   $Res call(
       {@JsonKey(name: '_id') String? id,
@@ -244,13 +195,13 @@ abstract class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
-    implements _$UserCopyWith<$Res> {
-  __$UserCopyWithImpl(_User _value, $Res Function(_User) _then)
-      : super(_value, (v) => _then(v as _User));
+class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
+    implements _$$_UserCopyWith<$Res> {
+  __$$_UserCopyWithImpl(_$_User _value, $Res Function(_$_User) _then)
+      : super(_value, (v) => _then(v as _$_User));
 
   @override
-  _User get _value => super._value as _User;
+  _$_User get _value => super._value as _$_User;
 
   @override
   $Res call({
@@ -272,7 +223,7 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
     Object? languages = freezed,
     Object? maritalStatus = freezed,
   }) {
-    return _then(_User(
+    return _then(_$_User(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -310,7 +261,7 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
           : DOB // ignore: cast_nullable_to_non_nullable
               as DateTime,
       address: address == freezed
-          ? _value.address
+          ? _value._address
           : address // ignore: cast_nullable_to_non_nullable
               as List<Address>?,
       verified: verified == freezed
@@ -330,11 +281,11 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
           : lastLoginDate // ignore: cast_nullable_to_non_nullable
               as DateTime?,
       accountSetting: accountSetting == freezed
-          ? _value.accountSetting
+          ? _value._accountSetting
           : accountSetting // ignore: cast_nullable_to_non_nullable
               as Map<String, Object>?,
       languages: languages == freezed
-          ? _value.languages
+          ? _value._languages
           : languages // ignore: cast_nullable_to_non_nullable
               as List<String>?,
       maritalStatus: maritalStatus == freezed
@@ -358,17 +309,19 @@ class _$_User implements _User {
       required this.lastName,
       required this.gender,
       required this.DOB,
-      this.address,
+      final List<Address>? address,
       required this.verified,
       required this.status,
       required this.accountType,
       this.lastLoginDate,
-      this.accountSetting,
-      this.languages,
-      required this.maritalStatus});
+      final Map<String, Object>? accountSetting,
+      final List<String>? languages,
+      required this.maritalStatus})
+      : _address = address,
+        _accountSetting = accountSetting,
+        _languages = languages;
 
-  factory _$_User.fromJson(Map<String, dynamic> json) =>
-      _$_$_UserFromJson(json);
+  factory _$_User.fromJson(Map<String, dynamic> json) => _$$_UserFromJson(json);
 
   @override
   @JsonKey(name: '_id')
@@ -387,10 +340,18 @@ class _$_User implements _User {
   final String lastName;
   @override
   final Gender gender;
-  @override // Enum
-  final DateTime DOB;
+// Enum
   @override
-  final List<Address>? address;
+  final DateTime DOB;
+  final List<Address>? _address;
+  @override
+  List<Address>? get address {
+    final value = _address;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   final VerificationStatus verified;
   @override
@@ -399,10 +360,24 @@ class _$_User implements _User {
   final AccountType accountType;
   @override
   final DateTime? lastLoginDate;
+  final Map<String, Object>? _accountSetting;
   @override
-  final Map<String, Object>? accountSetting;
+  Map<String, Object>? get accountSetting {
+    final value = _accountSetting;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(value);
+  }
+
+  final List<String>? _languages;
   @override
-  final List<String>? languages;
+  List<String>? get languages {
+    final value = _languages;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   final MaritalStatus maritalStatus;
 
@@ -414,145 +389,127 @@ class _$_User implements _User {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _User &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.email, email) ||
-                const DeepCollectionEquality().equals(other.email, email)) &&
-            (identical(other.phoneNumber, phoneNumber) ||
-                const DeepCollectionEquality()
-                    .equals(other.phoneNumber, phoneNumber)) &&
-            (identical(other.password, password) ||
-                const DeepCollectionEquality()
-                    .equals(other.password, password)) &&
-            (identical(other.profilePicture, profilePicture) ||
-                const DeepCollectionEquality()
-                    .equals(other.profilePicture, profilePicture)) &&
-            (identical(other.firstName, firstName) ||
-                const DeepCollectionEquality()
-                    .equals(other.firstName, firstName)) &&
-            (identical(other.lastName, lastName) ||
-                const DeepCollectionEquality()
-                    .equals(other.lastName, lastName)) &&
-            (identical(other.gender, gender) ||
-                const DeepCollectionEquality().equals(other.gender, gender)) &&
-            (identical(other.DOB, DOB) ||
-                const DeepCollectionEquality().equals(other.DOB, DOB)) &&
-            (identical(other.address, address) ||
-                const DeepCollectionEquality()
-                    .equals(other.address, address)) &&
-            (identical(other.verified, verified) ||
-                const DeepCollectionEquality()
-                    .equals(other.verified, verified)) &&
-            (identical(other.status, status) ||
-                const DeepCollectionEquality().equals(other.status, status)) &&
-            (identical(other.accountType, accountType) ||
-                const DeepCollectionEquality()
-                    .equals(other.accountType, accountType)) &&
-            (identical(other.lastLoginDate, lastLoginDate) ||
-                const DeepCollectionEquality()
-                    .equals(other.lastLoginDate, lastLoginDate)) &&
-            (identical(other.accountSetting, accountSetting) ||
-                const DeepCollectionEquality()
-                    .equals(other.accountSetting, accountSetting)) &&
-            (identical(other.languages, languages) ||
-                const DeepCollectionEquality()
-                    .equals(other.languages, languages)) &&
-            (identical(other.maritalStatus, maritalStatus) ||
-                const DeepCollectionEquality()
-                    .equals(other.maritalStatus, maritalStatus)));
+        (other.runtimeType == runtimeType &&
+            other is _$_User &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.email, email) &&
+            const DeepCollectionEquality()
+                .equals(other.phoneNumber, phoneNumber) &&
+            const DeepCollectionEquality().equals(other.password, password) &&
+            const DeepCollectionEquality()
+                .equals(other.profilePicture, profilePicture) &&
+            const DeepCollectionEquality().equals(other.firstName, firstName) &&
+            const DeepCollectionEquality().equals(other.lastName, lastName) &&
+            const DeepCollectionEquality().equals(other.gender, gender) &&
+            const DeepCollectionEquality().equals(other.DOB, DOB) &&
+            const DeepCollectionEquality().equals(other._address, _address) &&
+            const DeepCollectionEquality().equals(other.verified, verified) &&
+            const DeepCollectionEquality().equals(other.status, status) &&
+            const DeepCollectionEquality()
+                .equals(other.accountType, accountType) &&
+            const DeepCollectionEquality()
+                .equals(other.lastLoginDate, lastLoginDate) &&
+            const DeepCollectionEquality()
+                .equals(other._accountSetting, _accountSetting) &&
+            const DeepCollectionEquality()
+                .equals(other._languages, _languages) &&
+            const DeepCollectionEquality()
+                .equals(other.maritalStatus, maritalStatus));
   }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(email) ^
-      const DeepCollectionEquality().hash(phoneNumber) ^
-      const DeepCollectionEquality().hash(password) ^
-      const DeepCollectionEquality().hash(profilePicture) ^
-      const DeepCollectionEquality().hash(firstName) ^
-      const DeepCollectionEquality().hash(lastName) ^
-      const DeepCollectionEquality().hash(gender) ^
-      const DeepCollectionEquality().hash(DOB) ^
-      const DeepCollectionEquality().hash(address) ^
-      const DeepCollectionEquality().hash(verified) ^
-      const DeepCollectionEquality().hash(status) ^
-      const DeepCollectionEquality().hash(accountType) ^
-      const DeepCollectionEquality().hash(lastLoginDate) ^
-      const DeepCollectionEquality().hash(accountSetting) ^
-      const DeepCollectionEquality().hash(languages) ^
-      const DeepCollectionEquality().hash(maritalStatus);
 
   @JsonKey(ignore: true)
   @override
-  _$UserCopyWith<_User> get copyWith =>
-      __$UserCopyWithImpl<_User>(this, _$identity);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(email),
+      const DeepCollectionEquality().hash(phoneNumber),
+      const DeepCollectionEquality().hash(password),
+      const DeepCollectionEquality().hash(profilePicture),
+      const DeepCollectionEquality().hash(firstName),
+      const DeepCollectionEquality().hash(lastName),
+      const DeepCollectionEquality().hash(gender),
+      const DeepCollectionEquality().hash(DOB),
+      const DeepCollectionEquality().hash(_address),
+      const DeepCollectionEquality().hash(verified),
+      const DeepCollectionEquality().hash(status),
+      const DeepCollectionEquality().hash(accountType),
+      const DeepCollectionEquality().hash(lastLoginDate),
+      const DeepCollectionEquality().hash(_accountSetting),
+      const DeepCollectionEquality().hash(_languages),
+      const DeepCollectionEquality().hash(maritalStatus));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_UserCopyWith<_$_User> get copyWith =>
+      __$$_UserCopyWithImpl<_$_User>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_UserToJson(this);
+    return _$$_UserToJson(
+      this,
+    );
   }
 }
 
 abstract class _User implements User {
   factory _User(
-      {@JsonKey(name: '_id') String? id,
-      String? email,
-      String? phoneNumber,
-      required String password,
-      String? profilePicture,
-      required String firstName,
-      required String lastName,
-      required Gender gender,
-      required DateTime DOB,
-      List<Address>? address,
-      required VerificationStatus verified,
-      required Status status,
-      required AccountType accountType,
-      DateTime? lastLoginDate,
-      Map<String, Object>? accountSetting,
-      List<String>? languages,
-      required MaritalStatus maritalStatus}) = _$_User;
+      {@JsonKey(name: '_id') final String? id,
+      final String? email,
+      final String? phoneNumber,
+      required final String password,
+      final String? profilePicture,
+      required final String firstName,
+      required final String lastName,
+      required final Gender gender,
+      required final DateTime DOB,
+      final List<Address>? address,
+      required final VerificationStatus verified,
+      required final Status status,
+      required final AccountType accountType,
+      final DateTime? lastLoginDate,
+      final Map<String, Object>? accountSetting,
+      final List<String>? languages,
+      required final MaritalStatus maritalStatus}) = _$_User;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
 
   @override
   @JsonKey(name: '_id')
-  String? get id => throw _privateConstructorUsedError;
+  String? get id;
   @override
-  String? get email => throw _privateConstructorUsedError;
+  String? get email;
   @override
-  String? get phoneNumber => throw _privateConstructorUsedError;
+  String? get phoneNumber;
   @override
-  String get password => throw _privateConstructorUsedError;
+  String get password;
   @override
-  String? get profilePicture => throw _privateConstructorUsedError;
+  String? get profilePicture;
   @override
-  String get firstName => throw _privateConstructorUsedError;
+  String get firstName;
   @override
-  String get lastName => throw _privateConstructorUsedError;
+  String get lastName;
   @override
-  Gender get gender => throw _privateConstructorUsedError;
+  Gender get gender;
   @override // Enum
-  DateTime get DOB => throw _privateConstructorUsedError;
+  DateTime get DOB;
   @override
-  List<Address>? get address => throw _privateConstructorUsedError;
+  List<Address>? get address;
   @override
-  VerificationStatus get verified => throw _privateConstructorUsedError;
+  VerificationStatus get verified;
   @override
-  Status get status => throw _privateConstructorUsedError;
+  Status get status;
   @override
-  AccountType get accountType => throw _privateConstructorUsedError;
+  AccountType get accountType;
   @override
-  DateTime? get lastLoginDate => throw _privateConstructorUsedError;
+  DateTime? get lastLoginDate;
   @override
-  Map<String, Object>? get accountSetting => throw _privateConstructorUsedError;
+  Map<String, Object>? get accountSetting;
   @override
-  List<String>? get languages => throw _privateConstructorUsedError;
+  List<String>? get languages;
   @override
-  MaritalStatus get maritalStatus => throw _privateConstructorUsedError;
+  MaritalStatus get maritalStatus;
   @override
   @JsonKey(ignore: true)
-  _$UserCopyWith<_User> get copyWith => throw _privateConstructorUsedError;
+  _$$_UserCopyWith<_$_User> get copyWith => throw _privateConstructorUsedError;
 }

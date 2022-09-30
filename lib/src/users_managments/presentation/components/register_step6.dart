@@ -1,163 +1,139 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:fizyo_app_frontend/src/presentation/widgets/image_viewer.dart';
 import 'package:fizyo_app_frontend/src/presentation/widgets/patient_physio_card.dart';
-import 'package:fizyo_app_frontend/src/presentation/widgets/text_image.dart';
-import 'package:fizyo_app_frontend/src/users_managments/blocs/ui_chande_bloc/ui_change_bloc.dart';
-import 'package:fizyo_app_frontend/src/users_managments/blocs/ui_chande_bloc/ui_change_event.dart';
-// import 'package:fizyo_app_frontend/src/users_managments/blocs/ui_chande_bloc/ui_change_bloc.dart';
-import 'package:fizyo_app_frontend/src/users_managments/blocs/ui_chande_bloc/ui_change_state.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_multi_select_items/flutter_multi_select_items.dart';
+import 'package:reactive_forms/reactive_forms.dart';
+
+import '../../../presentation/widgets/patient_card.dart';
 
 class RegisterStep6 extends StatelessWidget {
-  final UiChangeState uiState;
-  const RegisterStep6({super.key, required this.uiState});
-  // final FormGroup form;
-  // FormGroup getForm() {
-  //   return form;
-  // }
+  final FormGroup form;
+  RegisterStep6({super.key, required this.form});
+  final MultiSelectController<String> _controller =
+      MultiSelectController(deSelectPerpetualSelectedItems: false);
 
   @override
   Widget build(BuildContext context) {
-    Color getAotherColor(String c) {
-      if (c == uiState.widgetName) {
-        return Color(0xffF7F9FB);
-      } else {
-        return Colors.white;
+    List li;
+    bool isSelected(String val) {
+      li = form
+          .control('preferredServiceType')
+          .value
+          .where((item) => val == item)
+          .toList();
+      if (li.isNotEmpty) {
+        return true;
       }
+      return false;
     }
 
-    // Color colorBack = Color(0xffF7F9FB);
-    return Column(
-      // mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        GestureDetector(
-          onTap: () {
-            context
-                .read<UiChangeBloc>()
-                .add(UiChangeEventChangeColor(Color(0xffF7F9FB), 'home'));
-
-            // Color(0xffF7F9FB);
-          },
-          child: Container(
-            decoration: BoxDecoration(
-              color: getAotherColor('home'),
-              border: Border.all(
-                  width: 2, color: Color(0xffF7F9FB), style: BorderStyle.solid),
-              borderRadius: BorderRadius.circular(25),
-            ),
-            // color: Colors.white,
-            width: 165,
-            height: 165,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ImageViewer(
-                    imageURL: 'assets/images/home.png',
-                    height: 81.12,
-                    width: 110,
-                    radius: 0),
-                const SizedBox(
-                  height: 22.37,
-                ),
-                Text(
-                  'Home',
-                  style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                      color: Theme.of(context).colorScheme.onBackground,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400),
-                ),
-              ],
-            ),
+    return Container(
+      width: 200,
+      child: MultiSelectContainer(
+        controller: _controller,
+        itemsDecoration: MultiSelectDecorations(
+          selectedDecoration: BoxDecoration(
+            color: Color.fromARGB(255, 225, 226, 236),
+            borderRadius: BorderRadius.circular(25),
           ),
         ),
-        const SizedBox(
-          height: 5,
-        ),
-        GestureDetector(
-          onTap: () {
-            context
-                .read<UiChangeBloc>()
-                .add(UiChangeEventChangeColor(Color(0xffF7F9FB), 'online'));
-
-            // Color(0xffF7F9FB);
-          },
-          child: Container(
-            decoration: BoxDecoration(
-              color: getAotherColor('online'),
-              border: Border.all(
-                  width: 2, color: Color(0xffF7F9FB), style: BorderStyle.solid),
-              borderRadius: BorderRadius.circular(25),
-            ),
-            // color: Colors.white,
-            width: 165,
-            height: 165,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ImageViewer(
-                    imageURL: 'assets/images/online.png',
-                    height: 81.12,
-                    width: 110,
-                    radius: 0),
-                const SizedBox(
-                  height: 22.37,
-                ),
-                Text(
-                  'Online',
-                  style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                      color: Theme.of(context).colorScheme.onBackground,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400),
-                ),
-              ],
+        listViewSettings: ListViewSettings(scrollDirection: Axis.vertical),
+        items: [
+          MultiSelectCard(
+            selected: isSelected('home'),
+            value: 'home',
+            child: Container(
+              width: 165,
+              height: 165,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ImageViewer(
+                      imageURL: 'assets/images/home.png',
+                      height: 81.12,
+                      width: 110,
+                      radius: 0),
+                  const SizedBox(
+                    height: 22.37,
+                  ),
+                  Text(
+                    'Home',
+                    style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                        color: Theme.of(context).colorScheme.onBackground,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400),
+                  ),
+                ],
+              ),
             ),
           ),
-        ),
-        const SizedBox(
-          height: 5,
-        ),
-        GestureDetector(
-          onTap: () {
-            context
-                .read<UiChangeBloc>()
-                .add(UiChangeEventChangeColor(Color(0xffF7F9FB), 'office'));
-
-            // Color(0xffF7F9FB);
-          },
-          child: Container(
-            decoration: BoxDecoration(
-              color: getAotherColor('office'),
-              border: Border.all(
-                  width: 2, color: Color(0xffF7F9FB), style: BorderStyle.solid),
-              borderRadius: BorderRadius.circular(25),
-            ),
-            // color: Colors.white,
-            width: 165,
-            height: 165,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ImageViewer(
-                    imageURL: 'assets/images/center.png',
-                    height: 81.12,
-                    width: 110,
-                    radius: 0),
-                const SizedBox(
-                  height: 22.37,
-                ),
-                Text(
-                  'Center',
-                  style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                      color: Theme.of(context).colorScheme.onBackground,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400),
-                ),
-              ],
+          MultiSelectCard(
+            selected: isSelected('online'),
+            value: 'online',
+            child: Container(
+              width: 165,
+              height: 165,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ImageViewer(
+                      imageURL: 'assets/images/online.png',
+                      height: 81.12,
+                      width: 110,
+                      radius: 0),
+                  const SizedBox(
+                    height: 22.37,
+                  ),
+                  Text(
+                    'Online',
+                    style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                        color: Theme.of(context).colorScheme.onBackground,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400),
+                  ),
+                ],
+              ),
             ),
           ),
-        ),
-      ],
+          MultiSelectCard(
+            selected: isSelected('office'),
+            value: 'office',
+            child: Container(
+              width: 165,
+              height: 165,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ImageViewer(
+                      imageURL: 'assets/images/center.png',
+                      height: 81.12,
+                      width: 110,
+                      radius: 0),
+                  const SizedBox(
+                    height: 22.37,
+                  ),
+                  Text(
+                    'Center',
+                    style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                        color: Theme.of(context).colorScheme.onBackground,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+        onChange: (List<dynamic> selectedItems, selectedItem) {
+          List<String> li = [];
+          for (var element in _controller.getSelectedItems()) {
+            li.add(element);
+          }
+          form.control('preferredServiceType').updateValue(li);
+        },
+      ),
     );
-    // });
   }
 }

@@ -1,5 +1,7 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'service_provider.dart';
 
@@ -10,55 +12,14 @@ part of 'service_provider.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Service_provider _$Service_providerFromJson(Map<String, dynamic> json) {
-  return _Service_provider.fromJson(json);
+ServiceProvider _$ServiceProviderFromJson(Map<String, dynamic> json) {
+  return _ServiceProvider.fromJson(json);
 }
 
 /// @nodoc
-class _$Service_providerTearOff {
-  const _$Service_providerTearOff();
-
-  _Service_provider call(
-      {@JsonKey(name: '_id') String? id,
-      String? uID,
-      String? bio,
-      required List<String> specialties,
-      List<String>? preferredServiceType,
-      double? minSessionFee,
-      double? maxSessionFee,
-      required List<Documents> document,
-      List<String>? reviewerUIDs,
-      required verificationStatus verified,
-      DateTime? verificationDate,
-      String? verifiedByUID}) {
-    return _Service_provider(
-      id: id,
-      uID: uID,
-      bio: bio,
-      specialties: specialties,
-      preferredServiceType: preferredServiceType,
-      minSessionFee: minSessionFee,
-      maxSessionFee: maxSessionFee,
-      document: document,
-      reviewerUIDs: reviewerUIDs,
-      verified: verified,
-      verificationDate: verificationDate,
-      verifiedByUID: verifiedByUID,
-    );
-  }
-
-  Service_provider fromJson(Map<String, Object> json) {
-    return Service_provider.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $Service_provider = _$Service_providerTearOff();
-
-/// @nodoc
-mixin _$Service_provider {
+mixin _$ServiceProvider {
   @JsonKey(name: '_id')
   String? get id => throw _privateConstructorUsedError;
   String? get uID => throw _privateConstructorUsedError;
@@ -75,15 +36,15 @@ mixin _$Service_provider {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $Service_providerCopyWith<Service_provider> get copyWith =>
+  $ServiceProviderCopyWith<ServiceProvider> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $Service_providerCopyWith<$Res> {
-  factory $Service_providerCopyWith(
-          Service_provider value, $Res Function(Service_provider) then) =
-      _$Service_providerCopyWithImpl<$Res>;
+abstract class $ServiceProviderCopyWith<$Res> {
+  factory $ServiceProviderCopyWith(
+          ServiceProvider value, $Res Function(ServiceProvider) then) =
+      _$ServiceProviderCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: '_id') String? id,
       String? uID,
@@ -100,13 +61,13 @@ abstract class $Service_providerCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$Service_providerCopyWithImpl<$Res>
-    implements $Service_providerCopyWith<$Res> {
-  _$Service_providerCopyWithImpl(this._value, this._then);
+class _$ServiceProviderCopyWithImpl<$Res>
+    implements $ServiceProviderCopyWith<$Res> {
+  _$ServiceProviderCopyWithImpl(this._value, this._then);
 
-  final Service_provider _value;
+  final ServiceProvider _value;
   // ignore: unused_field
-  final $Res Function(Service_provider) _then;
+  final $Res Function(ServiceProvider) _then;
 
   @override
   $Res call({
@@ -177,11 +138,11 @@ class _$Service_providerCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$Service_providerCopyWith<$Res>
-    implements $Service_providerCopyWith<$Res> {
-  factory _$Service_providerCopyWith(
-          _Service_provider value, $Res Function(_Service_provider) then) =
-      __$Service_providerCopyWithImpl<$Res>;
+abstract class _$$_ServiceProviderCopyWith<$Res>
+    implements $ServiceProviderCopyWith<$Res> {
+  factory _$$_ServiceProviderCopyWith(
+          _$_ServiceProvider value, $Res Function(_$_ServiceProvider) then) =
+      __$$_ServiceProviderCopyWithImpl<$Res>;
   @override
   $Res call(
       {@JsonKey(name: '_id') String? id,
@@ -199,15 +160,15 @@ abstract class _$Service_providerCopyWith<$Res>
 }
 
 /// @nodoc
-class __$Service_providerCopyWithImpl<$Res>
-    extends _$Service_providerCopyWithImpl<$Res>
-    implements _$Service_providerCopyWith<$Res> {
-  __$Service_providerCopyWithImpl(
-      _Service_provider _value, $Res Function(_Service_provider) _then)
-      : super(_value, (v) => _then(v as _Service_provider));
+class __$$_ServiceProviderCopyWithImpl<$Res>
+    extends _$ServiceProviderCopyWithImpl<$Res>
+    implements _$$_ServiceProviderCopyWith<$Res> {
+  __$$_ServiceProviderCopyWithImpl(
+      _$_ServiceProvider _value, $Res Function(_$_ServiceProvider) _then)
+      : super(_value, (v) => _then(v as _$_ServiceProvider));
 
   @override
-  _Service_provider get _value => super._value as _Service_provider;
+  _$_ServiceProvider get _value => super._value as _$_ServiceProvider;
 
   @override
   $Res call({
@@ -224,7 +185,7 @@ class __$Service_providerCopyWithImpl<$Res>
     Object? verificationDate = freezed,
     Object? verifiedByUID = freezed,
   }) {
-    return _then(_Service_provider(
+    return _then(_$_ServiceProvider(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -238,11 +199,11 @@ class __$Service_providerCopyWithImpl<$Res>
           : bio // ignore: cast_nullable_to_non_nullable
               as String?,
       specialties: specialties == freezed
-          ? _value.specialties
+          ? _value._specialties
           : specialties // ignore: cast_nullable_to_non_nullable
               as List<String>,
       preferredServiceType: preferredServiceType == freezed
-          ? _value.preferredServiceType
+          ? _value._preferredServiceType
           : preferredServiceType // ignore: cast_nullable_to_non_nullable
               as List<String>?,
       minSessionFee: minSessionFee == freezed
@@ -254,11 +215,11 @@ class __$Service_providerCopyWithImpl<$Res>
           : maxSessionFee // ignore: cast_nullable_to_non_nullable
               as double?,
       document: document == freezed
-          ? _value.document
+          ? _value._document
           : document // ignore: cast_nullable_to_non_nullable
               as List<Documents>,
       reviewerUIDs: reviewerUIDs == freezed
-          ? _value.reviewerUIDs
+          ? _value._reviewerUIDs
           : reviewerUIDs // ignore: cast_nullable_to_non_nullable
               as List<String>?,
       verified: verified == freezed
@@ -279,23 +240,27 @@ class __$Service_providerCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Service_provider implements _Service_provider {
-  _$_Service_provider(
+class _$_ServiceProvider implements _ServiceProvider {
+  _$_ServiceProvider(
       {@JsonKey(name: '_id') this.id,
       this.uID,
       this.bio,
-      required this.specialties,
-      this.preferredServiceType,
+      required final List<String> specialties,
+      final List<String>? preferredServiceType,
       this.minSessionFee,
       this.maxSessionFee,
-      required this.document,
-      this.reviewerUIDs,
+      required final List<Documents> document,
+      final List<String>? reviewerUIDs,
       required this.verified,
       this.verificationDate,
-      this.verifiedByUID});
+      this.verifiedByUID})
+      : _specialties = specialties,
+        _preferredServiceType = preferredServiceType,
+        _document = document,
+        _reviewerUIDs = reviewerUIDs;
 
-  factory _$_Service_provider.fromJson(Map<String, dynamic> json) =>
-      _$_$_Service_providerFromJson(json);
+  factory _$_ServiceProvider.fromJson(Map<String, dynamic> json) =>
+      _$$_ServiceProviderFromJson(json);
 
   @override
   @JsonKey(name: '_id')
@@ -304,18 +269,42 @@ class _$_Service_provider implements _Service_provider {
   final String? uID;
   @override
   final String? bio;
+  final List<String> _specialties;
   @override
-  final List<String> specialties;
+  List<String> get specialties {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_specialties);
+  }
+
+  final List<String>? _preferredServiceType;
   @override
-  final List<String>? preferredServiceType;
+  List<String>? get preferredServiceType {
+    final value = _preferredServiceType;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   final double? minSessionFee;
   @override
   final double? maxSessionFee;
+  final List<Documents> _document;
   @override
-  final List<Documents> document;
+  List<Documents> get document {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_document);
+  }
+
+  final List<String>? _reviewerUIDs;
   @override
-  final List<String>? reviewerUIDs;
+  List<String>? get reviewerUIDs {
+    final value = _reviewerUIDs;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   final verificationStatus verified;
   @override
@@ -325,120 +314,110 @@ class _$_Service_provider implements _Service_provider {
 
   @override
   String toString() {
-    return 'Service_provider(id: $id, uID: $uID, bio: $bio, specialties: $specialties, preferredServiceType: $preferredServiceType, minSessionFee: $minSessionFee, maxSessionFee: $maxSessionFee, document: $document, reviewerUIDs: $reviewerUIDs, verified: $verified, verificationDate: $verificationDate, verifiedByUID: $verifiedByUID)';
+    return 'ServiceProvider(id: $id, uID: $uID, bio: $bio, specialties: $specialties, preferredServiceType: $preferredServiceType, minSessionFee: $minSessionFee, maxSessionFee: $maxSessionFee, document: $document, reviewerUIDs: $reviewerUIDs, verified: $verified, verificationDate: $verificationDate, verifiedByUID: $verifiedByUID)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Service_provider &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.uID, uID) ||
-                const DeepCollectionEquality().equals(other.uID, uID)) &&
-            (identical(other.bio, bio) ||
-                const DeepCollectionEquality().equals(other.bio, bio)) &&
-            (identical(other.specialties, specialties) ||
-                const DeepCollectionEquality()
-                    .equals(other.specialties, specialties)) &&
-            (identical(other.preferredServiceType, preferredServiceType) ||
-                const DeepCollectionEquality().equals(
-                    other.preferredServiceType, preferredServiceType)) &&
-            (identical(other.minSessionFee, minSessionFee) ||
-                const DeepCollectionEquality()
-                    .equals(other.minSessionFee, minSessionFee)) &&
-            (identical(other.maxSessionFee, maxSessionFee) ||
-                const DeepCollectionEquality()
-                    .equals(other.maxSessionFee, maxSessionFee)) &&
-            (identical(other.document, document) ||
-                const DeepCollectionEquality()
-                    .equals(other.document, document)) &&
-            (identical(other.reviewerUIDs, reviewerUIDs) ||
-                const DeepCollectionEquality()
-                    .equals(other.reviewerUIDs, reviewerUIDs)) &&
-            (identical(other.verified, verified) ||
-                const DeepCollectionEquality()
-                    .equals(other.verified, verified)) &&
-            (identical(other.verificationDate, verificationDate) ||
-                const DeepCollectionEquality()
-                    .equals(other.verificationDate, verificationDate)) &&
-            (identical(other.verifiedByUID, verifiedByUID) ||
-                const DeepCollectionEquality()
-                    .equals(other.verifiedByUID, verifiedByUID)));
+        (other.runtimeType == runtimeType &&
+            other is _$_ServiceProvider &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.uID, uID) &&
+            const DeepCollectionEquality().equals(other.bio, bio) &&
+            const DeepCollectionEquality()
+                .equals(other._specialties, _specialties) &&
+            const DeepCollectionEquality()
+                .equals(other._preferredServiceType, _preferredServiceType) &&
+            const DeepCollectionEquality()
+                .equals(other.minSessionFee, minSessionFee) &&
+            const DeepCollectionEquality()
+                .equals(other.maxSessionFee, maxSessionFee) &&
+            const DeepCollectionEquality().equals(other._document, _document) &&
+            const DeepCollectionEquality()
+                .equals(other._reviewerUIDs, _reviewerUIDs) &&
+            const DeepCollectionEquality().equals(other.verified, verified) &&
+            const DeepCollectionEquality()
+                .equals(other.verificationDate, verificationDate) &&
+            const DeepCollectionEquality()
+                .equals(other.verifiedByUID, verifiedByUID));
   }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(uID) ^
-      const DeepCollectionEquality().hash(bio) ^
-      const DeepCollectionEquality().hash(specialties) ^
-      const DeepCollectionEquality().hash(preferredServiceType) ^
-      const DeepCollectionEquality().hash(minSessionFee) ^
-      const DeepCollectionEquality().hash(maxSessionFee) ^
-      const DeepCollectionEquality().hash(document) ^
-      const DeepCollectionEquality().hash(reviewerUIDs) ^
-      const DeepCollectionEquality().hash(verified) ^
-      const DeepCollectionEquality().hash(verificationDate) ^
-      const DeepCollectionEquality().hash(verifiedByUID);
 
   @JsonKey(ignore: true)
   @override
-  _$Service_providerCopyWith<_Service_provider> get copyWith =>
-      __$Service_providerCopyWithImpl<_Service_provider>(this, _$identity);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(uID),
+      const DeepCollectionEquality().hash(bio),
+      const DeepCollectionEquality().hash(_specialties),
+      const DeepCollectionEquality().hash(_preferredServiceType),
+      const DeepCollectionEquality().hash(minSessionFee),
+      const DeepCollectionEquality().hash(maxSessionFee),
+      const DeepCollectionEquality().hash(_document),
+      const DeepCollectionEquality().hash(_reviewerUIDs),
+      const DeepCollectionEquality().hash(verified),
+      const DeepCollectionEquality().hash(verificationDate),
+      const DeepCollectionEquality().hash(verifiedByUID));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_ServiceProviderCopyWith<_$_ServiceProvider> get copyWith =>
+      __$$_ServiceProviderCopyWithImpl<_$_ServiceProvider>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_Service_providerToJson(this);
+    return _$$_ServiceProviderToJson(
+      this,
+    );
   }
 }
 
-abstract class _Service_provider implements Service_provider {
-  factory _Service_provider(
-      {@JsonKey(name: '_id') String? id,
-      String? uID,
-      String? bio,
-      required List<String> specialties,
-      List<String>? preferredServiceType,
-      double? minSessionFee,
-      double? maxSessionFee,
-      required List<Documents> document,
-      List<String>? reviewerUIDs,
-      required verificationStatus verified,
-      DateTime? verificationDate,
-      String? verifiedByUID}) = _$_Service_provider;
+abstract class _ServiceProvider implements ServiceProvider {
+  factory _ServiceProvider(
+      {@JsonKey(name: '_id') final String? id,
+      final String? uID,
+      final String? bio,
+      required final List<String> specialties,
+      final List<String>? preferredServiceType,
+      final double? minSessionFee,
+      final double? maxSessionFee,
+      required final List<Documents> document,
+      final List<String>? reviewerUIDs,
+      required final verificationStatus verified,
+      final DateTime? verificationDate,
+      final String? verifiedByUID}) = _$_ServiceProvider;
 
-  factory _Service_provider.fromJson(Map<String, dynamic> json) =
-      _$_Service_provider.fromJson;
+  factory _ServiceProvider.fromJson(Map<String, dynamic> json) =
+      _$_ServiceProvider.fromJson;
 
   @override
   @JsonKey(name: '_id')
-  String? get id => throw _privateConstructorUsedError;
+  String? get id;
   @override
-  String? get uID => throw _privateConstructorUsedError;
+  String? get uID;
   @override
-  String? get bio => throw _privateConstructorUsedError;
+  String? get bio;
   @override
-  List<String> get specialties => throw _privateConstructorUsedError;
+  List<String> get specialties;
   @override
-  List<String>? get preferredServiceType => throw _privateConstructorUsedError;
+  List<String>? get preferredServiceType;
   @override
-  double? get minSessionFee => throw _privateConstructorUsedError;
+  double? get minSessionFee;
   @override
-  double? get maxSessionFee => throw _privateConstructorUsedError;
+  double? get maxSessionFee;
   @override
-  List<Documents> get document => throw _privateConstructorUsedError;
+  List<Documents> get document;
   @override
-  List<String>? get reviewerUIDs => throw _privateConstructorUsedError;
+  List<String>? get reviewerUIDs;
   @override
-  verificationStatus get verified => throw _privateConstructorUsedError;
+  verificationStatus get verified;
   @override
-  DateTime? get verificationDate => throw _privateConstructorUsedError;
+  DateTime? get verificationDate;
   @override
-  String? get verifiedByUID => throw _privateConstructorUsedError;
+  String? get verifiedByUID;
   @override
   @JsonKey(ignore: true)
-  _$Service_providerCopyWith<_Service_provider> get copyWith =>
+  _$$_ServiceProviderCopyWith<_$_ServiceProvider> get copyWith =>
       throw _privateConstructorUsedError;
 }

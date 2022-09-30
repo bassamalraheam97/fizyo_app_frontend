@@ -26,6 +26,13 @@ class UserFormStateSubmitting extends UserFormState {
   List<Object?> get props => [super.value, super.currentStep, super.totalSteps];
 }
 
+class UserFormStateProceed extends UserFormState {
+  UserFormStateProceed(super.value, super.currentStep, super.totalSteps);
+
+  @override
+  List<Object?> get props => [super.value, super.currentStep, super.totalSteps];
+}
+
 class UserFormStateSuccess extends UserFormState {
   UserFormStateSuccess(super.value, super.currentStep, super.totalSteps);
 

@@ -2,6 +2,7 @@
 
 import 'dart:io';
 
+import 'package:bot_toast/bot_toast.dart';
 import 'package:fizyo_app_frontend/src/presentation/widgets/stepper.dart';
 import 'package:fizyo_app_frontend/src/presentation/widgets/title_description.dart';
 import 'package:fizyo_app_frontend/src/users_managments/blocs/email_ver_bloc/email_ver_bloc.dart';
@@ -166,7 +167,18 @@ class RegisterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //==============================================================================
-    return BlocBuilder<UserFormBloc, UserFormState>(builder: (context, state) {
+    return BlocBuilder<UserFormBloc, UserFormState>(
+        //   listener: (context, state) {
+        // BotToast.cleanAll();
+        // if (state is UserFormStateSubmitting) {
+        //   BotToast.showLoading();
+        // } else if (state is UserFormStateFailure) {
+        //   BotToast.showText(text: state.errorMassage);
+        // } else if (state is UserFormStateSuccess) {
+        //   BotToast.showText(text: "success");
+        // }
+        // },
+        builder: (context, state) {
       return BlocBuilder<EmailVerBloc, EmailVerState>(
         builder: (Econtext, Estate) {
           return Scaffold(
@@ -234,8 +246,8 @@ class RegisterPage extends StatelessWidget {
                                       .control('phoneNumber')
                                       .value
                                       .toString();
-                                  Econtext.read<EmailVerBloc>()
-                                      .add(EmailVerEventSend('552055'));
+                                  // Econtext.read<EmailVerBloc>()
+                                  //     .add(EmailVerEventSend('552055'));
                                   print(Estate.verificationCode);
                                 } else if (state.currentStep == (2)) {
                                   next = true;
@@ -272,6 +284,10 @@ class RegisterPage extends StatelessWidget {
                                   data.addAll(form.value);
                                   print(
                                       '${data} -------------------------------------');
+                                } else if (state.currentStep == (8)) {
+                                  context.read<UserFormBloc>().add(
+                                      UserFormEventSubmit(
+                                          form, state.currentStep));
                                 }
                                 if (next) {
                                   context.read<UserFormBloc>().add(

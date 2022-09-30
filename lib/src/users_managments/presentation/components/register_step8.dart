@@ -212,30 +212,10 @@ class RegisterStep8 extends StatelessWidget {
                                     fileName.substring(
                                         fileName.lastIndexOf('.') + 1,
                                         fileName.length),
-                                    _pickedFile
+                                    _pickedFile.toString()
                                   ]),
                                 });
-                                // form.control('attachmentName').updateValue([
-                                //   {
-                                //     'id': count.toString(),
-                                //     'url': _pickedFile!.uri.toFilePath(),
-                                //     'name': FormControl<String>(
-                                //         value: form
-                                //             .control('tempName')
-                                //             .value
-                                //             .toString()),
-                                //     'type': fileName.substring(
-                                //         fileName.lastIndexOf('.') + 1,
-                                //         fileName.length),
-                                //     'file': _pickedFile
-                                //   }
-                                // ]);
-                                // FormGroup f =
-                                //     form.control('attachmentName') as FormGroup;
-                                print(
-                                    // '${f.control('name').value} mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm'
-                                    '........................................................................');
-                                // form.addAll({'attachmentName': FormControl({})});
+
                                 form.control('tempName').updateValue('');
                                 context.read<UploadFilesWidgetBloc>().add(
                                       UploadFilesWidgetEventChange(

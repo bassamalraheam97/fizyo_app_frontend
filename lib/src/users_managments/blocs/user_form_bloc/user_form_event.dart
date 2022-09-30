@@ -1,9 +1,10 @@
 import 'package:equatable/equatable.dart';
+import 'package:reactive_forms/reactive_forms.dart';
 
 abstract class UserFormEvent extends Equatable {}
 
 class UserFormEventSubmit extends UserFormEvent {
-  final Map<String, dynamic> formData;
+  final FormGroup formData;
   final int currentStep;
   UserFormEventSubmit(this.formData, this.currentStep);
   @override

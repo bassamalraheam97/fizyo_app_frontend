@@ -12,7 +12,7 @@ class Client with _$Client {
     String? uID,
     required PreferredServiceType preferredServiceType,
     required List<String> diseases,
-    required Map<String, Object> preferences,
+    required Map<String, dynamic> preferences,
   }) = _Client;
   factory Client.fromJson(Map<String, dynamic> json) => _$ClientFromJson(json);
 }

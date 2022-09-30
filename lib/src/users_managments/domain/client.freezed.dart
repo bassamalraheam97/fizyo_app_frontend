@@ -1,5 +1,7 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'client.dart';
 
@@ -10,38 +12,11 @@ part of 'client.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 Client _$ClientFromJson(Map<String, dynamic> json) {
   return _Client.fromJson(json);
 }
-
-/// @nodoc
-class _$ClientTearOff {
-  const _$ClientTearOff();
-
-  _Client call(
-      {@JsonKey(name: '_id') String? id,
-      String? uID,
-      required PreferredServiceType preferredServiceType,
-      required List<String> diseases,
-      required Map<String, Object> preferences}) {
-    return _Client(
-      id: id,
-      uID: uID,
-      preferredServiceType: preferredServiceType,
-      diseases: diseases,
-      preferences: preferences,
-    );
-  }
-
-  Client fromJson(Map<String, Object> json) {
-    return Client.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $Client = _$ClientTearOff();
 
 /// @nodoc
 mixin _$Client {
@@ -51,7 +26,7 @@ mixin _$Client {
   PreferredServiceType get preferredServiceType =>
       throw _privateConstructorUsedError;
   List<String> get diseases => throw _privateConstructorUsedError;
-  Map<String, Object> get preferences => throw _privateConstructorUsedError;
+  Map<String, dynamic> get preferences => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -67,7 +42,7 @@ abstract class $ClientCopyWith<$Res> {
       String? uID,
       PreferredServiceType preferredServiceType,
       List<String> diseases,
-      Map<String, Object> preferences});
+      Map<String, dynamic> preferences});
 }
 
 /// @nodoc
@@ -106,32 +81,32 @@ class _$ClientCopyWithImpl<$Res> implements $ClientCopyWith<$Res> {
       preferences: preferences == freezed
           ? _value.preferences
           : preferences // ignore: cast_nullable_to_non_nullable
-              as Map<String, Object>,
+              as Map<String, dynamic>,
     ));
   }
 }
 
 /// @nodoc
-abstract class _$ClientCopyWith<$Res> implements $ClientCopyWith<$Res> {
-  factory _$ClientCopyWith(_Client value, $Res Function(_Client) then) =
-      __$ClientCopyWithImpl<$Res>;
+abstract class _$$_ClientCopyWith<$Res> implements $ClientCopyWith<$Res> {
+  factory _$$_ClientCopyWith(_$_Client value, $Res Function(_$_Client) then) =
+      __$$_ClientCopyWithImpl<$Res>;
   @override
   $Res call(
       {@JsonKey(name: '_id') String? id,
       String? uID,
       PreferredServiceType preferredServiceType,
       List<String> diseases,
-      Map<String, Object> preferences});
+      Map<String, dynamic> preferences});
 }
 
 /// @nodoc
-class __$ClientCopyWithImpl<$Res> extends _$ClientCopyWithImpl<$Res>
-    implements _$ClientCopyWith<$Res> {
-  __$ClientCopyWithImpl(_Client _value, $Res Function(_Client) _then)
-      : super(_value, (v) => _then(v as _Client));
+class __$$_ClientCopyWithImpl<$Res> extends _$ClientCopyWithImpl<$Res>
+    implements _$$_ClientCopyWith<$Res> {
+  __$$_ClientCopyWithImpl(_$_Client _value, $Res Function(_$_Client) _then)
+      : super(_value, (v) => _then(v as _$_Client));
 
   @override
-  _Client get _value => super._value as _Client;
+  _$_Client get _value => super._value as _$_Client;
 
   @override
   $Res call({
@@ -141,7 +116,7 @@ class __$ClientCopyWithImpl<$Res> extends _$ClientCopyWithImpl<$Res>
     Object? diseases = freezed,
     Object? preferences = freezed,
   }) {
-    return _then(_Client(
+    return _then(_$_Client(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -155,13 +130,13 @@ class __$ClientCopyWithImpl<$Res> extends _$ClientCopyWithImpl<$Res>
           : preferredServiceType // ignore: cast_nullable_to_non_nullable
               as PreferredServiceType,
       diseases: diseases == freezed
-          ? _value.diseases
+          ? _value._diseases
           : diseases // ignore: cast_nullable_to_non_nullable
               as List<String>,
       preferences: preferences == freezed
-          ? _value.preferences
+          ? _value._preferences
           : preferences // ignore: cast_nullable_to_non_nullable
-              as Map<String, Object>,
+              as Map<String, dynamic>,
     ));
   }
 }
@@ -173,11 +148,13 @@ class _$_Client implements _Client {
       {@JsonKey(name: '_id') this.id,
       this.uID,
       required this.preferredServiceType,
-      required this.diseases,
-      required this.preferences});
+      required final List<String> diseases,
+      required final Map<String, dynamic> preferences})
+      : _diseases = diseases,
+        _preferences = preferences;
 
   factory _$_Client.fromJson(Map<String, dynamic> json) =>
-      _$_$_ClientFromJson(json);
+      _$$_ClientFromJson(json);
 
   @override
   @JsonKey(name: '_id')
@@ -186,10 +163,19 @@ class _$_Client implements _Client {
   final String? uID;
   @override
   final PreferredServiceType preferredServiceType;
+  final List<String> _diseases;
   @override
-  final List<String> diseases;
+  List<String> get diseases {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_diseases);
+  }
+
+  final Map<String, dynamic> _preferences;
   @override
-  final Map<String, Object> preferences;
+  Map<String, dynamic> get preferences {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_preferences);
+  }
 
   @override
   String toString() {
@@ -199,65 +185,63 @@ class _$_Client implements _Client {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Client &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.uID, uID) ||
-                const DeepCollectionEquality().equals(other.uID, uID)) &&
-            (identical(other.preferredServiceType, preferredServiceType) ||
-                const DeepCollectionEquality().equals(
-                    other.preferredServiceType, preferredServiceType)) &&
-            (identical(other.diseases, diseases) ||
-                const DeepCollectionEquality()
-                    .equals(other.diseases, diseases)) &&
-            (identical(other.preferences, preferences) ||
-                const DeepCollectionEquality()
-                    .equals(other.preferences, preferences)));
+        (other.runtimeType == runtimeType &&
+            other is _$_Client &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.uID, uID) &&
+            const DeepCollectionEquality()
+                .equals(other.preferredServiceType, preferredServiceType) &&
+            const DeepCollectionEquality().equals(other._diseases, _diseases) &&
+            const DeepCollectionEquality()
+                .equals(other._preferences, _preferences));
   }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(uID) ^
-      const DeepCollectionEquality().hash(preferredServiceType) ^
-      const DeepCollectionEquality().hash(diseases) ^
-      const DeepCollectionEquality().hash(preferences);
 
   @JsonKey(ignore: true)
   @override
-  _$ClientCopyWith<_Client> get copyWith =>
-      __$ClientCopyWithImpl<_Client>(this, _$identity);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(uID),
+      const DeepCollectionEquality().hash(preferredServiceType),
+      const DeepCollectionEquality().hash(_diseases),
+      const DeepCollectionEquality().hash(_preferences));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_ClientCopyWith<_$_Client> get copyWith =>
+      __$$_ClientCopyWithImpl<_$_Client>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_ClientToJson(this);
+    return _$$_ClientToJson(
+      this,
+    );
   }
 }
 
 abstract class _Client implements Client {
   factory _Client(
-      {@JsonKey(name: '_id') String? id,
-      String? uID,
-      required PreferredServiceType preferredServiceType,
-      required List<String> diseases,
-      required Map<String, Object> preferences}) = _$_Client;
+      {@JsonKey(name: '_id') final String? id,
+      final String? uID,
+      required final PreferredServiceType preferredServiceType,
+      required final List<String> diseases,
+      required final Map<String, dynamic> preferences}) = _$_Client;
 
   factory _Client.fromJson(Map<String, dynamic> json) = _$_Client.fromJson;
 
   @override
   @JsonKey(name: '_id')
-  String? get id => throw _privateConstructorUsedError;
+  String? get id;
   @override
-  String? get uID => throw _privateConstructorUsedError;
+  String? get uID;
   @override
-  PreferredServiceType get preferredServiceType =>
-      throw _privateConstructorUsedError;
+  PreferredServiceType get preferredServiceType;
   @override
-  List<String> get diseases => throw _privateConstructorUsedError;
+  List<String> get diseases;
   @override
-  Map<String, Object> get preferences => throw _privateConstructorUsedError;
+  Map<String, dynamic> get preferences;
   @override
   @JsonKey(ignore: true)
-  _$ClientCopyWith<_Client> get copyWith => throw _privateConstructorUsedError;
+  _$$_ClientCopyWith<_$_Client> get copyWith =>
+      throw _privateConstructorUsedError;
 }

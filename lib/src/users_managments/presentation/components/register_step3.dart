@@ -34,8 +34,8 @@ class RegisterStep3 extends StatelessWidget {
           ),
           MultiSelectCard(
               selected:
-                  form.control('accountType').value == 'EM' ? true : false,
-              value: 'EM',
+                  form.control('accountType').value == 'PA' ? true : false,
+              value: 'PA',
               child: PatientPhysioCard(
                 typeCard: 'physio',
               )),

@@ -1,11 +1,13 @@
 import 'package:bloc/bloc.dart';
 import 'package:fizyo_app_frontend/src/users_managments/blocs/user_form_bloc/user_form_event.dart';
 import 'package:fizyo_app_frontend/src/users_managments/blocs/user_form_bloc/user_form_state.dart';
+import 'package:fizyo_app_frontend/src/users_managments/data/user_repository.dart';
 
 class UserFormBloc extends Bloc<UserFormEvent, UserFormState> {
   // final AccountsService _accountsService;
   // UserFormBloc(this._accountsService)
   // final
+  //final UserRepository _userRepository;
   UserFormBloc() : super(const UserFormStateInitial(1 / 8, 1, 8)) {
     on<UserFormEventSubmit>((event, emit) async {
       emit(

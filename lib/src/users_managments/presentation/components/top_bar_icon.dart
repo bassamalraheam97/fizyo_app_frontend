@@ -11,6 +11,7 @@ class TopBarRegIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Container(color: Colors.white,
+    height: size.height*0.1,
       child: Column(
         children: [
           Stack(

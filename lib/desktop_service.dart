@@ -7,12 +7,12 @@ import 'package:fizyo_app_frontend/src/users_managments/presentation/components/
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
-
-
+import 'package:reactive_date_time_picker/reactive_date_time_picker.dart';
+import 'package:reactive_forms/reactive_forms.dart';
 
 class DesktopServices extends StatelessWidget {
   const DesktopServices({super.key});
-
+  
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -20,7 +20,11 @@ class DesktopServices extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            TopBarRegIcon(icon: Icon(Icons.person,size: 35.0,)),
+            const TopBarRegIcon(
+                icon: Icon(
+              Icons.person,
+              size: 35.0,
+            )),
             NavBar(),
             Container(
               color: const Color(0xFFFFFFFF),
@@ -29,10 +33,12 @@ class DesktopServices extends StatelessWidget {
                   flex: 2,
                   child: Column(
                     children: [
-                      Image.asset(
-                        'images/Component21.png',
-                        fit: BoxFit.contain,
-                      ),
+
+                       Image.asset(
+                          'images/Component21.png',
+                          fit: BoxFit.contain,
+                        ),
+                      
                       Padding(
                         padding: EdgeInsets.only(
                           top: size.height * 0.03,
@@ -48,7 +54,7 @@ class DesktopServices extends StatelessWidget {
                                   Text(
                                     '+500',
                                     style:
-                                        TextStyle(fontSize: size.width * 0.01),
+                                        TextStyle(fontSize: size.width * 0.02),
                                   ),
                                   Text('Patients',
                                       style: TextStyle(
@@ -65,7 +71,7 @@ class DesktopServices extends StatelessWidget {
                                   Text(
                                     '5',
                                     style:
-                                        TextStyle(fontSize: size.width * 0.01),
+                                        TextStyle(fontSize: size.width * 0.02),
                                   ),
                                   Text('Sessions',
                                       style: TextStyle(
@@ -82,7 +88,7 @@ class DesktopServices extends StatelessWidget {
                                   Text(
                                     '10 years',
                                     style:
-                                        TextStyle(fontSize: size.width * 0.01),
+                                        TextStyle(fontSize: size.width * 0.02),
                                   ),
                                   Text('Expiriance',
                                       style: TextStyle(
@@ -99,7 +105,7 @@ class DesktopServices extends StatelessWidget {
                                   Text(
                                     " 40\$ to 80\$",
                                     style:
-                                        TextStyle(fontSize: size.width * 0.01),
+                                        TextStyle(fontSize: size.width * 0.02),
                                   ),
                                   Text('Price',
                                       style: TextStyle(
@@ -125,7 +131,7 @@ class DesktopServices extends StatelessWidget {
                                 )
                               ],
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 40,
                             ),
                             Expanded(
@@ -139,7 +145,7 @@ class DesktopServices extends StatelessWidget {
                                           border: Border.all(
                                             color: Colors.black,
                                           ),
-                                          borderRadius: BorderRadius.all(
+                                          borderRadius: const BorderRadius.all(
                                               Radius.circular(15))),
                                       child: Padding(
                                         padding: const EdgeInsets.fromLTRB(
@@ -147,9 +153,9 @@ class DesktopServices extends StatelessWidget {
                                         child: Center(
                                             child: Column(
                                           children: [
-                                            Text(
+                                            const Text(
                                                 'Detailed explanation of the doctor'),
-                                            Text(
+                                            const Text(
                                                 'Detailed explanation of the doctor'),
                                             TextButton(
                                                 onPressed: () {},
@@ -177,24 +183,30 @@ class DesktopServices extends StatelessWidget {
                             Column(
                               children: [
                                 Container(
-                                  width: size.width * 0.1,
-                                  height: size.height * 0.04,
+                                  width: size.width * 0.09,
+                                  height: 
+                                  // 35,
+                                  size.height * 0.05,
                                   decoration: BoxDecoration(
                                       color: Colors.blue[900],
                                       border: Border.all(
                                         color: Colors.black,
                                       ),
-                                      borderRadius: BorderRadius.all(
+                                      borderRadius: const BorderRadius.all(
                                           Radius.circular(15))),
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     crossAxisAlignment:
                                         CrossAxisAlignment.center,
                                     children: [
-                                      Text(
+                                      TextButton(onPressed: () {
+                                        
+                                      },
+                                        child:const Text(
                                         'Set a date',
-                                        style: TextStyle(color: Colors.white),
+                                        style: TextStyle(color: Colors.white),)
                                       ),
+                                      Spacer(),
                                     ],
                                   ),
                                 ),
@@ -207,25 +219,12 @@ class DesktopServices extends StatelessWidget {
                     ],
                   ),
                 ),
-                
-                // Container(
-                //                   width: 10,
-                //                   height: size.height-30.0 ,
-                //                   decoration: BoxDecoration(
-                //                       color: Colors.grey[500],
-                                      
-                //                       borderRadius: BorderRadius.all(
-                //                           Radius.circular(10))),
-                //                   child: SizedBox(
-                                    
-                //                   ),
-                //                 ),
-                
+
                 Expanded(
                   flex: 1,
                   child: SingleChildScrollView(
                     child: Column(
-                      children: [
+                      children: const [
                         RightSideServices(image: ""),
                         // Divider(
                         //       thickness: 5,
@@ -244,7 +243,7 @@ class DesktopServices extends StatelessWidget {
                 ),
               ]),
             ),
-            BottomBar(),
+            const BottomBar(),
           ],
         ),
       ),

@@ -49,6 +49,7 @@ dependencies:
   reactive_forms: ^14.1.0
   email_auth: ^1.0.0
   file_picker: ^5.2.0+1
+  reactive_date_time_picker: ^0.5.0
 
 dev_dependencies:
   build_runner: ^2.2.0

@@ -4,6 +4,7 @@ import 'package:fizyo_app_frontend/src/users_managments/application/accounts_ser
 
 import 'package:fizyo_app_frontend/src/users_managments/blocs/user_form_bloc/user_form_event.dart';
 import 'package:fizyo_app_frontend/src/users_managments/blocs/user_form_bloc/user_form_state.dart';
+
 import 'package:reactive_forms/reactive_forms.dart';
 
 class UserFormBloc extends Bloc<UserFormEvent, UserFormState> {
@@ -20,6 +21,7 @@ class UserFormBloc extends Bloc<UserFormEvent, UserFormState> {
   final AccountsService _accountsService;
   UserFormBloc(this._accountsService)
       : super(UserFormStateInitial(1 / 8, 1, 8)) {
+
     on<UserFormEventSubmit>((event, emit) async {
       emit(
           UserFormStateSubmitting(event.currentStep / 8, event.currentStep, 8));

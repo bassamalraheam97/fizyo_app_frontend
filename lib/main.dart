@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:fizyo_app_frontend/desktop_register.dart';
 import 'package:fizyo_app_frontend/mobil.dart';
+
 import 'package:fizyo_app_frontend/src/presentation/widgets/image_viewer.dart';
 import 'package:fizyo_app_frontend/src/presentation/widgets/title_description.dart';
 import 'package:fizyo_app_frontend/src/users_managments/blocs/ui_change_bloc/ui_change_bloc.dart';
@@ -14,13 +15,14 @@ import 'package:fizyo_app_frontend/src/users_managments/data/s_provider_reposito
 import 'package:fizyo_app_frontend/src/users_managments/domain/service_provider.dart';
 import 'package:fizyo_app_frontend/src/users_managments/presentation/components/layout.dart';
 import 'package:fizyo_app_frontend/src/users_managments/presentation/pages/register_page.dart';
+
 import 'package:fizyo_app_frontend/theme/color_schemes.g.dart';
 import 'package:fizyo_app_frontend/theme/custom_color.g.dart';
 import 'package:fizyo_app_frontend/user_form_observer.dart';
 import 'package:flutter/material.dart';
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import './src/presentation/widgets/stepper.dart';
+
 
 void main() {
   Bloc.observer = UserFormObserver();
@@ -50,7 +52,7 @@ class MyApp extends StatelessWidget {
         lightScheme = lightColorScheme;
         darkScheme = darkColorScheme;
       }
-
+      final botToastBuilder = BotToastInit();
       return MaterialApp(
         theme: ThemeData(
           useMaterial3: true,
@@ -65,6 +67,7 @@ class MyApp extends StatelessWidget {
           extensions: [darkCustomColors],
           fontFamily: 'Recoleta',
         ),
+
         navigatorObservers: [BotToastNavigatorObserver()],
         debugShowCheckedModeBanner: false,
         home: LayoutSelection(
@@ -73,5 +76,69 @@ class MyApp extends StatelessWidget {
         ),
       );
     });
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({Key? key, required this.title}) : super(key: key);
+
+  // This widget is the home page of your application. It is stateful, meaning
+  // that it has a State object (defined below) that contains fields that affect
+  // how it looks.
+
+  // This class is the configuration for the state. It holds the values (in this
+  // case the title) provided by the parent (in this case the App widget) and
+  // used by the build method of the State. Fields in a Widget subclass are
+  // always marked "final".
+
+  final String title;
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  late User user;
+  late UserRepository _userRepository;
+  @override
+  void initState() {
+    super.initState();
+    var options = BaseOptions(
+      baseUrl: 'http://192.168.1.9:8000',
+      connectTimeout: 5000,
+      receiveTimeout: 3000,
+    );
+    Dio dio = Dio(options);
+
+    _userRepository = HttpUserRepository(client: dio);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text(widget.title),
+        ),
+        body: SafeArea(
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: MultiBlocProvider(
+                providers: [
+                  // BlocProvider(
+                  //   create: (context) => UserFormBloc(
+                  //       AccountsService(userRepository: _userRepository)),
+                  // ),
+                  BlocProvider(
+                    create: (context) => AuthBloc(_userRepository)
+                      ..add(AuthEventCheckCurrentState()),
+                  ),
+                ],
+                child: LoginPage(),
+              ),
+            ),
+          ),
+          // This trailing comma makes auto-formatting nicer for build methods.
+        ));
   }
 }

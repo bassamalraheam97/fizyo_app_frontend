@@ -1,11 +1,7 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
-import 'package:fizyo_app_frontend/src/users_managments/blocs/user_form_bloc/user_form_bloc.dart';
-import 'package:fizyo_app_frontend/src/users_managments/presentation/pages/regester_page2.dart';
 import 'package:flutter/material.dart';
 import 'package:fizyo_app_frontend/src/presentation/widgets/form_text_field.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:reactive_forms/reactive_forms.dart';
 
 // final FormGroup form = FormGroup({
 //   'firstName': FormControl<String>(

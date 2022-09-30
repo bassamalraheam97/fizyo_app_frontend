@@ -23,6 +23,7 @@ import 'package:fizyo_app_frontend/src/users_managments/presentation/components/
 import 'package:fizyo_app_frontend/src/users_managments/presentation/components/register_step7e.dart';
 import 'package:fizyo_app_frontend/src/users_managments/presentation/components/register_step7p.dart';
 import 'package:fizyo_app_frontend/src/users_managments/presentation/components/register_step8.dart';
+import 'package:fizyo_app_frontend/src/users_managments/presentation/pages/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:reactive_forms/reactive_forms.dart';
@@ -305,6 +306,50 @@ class RegisterPage extends StatelessWidget {
                               ),
                             ),
                           ),
+                          state.currentStep == 1
+                              ? Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'Already have account?',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyMedium!
+                                          .copyWith(
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .outline,
+                                            fontWeight: FontWeight.w400,
+                                            fontSize: 14,
+                                          ),
+                                    ),
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (_) => LoginPage(
+                                                      showBack: true,
+                                                      context: context,
+                                                    )));
+                                      },
+                                      child: Text(
+                                        ' Login',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyMedium!
+                                            .copyWith(
+                                              color: Theme.of(context)
+                                                  .colorScheme
+                                                  .secondary,
+                                              fontWeight: FontWeight.w700,
+                                              fontSize: 14,
+                                            ),
+                                      ),
+                                    ),
+                                  ],
+                                )
+                              : SizedBox(),
                         ],
                       );
                     }),

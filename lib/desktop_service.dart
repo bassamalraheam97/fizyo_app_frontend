@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:fizyo_app_frontend/src/presentation/widgets/right_side_service.dart';
 import 'package:fizyo_app_frontend/src/users_managments/presentation/components/bottom_bar.dart';
 import 'package:fizyo_app_frontend/src/users_managments/presentation/components/nav_bar.dart';
@@ -7,8 +5,6 @@ import 'package:fizyo_app_frontend/src/users_managments/presentation/components/
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
-
-
 
 class DesktopServices extends StatelessWidget {
   const DesktopServices({super.key});
@@ -20,7 +16,11 @@ class DesktopServices extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            TopBarRegIcon(icon: Icon(Icons.person,size: 35.0,)),
+            TopBarRegIcon(
+                icon: Icon(
+              Icons.person,
+              size: 35.0,
+            )),
             NavBar(),
             Container(
               color: const Color(0xFFFFFFFF),
@@ -207,20 +207,20 @@ class DesktopServices extends StatelessWidget {
                     ],
                   ),
                 ),
-                
+
                 // Container(
                 //                   width: 10,
                 //                   height: size.height-30.0 ,
                 //                   decoration: BoxDecoration(
                 //                       color: Colors.grey[500],
-                                      
+
                 //                       borderRadius: BorderRadius.all(
                 //                           Radius.circular(10))),
                 //                   child: SizedBox(
-                                    
+
                 //                   ),
                 //                 ),
-                
+
                 Expanded(
                   flex: 1,
                   child: SingleChildScrollView(

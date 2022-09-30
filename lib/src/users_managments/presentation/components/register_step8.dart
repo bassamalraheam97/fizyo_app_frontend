@@ -1,7 +1,11 @@
 import 'dart:io';
 
 import 'package:fizyo_app_frontend/src/presentation/widgets/form_text_field.dart';
+import 'package:fizyo_app_frontend/src/users_managments/blocs/upload_files_widget_bloc/upload_files_widget_bloc.dart';
+import 'package:fizyo_app_frontend/src/users_managments/blocs/upload_files_widget_bloc/upload_files_widget_event.dart';
+import 'package:fizyo_app_frontend/src/users_managments/blocs/upload_files_widget_bloc/upload_files_widget_state.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:reactive_range_slider/reactive_range_slider.dart';
 
 import 'package:open_file/open_file.dart';
@@ -17,24 +21,21 @@ class RegisterStep8 extends StatelessWidget {
     // required this.onChanged,
     required this.form,
   });
-
+  int count = 0;
   File? _pickedFile;
+  late FormGroup f;
 
   @override
   Widget build(BuildContext context) {
-    void _openFile() async {
-      await OpenFile.open(
-        form.control('attachmentName.url').value.toString(),
-        // type: form.control('attachmentName.type').value.toString(),
-      );
-    }
-
-    void _deleteFile() async {
-      form.control('attachmentName').updateValue({
-        'url': '',
-        'name': '',
-        'type': '',
-      });
+    void deleteFile(int count) async {
+      f = form.control('attachmentName') as FormGroup;
+      f.control('name$count').updateValue('');
+      f.control('fileInfo$count').updateValue(['']);
+      print(f.value);
+      context.read<UploadFilesWidgetBloc>().add(
+            UploadFilesWidgetEventChange(
+                form.control('attachmentName').value, deleteFile),
+          );
     }
 
     return FormField<File>(
@@ -118,6 +119,7 @@ class RegisterStep8 extends StatelessWidget {
                               double.parse(form.control('max').value)),
                         );
                     print(control);
+                    // form.control('attachmentName').updateValue();
                   },
                 ),
               ),
@@ -139,130 +141,121 @@ class RegisterStep8 extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 10),
-          Row(
-            children: [
-              Expanded(
-                child: SizedBox(
-                  // width: 229,
-                  height: 40,
-                  child: ReactiveTextField(
-                    formControlName: 'certificate',
-                    decoration: InputDecoration(
-                      labelText: 'Certificate',
-                      labelStyle: Theme.of(context)
-                          .textTheme
-                          .bodyLarge
-                          ?.copyWith(
-                              color:
-                                  Theme.of(context).colorScheme.onBackground),
-                      border: const OutlineInputBorder(
-                          borderSide: BorderSide.none,
-                          borderRadius:
-                              BorderRadius.all(Radius.circular(15.0))),
-                      fillColor: Theme.of(context).colorScheme.surfaceVariant,
-                      filled: true,
+          BlocBuilder<UploadFilesWidgetBloc, UploadFilesWidgetState>(
+              builder: (fiContext, fiState) {
+            return Column(
+              children: [
+                ...fiState.listWidget.map((e) => e),
+                Row(
+                  children: [
+                    Expanded(
+                      child: SizedBox(
+                        // width: 229,
+                        height: 40,
+                        child: ReactiveTextField(
+                          formControlName: 'tempName',
+                          decoration: InputDecoration(
+                            labelText: 'Attachment Name',
+                            labelStyle: Theme.of(context)
+                                .textTheme
+                                .bodyLarge
+                                ?.copyWith(
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .onBackground),
+                            border: const OutlineInputBorder(
+                                borderSide: BorderSide.none,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(15.0))),
+                            fillColor:
+                                Theme.of(context).colorScheme.surfaceVariant,
+                            filled: true,
+                          ),
+                        ),
+                      ),
                     ),
-                  ),
-                ),
-              ),
-              Container(
-                height: 40,
-                width: 40,
-                margin: EdgeInsets.all(4),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  color: Theme.of(context).colorScheme.tertiary,
-                ),
-                child: IconButton(
-                    onPressed: () {
-                      _openFile();
-                    },
-                    icon: Icon(
-                      CupertinoIcons.eye,
-                      color: Color(0xffF7F9FB),
-                    )),
-              ),
-              Container(
-                height: 40,
-                width: 40,
-                margin: EdgeInsets.all(4),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  color: Theme.of(context).colorScheme.error,
-                ),
-                child: IconButton(
-                    onPressed: () {
-                      _deleteFile();
-                    },
-                    icon: Icon(
-                      CupertinoIcons.delete,
-                      color: Color(0xffF7F9FB),
-                    )),
-              ),
-            ],
-          ),
-          Row(
-            children: [
-              Expanded(
-                child: SizedBox(
-                  // width: 229,
-                  height: 40,
-                  child: ReactiveTextField(
-                    formControlName: 'attachmentName.name',
-                    decoration: InputDecoration(
-                      labelText: 'Attachment Name',
-                      labelStyle: Theme.of(context)
-                          .textTheme
-                          .bodyLarge
-                          ?.copyWith(
-                              color:
-                                  Theme.of(context).colorScheme.onBackground),
-                      border: const OutlineInputBorder(
-                          borderSide: BorderSide.none,
-                          borderRadius:
-                              BorderRadius.all(Radius.circular(15.0))),
-                      fillColor: Theme.of(context).colorScheme.surfaceVariant,
-                      filled: true,
+                    Container(
+                      height: 40,
+                      width: 83.33,
+                      margin: EdgeInsets.all(4),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                        color: Theme.of(context).colorScheme.secondary,
+                      ),
+                      child: IconButton(
+                          onPressed: () async {
+                            if (form
+                                .control('tempName')
+                                .value
+                                .toString()
+                                .isNotEmpty) {
+                              FilePickerResult? file =
+                                  await FilePicker.platform.pickFiles(
+                                type: FileType.custom,
+                                allowedExtensions: ['jpg', 'pdf'],
+                              );
+                              if (file != null) {
+                                _pickedFile = File(file.files.single.path!);
+                                // onChanged.call(_pickedFile!);
+                                count++;
+                                String fileName = file.files.single.name;
+                                f = form.control('attachmentName') as FormGroup;
+                                f.addAll({
+                                  'name$count': FormControl<String>(
+                                      value: form
+                                          .control('tempName')
+                                          .value
+                                          .toString()),
+                                  'fileInfo$count':
+                                      FormControl<List<dynamic>>(value: [
+                                    _pickedFile!.uri.toFilePath(),
+                                    fileName.substring(
+                                        fileName.lastIndexOf('.') + 1,
+                                        fileName.length),
+                                    _pickedFile
+                                  ]),
+                                });
+                                // form.control('attachmentName').updateValue([
+                                //   {
+                                //     'id': count.toString(),
+                                //     'url': _pickedFile!.uri.toFilePath(),
+                                //     'name': FormControl<String>(
+                                //         value: form
+                                //             .control('tempName')
+                                //             .value
+                                //             .toString()),
+                                //     'type': fileName.substring(
+                                //         fileName.lastIndexOf('.') + 1,
+                                //         fileName.length),
+                                //     'file': _pickedFile
+                                //   }
+                                // ]);
+                                // FormGroup f =
+                                //     form.control('attachmentName') as FormGroup;
+                                print(
+                                    // '${f.control('name').value} mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm'
+                                    '........................................................................');
+                                // form.addAll({'attachmentName': FormControl({})});
+                                form.control('tempName').updateValue('');
+                                context.read<UploadFilesWidgetBloc>().add(
+                                      UploadFilesWidgetEventChange(
+                                          form.control('attachmentName').value,
+                                          deleteFile),
+                                    );
+                                print(form.control('attachmentName').value);
+                              }
+                            }
+                          },
+                          icon: Icon(
+                            CupertinoIcons.cloud_upload,
+                            color: Color(0xffF7F9FB),
+                          )),
                     ),
-                  ),
+                  ],
                 ),
-              ),
-              Container(
-                height: 40,
-                width: 83.33,
-                margin: EdgeInsets.all(4),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  color: Theme.of(context).colorScheme.secondary,
-                ),
-                child: IconButton(
-                    onPressed: () async {
-                      FilePickerResult? file =
-                          await FilePicker.platform.pickFiles(
-                        type: FileType.custom,
-                        allowedExtensions: ['jpg', 'pdf'],
-                      );
-                      if (file != null) {
-                        _pickedFile = File(file.files.single.path!);
-                        // onChanged.call(_pickedFile!);
-
-                        String fileName = file.files.single.name;
-                        form.control('attachmentName').updateValue({
-                          'url': _pickedFile!.uri.toFilePath(),
-                          'name': fileName,
-                          'type': fileName.substring(
-                              fileName.lastIndexOf('.') + 1, fileName.length),
-                        });
-                      }
-                      print(form.value);
-                    },
-                    icon: Icon(
-                      CupertinoIcons.cloud_upload,
-                      color: Color(0xffF7F9FB),
-                    )),
-              ),
-            ],
-          ),
+              ],
+            );
+          }),
           if (formFieldState.hasError)
             Padding(
               padding: const EdgeInsets.only(left: 8, top: 10),

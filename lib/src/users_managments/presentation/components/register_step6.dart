@@ -16,6 +16,19 @@ class RegisterStep6 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List li;
+    bool isSelected(String val) {
+      li = form
+          .control('preferredServiceType')
+          .value
+          .where((item) => val == item)
+          .toList();
+      if (li.isNotEmpty) {
+        return true;
+      }
+      return false;
+    }
+
     return Container(
       width: 200,
       child: MultiSelectContainer(
@@ -29,6 +42,7 @@ class RegisterStep6 extends StatelessWidget {
         listViewSettings: ListViewSettings(scrollDirection: Axis.vertical),
         items: [
           MultiSelectCard(
+            selected: isSelected('home'),
             value: 'home',
             child: Container(
               width: 165,
@@ -56,6 +70,7 @@ class RegisterStep6 extends StatelessWidget {
             ),
           ),
           MultiSelectCard(
+            selected: isSelected('online'),
             value: 'online',
             child: Container(
               width: 165,
@@ -83,6 +98,7 @@ class RegisterStep6 extends StatelessWidget {
             ),
           ),
           MultiSelectCard(
+            selected: isSelected('office'),
             value: 'office',
             child: Container(
               width: 165,

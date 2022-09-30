@@ -6,7 +6,7 @@ import 'package:fizyo_app_frontend/desktop_register.dart';
 import 'package:fizyo_app_frontend/mobil.dart';
 import 'package:fizyo_app_frontend/src/presentation/widgets/image_viewer.dart';
 import 'package:fizyo_app_frontend/src/presentation/widgets/title_description.dart';
-import 'package:fizyo_app_frontend/src/users_managments/blocs/ui_chande_bloc/ui_change_bloc.dart';
+import 'package:fizyo_app_frontend/src/users_managments/blocs/ui_change_bloc/ui_change_bloc.dart';
 // import 'package:fizyo_app_frontend/src/users_managments/blocs/ui_change_bloc/ui_change_bloc.dart';
 import 'package:fizyo_app_frontend/src/users_managments/blocs/user_form_bloc/user_form_bloc.dart';
 import 'package:fizyo_app_frontend/src/users_managments/data/http_s_provider_repository.dart';
@@ -22,7 +22,6 @@ import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import './src/presentation/widgets/stepper.dart';
 
-
 void main() {
   Bloc.observer = UserFormObserver();
   runApp(const MyApp());
@@ -34,7 +33,6 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    
     return DynamicColorBuilder(
         builder: (ColorScheme? lightDynamic, ColorScheme? darkDynamic) {
       ColorScheme lightScheme;
@@ -54,24 +52,26 @@ class MyApp extends StatelessWidget {
       }
 
       return MaterialApp(
-          theme: ThemeData(
-            useMaterial3: true,
-            colorScheme: lightScheme,
-            extensions: [lightCustomColors],
-            fontFamily: 'Recoleta',
-            //textTheme: TextTheme(headline1:TextStyle(fontSize:MediaQuery.of(context).size.width/100,)),
-            
-          ),
-          darkTheme: ThemeData(
-            useMaterial3: true,
-            colorScheme: darkScheme,
-            extensions: [darkCustomColors],
-            fontFamily: 'Recoleta',
-          ),
-          navigatorObservers: [BotToastNavigatorObserver()],
-          debugShowCheckedModeBanner: false,
-          home: LayoutSelection(desktop: DesktopScreen(),mobil: mobileScreen(),),
-          );
+        theme: ThemeData(
+          useMaterial3: true,
+          colorScheme: lightScheme,
+          extensions: [lightCustomColors],
+          fontFamily: 'Recoleta',
+          //textTheme: TextTheme(headline1:TextStyle(fontSize:MediaQuery.of(context).size.width/100,)),
+        ),
+        darkTheme: ThemeData(
+          useMaterial3: true,
+          colorScheme: darkScheme,
+          extensions: [darkCustomColors],
+          fontFamily: 'Recoleta',
+        ),
+        navigatorObservers: [BotToastNavigatorObserver()],
+        debugShowCheckedModeBanner: false,
+        home: LayoutSelection(
+          desktop: DesktopScreen(),
+          mobil: mobileScreen(),
+        ),
+      );
     });
   }
 }

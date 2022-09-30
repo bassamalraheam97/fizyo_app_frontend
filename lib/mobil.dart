@@ -1,5 +1,6 @@
 import 'package:fizyo_app_frontend/src/users_managments/blocs/email_ver_bloc/email_ver_bloc.dart';
-import 'package:fizyo_app_frontend/src/users_managments/blocs/ui_chande_bloc/ui_change_bloc.dart';
+import 'package:fizyo_app_frontend/src/users_managments/blocs/ui_change_bloc/ui_change_bloc.dart';
+import 'package:fizyo_app_frontend/src/users_managments/blocs/upload_files_widget_bloc/upload_files_widget_bloc.dart';
 import 'package:fizyo_app_frontend/src/users_managments/blocs/user_form_bloc/user_form_bloc.dart';
 import 'package:fizyo_app_frontend/src/users_managments/presentation/pages/regester_page2.dart';
 import 'package:fizyo_app_frontend/src/users_managments/presentation/pages/register.dart';
@@ -27,6 +28,9 @@ class mobileScreen extends StatelessWidget {
             ),
             BlocProvider(
               create: (context) => UiChangeBloc(),
+            ),
+            BlocProvider(
+              create: (context) => UploadFilesWidgetBloc(),
             ),
             BlocProvider(
               create: (context) => EmailVerBloc(),

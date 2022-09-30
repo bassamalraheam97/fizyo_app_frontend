@@ -15,6 +15,19 @@ class RegisterStep7e extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List li;
+    bool isSelected(String val) {
+      li = form
+          .control('diseasesOrSpecialties')
+          .value
+          .where((item) => val == item)
+          .toList();
+      if (li.isNotEmpty) {
+        return true;
+      }
+      return false;
+    }
+
     return Column(
       children: [
         Directionality(
@@ -33,6 +46,7 @@ class RegisterStep7e extends StatelessWidget {
             //     ListViewSettings(scrollDirection: Axis.horizontal),
             items: [
               MultiSelectCard(
+                selected: isSelected('Pediatrics'),
                 clipBehavior: Clip.none,
                 value: 'Pediatrics',
                 child: SpecialitiesFeelings(
@@ -43,6 +57,7 @@ class RegisterStep7e extends StatelessWidget {
                 ),
               ),
               MultiSelectCard(
+                selected: isSelected('Sports'),
                 value: 'Sports',
                 child: SpecialitiesFeelings(
                   text: 'Sports',
@@ -52,7 +67,8 @@ class RegisterStep7e extends StatelessWidget {
                 ),
               ),
               MultiSelectCard(
-                value: "Women's health",
+                selected: isSelected("Womens health"),
+                value: "Womens health",
                 child: SpecialitiesFeelings(
                   text: "Women's health",
                   width: 150,
@@ -61,6 +77,7 @@ class RegisterStep7e extends StatelessWidget {
                 ),
               ),
               MultiSelectCard(
+                selected: isSelected('Cardiovascular'),
                 value: 'Cardiovascular',
                 child: SpecialitiesFeelings(
                   text: 'Cardiovascular',
@@ -70,6 +87,7 @@ class RegisterStep7e extends StatelessWidget {
                 ),
               ),
               MultiSelectCard(
+                selected: isSelected('Neurology'),
                 value: 'Neurology',
                 child: SpecialitiesFeelings(
                   text: 'Neurology',
@@ -79,6 +97,7 @@ class RegisterStep7e extends StatelessWidget {
                 ),
               ),
               MultiSelectCard(
+                selected: isSelected('Geriatrics'),
                 value: 'Geriatrics',
                 child: SpecialitiesFeelings(
                   text: 'Geriatrics',
@@ -88,6 +107,7 @@ class RegisterStep7e extends StatelessWidget {
                 ),
               ),
               MultiSelectCard(
+                selected: isSelected('Orthopedics'),
                 value: 'Orthopedics',
                 child: SpecialitiesFeelings(
                   text: 'Orthopedics',

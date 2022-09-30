@@ -15,6 +15,19 @@ class RegisterStep7p extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List li;
+    bool isSelected(String val) {
+      li = form
+          .control('diseasesOrSpecialties')
+          .value
+          .where((item) => val == item)
+          .toList();
+      if (li.isNotEmpty) {
+        return true;
+      }
+      return false;
+    }
+
     return Container(
       child: MultiSelectContainer(
         controller: _controller,
@@ -29,6 +42,7 @@ class RegisterStep7p extends StatelessWidget {
         // listViewSettings: ListViewSettings(scrollDirection: Axis.horizontal),
         items: [
           MultiSelectCard(
+            selected: isSelected('Injury'),
             value: 'Injury',
             child: SpecialitiesFeelings(
               text: 'Injury',
@@ -38,6 +52,7 @@ class RegisterStep7p extends StatelessWidget {
             ),
           ),
           MultiSelectCard(
+            selected: isSelected('soreness'),
             value: 'soreness',
             child: SpecialitiesFeelings(
               text: 'soreness',
@@ -47,6 +62,7 @@ class RegisterStep7p extends StatelessWidget {
             ),
           ),
           MultiSelectCard(
+            selected: isSelected('chronic pain'),
             value: 'chronic pain',
             child: SpecialitiesFeelings(
               text: 'chronic pain',
@@ -56,6 +72,7 @@ class RegisterStep7p extends StatelessWidget {
             ),
           ),
           MultiSelectCard(
+            selected: isSelected('neck pain'),
             value: 'neck pain',
             child: SpecialitiesFeelings(
               text: 'neck pain',
@@ -65,6 +82,7 @@ class RegisterStep7p extends StatelessWidget {
             ),
           ),
           MultiSelectCard(
+            selected: isSelected('soft tissue'),
             value: 'soft tissue',
             child: SpecialitiesFeelings(
               text: 'soft tissue',
@@ -74,6 +92,7 @@ class RegisterStep7p extends StatelessWidget {
             ),
           ),
           MultiSelectCard(
+            selected: isSelected('shoulder pain'),
             value: 'shoulder pain',
             child: SpecialitiesFeelings(
               text: 'shoulder pain',
@@ -83,6 +102,7 @@ class RegisterStep7p extends StatelessWidget {
             ),
           ),
           MultiSelectCard(
+            selected: isSelected('chip0'),
             value: 'chip0',
             child: SpecialitiesFeelings(
               text: 'chip0',
@@ -92,6 +112,7 @@ class RegisterStep7p extends StatelessWidget {
             ),
           ),
           MultiSelectCard(
+            selected: isSelected('chip1'),
             value: 'chip1',
             child: SpecialitiesFeelings(
               text: 'chip1',
@@ -101,6 +122,7 @@ class RegisterStep7p extends StatelessWidget {
             ),
           ),
           MultiSelectCard(
+            selected: isSelected('chip'),
             value: 'chip',
             child: SpecialitiesFeelings(
               text: 'chip',
@@ -110,6 +132,7 @@ class RegisterStep7p extends StatelessWidget {
             ),
           ),
           MultiSelectCard(
+            selected: isSelected('chip'),
             value: 'chip',
             child: SpecialitiesFeelings(
               text: 'chip',
@@ -119,6 +142,7 @@ class RegisterStep7p extends StatelessWidget {
             ),
           ),
           MultiSelectCard(
+            selected: isSelected('chip'),
             value: 'chip',
             child: SpecialitiesFeelings(
               text: 'chip',
@@ -128,6 +152,7 @@ class RegisterStep7p extends StatelessWidget {
             ),
           ),
           MultiSelectCard(
+            selected: isSelected('chip'),
             value: 'chip',
             child: SpecialitiesFeelings(
               text: 'chip',

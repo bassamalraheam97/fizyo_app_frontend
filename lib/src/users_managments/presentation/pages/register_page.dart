@@ -1,12 +1,14 @@
 // ignore_for_file: must_be_immutable
 
+import 'dart:io';
+
 import 'package:fizyo_app_frontend/src/presentation/widgets/stepper.dart';
 import 'package:fizyo_app_frontend/src/presentation/widgets/title_description.dart';
 import 'package:fizyo_app_frontend/src/users_managments/blocs/email_ver_bloc/email_ver_bloc.dart';
 import 'package:fizyo_app_frontend/src/users_managments/blocs/email_ver_bloc/email_ver_event.dart';
 import 'package:fizyo_app_frontend/src/users_managments/blocs/email_ver_bloc/email_ver_state.dart';
-import 'package:fizyo_app_frontend/src/users_managments/blocs/ui_chande_bloc/ui_change_bloc.dart';
-import 'package:fizyo_app_frontend/src/users_managments/blocs/ui_chande_bloc/ui_change_state.dart';
+import 'package:fizyo_app_frontend/src/users_managments/blocs/ui_change_bloc/ui_change_bloc.dart';
+import 'package:fizyo_app_frontend/src/users_managments/blocs/ui_change_bloc/ui_change_state.dart';
 import 'package:fizyo_app_frontend/src/users_managments/blocs/user_form_bloc/user_form_bloc.dart';
 import 'package:fizyo_app_frontend/src/users_managments/blocs/user_form_bloc/user_form_event.dart';
 import 'package:fizyo_app_frontend/src/users_managments/blocs/user_form_bloc/user_form_state.dart';
@@ -23,7 +25,6 @@ import 'package:fizyo_app_frontend/src/users_managments/presentation/components/
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:reactive_forms/reactive_forms.dart';
-import '../components/new_register_step4.dart';
 import 'package:email_auth/email_auth.dart';
 
 class RegisterPage extends StatelessWidget {
@@ -80,6 +81,8 @@ class RegisterPage extends StatelessWidget {
           'gender': FormControl<String>(
             value: 'male',
           ),
+          'selectedImage': FormControl<String>(),
+          'profilePicture': FormControl<File>(),
           'preferredServiceType': FormControl<List<String>>(
             value: [],
             validators: [Validators.minLength(2)],
@@ -90,18 +93,20 @@ class RegisterPage extends StatelessWidget {
           ),
           'input': FormControl<RangeValues>(),
           'min': FormControl<String>(
-              // validators: [Validators.email, Validators.required],
-              ),
+            value: '0',
+            // validators: [Validators.email, Validators.required],
+          ),
           'max': FormControl<String>(
-              // validators: [Validators.email, Validators.required],
-              ),
+            value: '1000',
+            // validators: [Validators.email, Validators.required],
+          ),
           'bio': FormControl<String>(),
-          "certificate": FormControl<String>(),
-          "attachmentName": FormGroup({
-            'url': FormControl<String>(),
-            'name': FormControl<String>(),
-            'type': FormControl<String>(),
-          }),
+          "tempName": FormControl<String>(
+              // validators: [Validators.required, Validators.minLength(2)],
+              ),
+          // "attachmentName": FormControl<List<Map<String, dynamic>>>(),
+          "attachmentName": FormGroup({}),
+          // 'files': FormControl<List<File>>(),
         }, validators: [
           Validators.mustMatch('password', 'passwordConformation'),
         ]);
@@ -131,7 +136,9 @@ class RegisterPage extends StatelessWidget {
           form: form,
         );
       case 5:
-        return RegisterStep5();
+        return RegisterStep5(
+          form: form,
+        );
       case 6:
         return RegisterStep6(
           form: form,

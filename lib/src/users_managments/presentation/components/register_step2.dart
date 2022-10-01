@@ -1,66 +1,69 @@
+import 'package:dio/dio.dart';
+import 'package:fizyo_app_frontend/src/users_managments/data/http_user_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:fizyo_app_frontend/src/presentation/widgets/form_text_field.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 class RegisterStep2 extends StatelessWidget {
-  const RegisterStep2({
+  final FormGroup form;
+  final Dio dio;
+  RegisterStep2({
     super.key,
+    required this.dio,
+    required this.form,
   });
-  // final String phone;
-  // FormGroup getForm() {
-  //   return form;
-  // }
-  // FormGroup form() {
-  //   return FormGroup({
-  //     'verificationCode': FormControl<String>(
-  //       validators: [Validators.minLength(2), Validators.required],
-  //     ),
-  //     'password': FormControl<String>(
-  //       validators: [
-  //         Validators.minLength(6),
-  //         Validators.required,
-  //       ],
-  //     ),
-  //     'passwordConformation': FormControl<String>(
-  //       validators: [
-  //         Validators.minLength(6),
-  //         Validators.required,
-  //       ],
-  //     )
-  //   }, validators: [
-  //     Validators.mustMatch('password', 'passwordConformation'),
-  //   ]);
-  // }
+
+  String temp = '123';
+  Future<void> sendCode(String email) async {
+    HttpUserRepository _userRepository = HttpUserRepository(dio);
+    var r = await _userRepository
+        .sendCode(email: email)
+        .then((value) => temp = value);
+  }
 
   @override
   Widget build(BuildContext context) {
     return Column(
       // mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        const FormTextField(
+        FormTextField(
           formControlName: "verificationCode",
           labelText: "Verification Code",
+          onChanged: (p0) {
+            print(form.control('tempVerificationCode').value);
+            if (form.control('tempVerificationCode').value ==
+                form.control('verificationCode').value) {
+              form.control('tempVerificationCode').updateValue('valid');
+            }
+          },
         ),
         const SizedBox(
           height: 13,
         ),
-        Text.rich(
-          TextSpan(
-            text: 'Resend the OTP in ',
-            children: [
-              TextSpan(
-                text: '5s',
-                style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                    color: const Color(0xffEE9CDA),
-                    fontSize: 14,
-                    fontWeight: FontWeight.w700),
-              ),
-            ],
-            style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                  color: Theme.of(context).colorScheme.outline,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w400,
+        GestureDetector(
+          onTap: (() {
+            print('sent');
+            sendCode(form.control("email").value.toString()).toString();
+            form.control('tempVerificationCode').updateValue(temp.toString());
+          }),
+          child: Text.rich(
+            TextSpan(
+              text: 'Resend the OTP in ',
+              children: [
+                TextSpan(
+                  text: '5s',
+                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                      color: const Color(0xffEE9CDA),
+                      fontSize: 14,
+                      fontWeight: FontWeight.w700),
                 ),
+              ],
+              style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                    color: Theme.of(context).colorScheme.outline,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400,
+                  ),
+            ),
           ),
         ),
         const SizedBox(

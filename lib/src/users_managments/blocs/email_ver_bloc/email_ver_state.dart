@@ -19,8 +19,8 @@ class EmailVerStateSubmitting extends EmailVerState {
   List<Object?> get props => [super.verificationCode];
 }
 
-class EmailVerStateSuccess extends EmailVerState {
-  const EmailVerStateSuccess(super.verificationCode);
+class EmailVerStateSended extends EmailVerState {
+  const EmailVerStateSended(super.verificationCode);
 
   @override
   List<Object?> get props => [super.verificationCode];
@@ -28,7 +28,13 @@ class EmailVerStateSuccess extends EmailVerState {
 
 class EmailVerStateFailure extends EmailVerState {
   final String errorMassage;
-  const EmailVerStateFailure(this.errorMassage, super.verificationCode);
+  const EmailVerStateFailure(
+    this.errorMassage,
+    super.verificationCode,
+  );
   @override
-  List<Object?> get props => [errorMassage, super.verificationCode];
+  List<Object?> get props => [
+        errorMassage,
+        super.verificationCode,
+      ];
 }

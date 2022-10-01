@@ -102,12 +102,7 @@ class LoginPage extends StatelessWidget {
                       ),
                       TextButton(
                         onPressed: () {
-                          // Navigator.push(
-                          //     context,
-                          //     MaterialPageRoute(
-                          //         builder: (_) => LoginPage(
-                          //               showBack: true,
-                          //             )));
+                          if (form.control('email').valid) {}
                         },
                         child: Text(
                           ' Reset',

@@ -21,7 +21,6 @@ class UserFormBloc extends Bloc<UserFormEvent, UserFormState> {
   final AccountsService _accountsService;
   UserFormBloc(this._accountsService)
       : super(UserFormStateInitial(1 / 8, 1, 8)) {
-
     on<UserFormEventSubmit>((event, emit) async {
       emit(
           UserFormStateSubmitting(event.currentStep / 8, event.currentStep, 8));

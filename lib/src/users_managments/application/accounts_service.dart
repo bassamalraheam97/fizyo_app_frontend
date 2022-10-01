@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:fizyo_app_frontend/src/users_managments/data/client_repository.dart';
 import 'package:fizyo_app_frontend/src/users_managments/data/s_provider_repository.dart';
 import 'package:fizyo_app_frontend/src/users_managments/data/user_repository.dart';
@@ -86,5 +87,21 @@ class AccountsService {
         break;
       default:
     }
+  }
+
+  // Future<void> sendCode(String email) async {
+  //   var res = await userRepository
+  //       .sendCode(email: email)
+  //       .catchError((onError) => print('$onError+++++++++++++++'));
+  //   // print(res);
+  //   // return res.toString();
+  // }
+
+  Future<void> forgetPassword(String email) async {
+    final res = await userRepository
+        .forgetPassword(email: email)
+        .catchError((onError) => print('$onError+++++++++++++++'));
+    // print(res);
+    // return res.toString();
   }
 }

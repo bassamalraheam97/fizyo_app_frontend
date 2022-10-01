@@ -25,17 +25,21 @@ class DesktopScreen extends StatelessWidget {
               child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
                 Expanded(
                     flex: 2,
-                    child:  Image.asset(
-                        'images/bro.png',
-                        //width: size.width*0.2,
-                        fit: BoxFit.contain,
-                      ),
+                    child:  Container(width: 650,
+                    height: 650,
+                      child: Image.asset(
+                          'images/bro.png',
+                          //width: size.width*0.2,
+                          fit: BoxFit.contain,
+                        ),
+                    ),
                     ),
                 const Expanded(
                   child: Padding(
                     padding: EdgeInsets.all(20.0),
-                    child:SizedBox() 
-                    //mobileScreen(),
+                    child:
+                    SizedBox() 
+                    // mobileScreen(),
                   ),
                 ),
               ]),

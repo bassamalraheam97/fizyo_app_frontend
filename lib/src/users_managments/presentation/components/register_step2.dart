@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fizyo_app_frontend/src/presentation/widgets/form_text_field.dart';
+import '../../../presentation/widgets/form_text_field.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 class RegisterStep2 extends StatelessWidget {

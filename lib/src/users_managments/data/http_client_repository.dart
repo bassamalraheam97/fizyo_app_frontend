@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:fizyo_app_frontend/src/users_managments/data/client_repository.dart';
-import 'package:fizyo_app_frontend/src/users_managments/domain/client.dart';
+import 'client_repository.dart';
+import '../domain/client.dart';
 
 class HttpClientRepository implements ClientRepository {
   final Dio client;

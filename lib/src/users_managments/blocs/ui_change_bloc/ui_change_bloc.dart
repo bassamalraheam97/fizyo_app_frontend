@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
-import 'package:fizyo_app_frontend/src/presentation/widgets/image_viewer.dart';
-import 'package:fizyo_app_frontend/src/users_managments/blocs/ui_change_bloc/ui_change_event.dart';
-import 'package:fizyo_app_frontend/src/users_managments/blocs/ui_change_bloc/ui_change_state.dart';
+import '../../../presentation/widgets/image_viewer.dart';
+import 'ui_change_event.dart';
+import 'ui_change_state.dart';
 import 'package:flutter/material.dart';
 
 class UiChangeBloc extends Bloc<UiChangeEvent, UiChangeState> {

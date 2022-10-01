@@ -1,8 +1,8 @@
-import 'package:fizyo_app_frontend/src/presentation/widgets/title_homepage.dart';
-import 'package:fizyo_app_frontend/src/users_managments/presentation/components/bottom_bar.dart';
-import 'package:fizyo_app_frontend/src/users_managments/presentation/components/nav_bar.dart';
-import 'package:fizyo_app_frontend/src/users_managments/presentation/components/top_bar.dart';
-import 'package:fizyo_app_frontend/src/users_managments/presentation/components/top_bar_icon.dart';
+import 'src/presentation/widgets/title_homepage.dart';
+import 'src/users_managments/presentation/components/bottom_bar.dart';
+import 'src/users_managments/presentation/components/nav_bar.dart';
+import 'src/users_managments/presentation/components/top_bar.dart';
+import 'src/users_managments/presentation/components/top_bar_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';

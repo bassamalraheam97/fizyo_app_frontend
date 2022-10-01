@@ -1,4 +1,4 @@
-import 'package:fizyo_app_frontend/src/users_managments/domain/user.dart';
+import '../domain/user.dart';
 
 abstract class UserRepository {
   Future<String> login({required String email, required String password});

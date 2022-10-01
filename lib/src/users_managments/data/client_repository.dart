@@ -1,4 +1,4 @@
-import 'package:fizyo_app_frontend/src/users_managments/domain/client.dart';
+import '../domain/client.dart';
 
 abstract class ClientRepository {
   Future<List<Client>?> getClients();

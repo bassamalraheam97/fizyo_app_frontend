@@ -1,9 +1,9 @@
 import 'dart:io';
 
-import 'package:fizyo_app_frontend/src/presentation/widgets/form_text_field.dart';
-import 'package:fizyo_app_frontend/src/users_managments/blocs/upload_files_widget_bloc/upload_files_widget_bloc.dart';
-import 'package:fizyo_app_frontend/src/users_managments/blocs/upload_files_widget_bloc/upload_files_widget_event.dart';
-import 'package:fizyo_app_frontend/src/users_managments/blocs/upload_files_widget_bloc/upload_files_widget_state.dart';
+import '../../../presentation/widgets/form_text_field.dart';
+import '../../blocs/upload_files_widget_bloc/upload_files_widget_bloc.dart';
+import '../../blocs/upload_files_widget_bloc/upload_files_widget_event.dart';
+import '../../blocs/upload_files_widget_bloc/upload_files_widget_state.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:reactive_range_slider/reactive_range_slider.dart';

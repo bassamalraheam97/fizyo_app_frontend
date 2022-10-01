@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
-import 'package:fizyo_app_frontend/src/presentation/widgets/files_show_delete.dart';
-import 'package:fizyo_app_frontend/src/users_managments/blocs/upload_files_widget_bloc/upload_files_widget_event.dart';
-import 'package:fizyo_app_frontend/src/users_managments/blocs/upload_files_widget_bloc/upload_files_widget_state.dart';
+import '../../../presentation/widgets/files_show_delete.dart';
+import 'upload_files_widget_event.dart';
+import 'upload_files_widget_state.dart';
 import 'package:flutter/material.dart';
 import 'package:open_file/open_file.dart';
 

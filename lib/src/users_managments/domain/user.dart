@@ -1,4 +1,4 @@
-import 'package:fizyo_app_frontend/src/users_managments/domain/address.dart';
+import 'address.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 // 2. add 'part' files

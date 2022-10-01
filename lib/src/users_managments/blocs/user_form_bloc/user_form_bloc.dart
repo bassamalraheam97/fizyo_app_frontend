@@ -1,9 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
-import 'package:fizyo_app_frontend/src/users_managments/application/accounts_service.dart';
+import '../../application/accounts_service.dart';
 
-import 'package:fizyo_app_frontend/src/users_managments/blocs/user_form_bloc/user_form_event.dart';
-import 'package:fizyo_app_frontend/src/users_managments/blocs/user_form_bloc/user_form_state.dart';
+import 'user_form_event.dart';
+import 'user_form_state.dart';
 
 import 'package:reactive_forms/reactive_forms.dart';
 

@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:email_auth/email_auth.dart';
-import 'package:fizyo_app_frontend/src/users_managments/blocs/email_ver_bloc/email_ver_event.dart';
-import 'package:fizyo_app_frontend/src/users_managments/blocs/email_ver_bloc/email_ver_state.dart';
+import 'email_ver_event.dart';
+import 'email_ver_state.dart';
 import 'package:flutter_email_sender/flutter_email_sender.dart';
 
 class EmailVerBloc extends Bloc<EmailVerEvent, EmailVerState> {

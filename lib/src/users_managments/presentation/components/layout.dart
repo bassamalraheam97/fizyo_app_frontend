@@ -1,4 +1,4 @@
-import 'package:fizyo_app_frontend/mobil.dart';
+import '../../../../mobil.dart';
 import 'package:flutter/material.dart';
 
 

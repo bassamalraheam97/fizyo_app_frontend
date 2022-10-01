@@ -1,9 +1,9 @@
 import 'dart:io';
 
 import 'package:file_picker/file_picker.dart';
-import 'package:fizyo_app_frontend/src/users_managments/blocs/ui_change_bloc/ui_change_bloc.dart';
-import 'package:fizyo_app_frontend/src/users_managments/blocs/ui_change_bloc/ui_change_event.dart';
-import 'package:fizyo_app_frontend/src/users_managments/blocs/ui_change_bloc/ui_change_state.dart';
+import '../../blocs/ui_change_bloc/ui_change_bloc.dart';
+import '../../blocs/ui_change_bloc/ui_change_event.dart';
+import '../../blocs/ui_change_bloc/ui_change_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_multi_select_items/flutter_multi_select_items.dart';

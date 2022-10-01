@@ -1,4 +1,4 @@
-import 'package:fizyo_app_frontend/src/presentation/widgets/image_viewer.dart';
+import 'image_viewer.dart';
 import 'package:flutter/material.dart';
 
 class TextImage extends StatelessWidget {

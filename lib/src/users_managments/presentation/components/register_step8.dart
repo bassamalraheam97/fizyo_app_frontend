@@ -1,17 +1,16 @@
 import 'dart:io';
 
+import 'package:file_picker/file_picker.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:reactive_forms/reactive_forms.dart';
+import 'package:reactive_range_slider/reactive_range_slider.dart';
+
 import '../../../presentation/widgets/form_text_field.dart';
 import '../../blocs/upload_files_widget_bloc/upload_files_widget_bloc.dart';
 import '../../blocs/upload_files_widget_bloc/upload_files_widget_event.dart';
 import '../../blocs/upload_files_widget_bloc/upload_files_widget_state.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:reactive_range_slider/reactive_range_slider.dart';
-
-import 'package:open_file/open_file.dart';
-import 'package:flutter/material.dart';
-import 'package:file_picker/file_picker.dart';
-import 'package:reactive_forms/reactive_forms.dart';
 
 class RegisterStep8 extends StatelessWidget {
   // final Function(File) onChanged;

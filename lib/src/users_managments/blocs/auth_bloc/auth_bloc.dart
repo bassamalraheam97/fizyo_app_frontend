@@ -2,10 +2,11 @@
 
 import 'package:bloc/bloc.dart';
 import 'package:fizyo_app_frontend/src/users_managments/data/user_repository.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+
 import '../../domain/user.dart';
 import 'auth_event.dart';
 import 'auth_state.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final UserRepository _userRepository;

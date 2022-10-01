@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'src/presentation/widgets/right_side_service.dart';
 import 'src/users_managments/presentation/components/bottom_bar.dart';
 import 'src/users_managments/presentation/components/nav_bar.dart';
@@ -30,10 +28,12 @@ class DesktopServices extends StatelessWidget {
               child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
                 Expanded(
                   flex: 2,
-                  child: Column(mainAxisAlignment: MainAxisAlignment.start,crossAxisAlignment: CrossAxisAlignment.start,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(left:50.0,right: 50.0),
+                        padding: const EdgeInsets.only(left: 50.0, right: 50.0),
                         child: Row(
                           children: [
                             Expanded(
@@ -92,19 +92,27 @@ class DesktopServices extends StatelessWidget {
                                         ),
                                       ],
                                     ),
-                                    Row(mainAxisAlignment: MainAxisAlignment.center,children: [Icon(
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Icon(
                                           Icons.home_outlined,
                                           color: Color(0xff757780),
                                           size: 40.0,
-                                        ),Icon(
+                                        ),
+                                        Icon(
                                           Icons.house_outlined,
                                           color: Color(0xff757780),
                                           size: 40.0,
-                                        ),Icon(
+                                        ),
+                                        Icon(
                                           Icons.smart_display_outlined,
                                           color: Color(0xff757780),
                                           size: 40.0,
-                                        ),],)
+                                        ),
+                                      ],
+                                    )
                                   ],
                                 ))
                           ],

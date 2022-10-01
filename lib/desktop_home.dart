@@ -1,16 +1,49 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/src/widgets/container.dart';
+import 'package:flutter/src/widgets/framework.dart';
+
 import 'package:fizyo_app_frontend/src/presentation/widgets/title_homepage.dart';
 import 'package:fizyo_app_frontend/src/users_managments/presentation/components/bottom_bar.dart';
 import 'package:fizyo_app_frontend/src/users_managments/presentation/components/nav_bar.dart';
 import 'package:fizyo_app_frontend/src/users_managments/presentation/components/top_bar.dart';
 import 'package:fizyo_app_frontend/src/users_managments/presentation/components/top_bar_icon.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-
 import 'mobil.dart';
 
-class DesktopHomePage extends StatelessWidget {
+class DesktopHomePage extends StatefulWidget {
   const DesktopHomePage({super.key});
+
+  @override
+  State<DesktopHomePage> createState() => _DesktopHomePageState();
+}
+
+class _DesktopHomePageState extends State<DesktopHomePage> {
+  var _itemImage = [
+    Image.asset(
+      "images/amico.png",
+      fit: BoxFit.cover,
+    ),
+    Image.asset("images/news.png", fit: BoxFit.cover),
+    Image.asset("images/chair.png", fit: BoxFit.cover),
+    Image.asset("images/onlinedoctor.png", fit: BoxFit.cover),
+    Image.asset("images/hospital.png", fit: BoxFit.cover),
+  ];
+  int index = 0;
+  int x=0;
+  incFunction() {
+    
+      index++;
+  }
+
+  decFunction() {
+    
+      index--;
+  }
+  int changeFun(){
+    if(index==1)
+      x=0;
+    else x=1;
+    return x;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +52,11 @@ class DesktopHomePage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            TopBarRegIcon(icon: Icon(Icons.person,size: 35.0,)),
+            TopBarRegIcon(
+                icon: Icon(
+              Icons.person,
+              size: 35.0,
+            )),
             NavBar(),
             Container(
               color: const Color(0xFFFFFFFF),
@@ -55,7 +92,14 @@ class DesktopHomePage extends StatelessWidget {
                                             Icons.arrow_circle_left_rounded,
                                             size: 50),
                                         color: Colors.blue,
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          setState(() {
+                                            if (index > 1)
+                                              decFunction();
+                                            else
+                                              index = 0;
+                                          });
+                                        },
                                       ),
                                     ),
                                   ),
@@ -66,11 +110,12 @@ class DesktopHomePage extends StatelessWidget {
                               flex: 3,
                               child: Column(
                                 children: [
-                                  Image.asset(
-                                    'images/amico.png',
-                                    width: size.width * 0.4,
-                                    fit: BoxFit.contain,
-                                  ),
+                                  _itemImage[index]
+                                  // Image.asset(
+                                  //   'images/amico.png',
+                                  //   width: size.width * 0.4,
+                                  //   fit: BoxFit.contain,
+                                  // ),
                                 ],
                               ),
                             ),
@@ -88,7 +133,14 @@ class DesktopHomePage extends StatelessWidget {
                                             Icons.arrow_circle_right_rounded,
                                             size: 50),
                                         color: Colors.blue,
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          setState(() {
+                                            if (index < 3)
+                                              incFunction();
+                                            else
+                                              index = 3;
+                                          });
+                                        },
                                       ),
                                     ),
                                   ),
@@ -116,18 +168,26 @@ class DesktopHomePage extends StatelessWidget {
                   ),
                 ),
                 Expanded(
-                    child: Column(
-                                      children: [
-                      TitleHomePage(image: "images/hospital.png"),
-                      SizedBox(height: 2.0),
-                      TitleHomePage(image: "images/amico.png"),
-                      SizedBox(height: 2.0),
-                      TitleHomePage(image: "images/chair.png"),
-                      SizedBox(height: 2.0),
-                      TitleHomePage(image: "images/onlinedoctor.png"),
-                                      ],
-                                    ),
-                    ),
+                  child: Column(
+                    children: [
+                      TitleHomePage(image: _itemImage[4]),
+                      // "images/hospital.png"
+                      // ),
+                      SizedBox(height: 1.0),
+                      TitleHomePage(image: _itemImage[changeFun()]),
+
+                      // TitleHomePage(image: "images/amico.png"),
+                      SizedBox(height: 1.0),
+                      TitleHomePage(image: _itemImage[2]),
+
+                      //TitleHomePage(image: "images/chair.png"),
+                      SizedBox(height: 1.0),
+                      TitleHomePage(image: _itemImage[3]),
+
+                      //TitleHomePage(image: "images/onlinedoctor.png"),
+                    ],
+                  ),
+                ),
 
                 // TitleHomePage(image: "images/rifiki.png"),
               ]),

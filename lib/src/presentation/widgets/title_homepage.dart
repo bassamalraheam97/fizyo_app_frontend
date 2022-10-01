@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 
 class TitleHomePage extends StatelessWidget {
   const TitleHomePage({super.key, required this.image});
-  final String image;
+  final Image image;
+  
 
   @override
   Widget build(BuildContext context) {
+    
     Size size = MediaQuery.of(context).size;
      return Padding(
             padding: EdgeInsets.all(20.0),
@@ -23,10 +25,10 @@ class TitleHomePage extends StatelessWidget {
                         padding: const EdgeInsets.fromLTRB(40, 15, 40, 15),
                         child: SizedBox(
                           width: 60,
-                          child: Image.asset(
-                            '${image}',
-                            fit: BoxFit.cover,
-                          ),
+                          child: //Image.asset(
+                            image
+                            //fit: BoxFit.cover,
+                          //),
                         ),
                       ),
                     ),

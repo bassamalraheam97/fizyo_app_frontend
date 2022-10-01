@@ -27,6 +27,7 @@ class _NavBarState extends State<NavBar> {
     return Container(color: Colors.white,
       child: Row( 
         mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Spacer(),
           InkWell(

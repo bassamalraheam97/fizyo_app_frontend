@@ -1,8 +1,8 @@
-import 'package:fizyo_app_frontend/desktop_Home.dart';
-import 'package:fizyo_app_frontend/desktop_register.dart';
-import 'package:fizyo_app_frontend/desktop_service.dart';
-import 'package:fizyo_app_frontend/mobil.dart';
-import 'package:fizyo_app_frontend/src/users_managments/presentation/components/layout.dart';
+import '../../../../desktop_Home.dart';
+import '../../../../desktop_register.dart';
+import '../../../../desktop_service.dart';
+import '../../../../mobil.dart';
+import 'layout.dart';
 import 'package:flutter/material.dart';
 
 class NavBar extends StatefulWidget {

@@ -1,20 +1,19 @@
 import 'package:dio/dio.dart';
-import 'package:fizyo_app_frontend/src/users_managments/application/accounts_service.dart';
-import 'package:fizyo_app_frontend/src/users_managments/blocs/auth_bloc/auth_bloc.dart';
-import 'package:fizyo_app_frontend/src/users_managments/blocs/auth_bloc/auth_event.dart';
-import 'package:fizyo_app_frontend/src/users_managments/blocs/email_ver_bloc/email_ver_bloc.dart';
-import 'package:fizyo_app_frontend/src/users_managments/blocs/ui_change_bloc/ui_change_bloc.dart';
-import 'package:fizyo_app_frontend/src/users_managments/blocs/upload_files_widget_bloc/upload_files_widget_bloc.dart';
-import 'package:fizyo_app_frontend/src/users_managments/blocs/user_form_bloc/user_form_bloc.dart';
-import 'package:fizyo_app_frontend/src/users_managments/data/client_repository.dart';
-import 'package:fizyo_app_frontend/src/users_managments/data/http_client_repository.dart';
-import 'package:fizyo_app_frontend/src/users_managments/data/http_s_provider_repository.dart';
-import 'package:fizyo_app_frontend/src/users_managments/data/http_user_repository.dart';
-import 'package:fizyo_app_frontend/src/users_managments/data/s_provider_repository.dart';
-import 'package:fizyo_app_frontend/src/users_managments/data/user_repository.dart';
-import 'package:fizyo_app_frontend/src/users_managments/presentation/pages/register_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'src/users_managments/application/accounts_service.dart';
+import 'src/users_managments/blocs/email_ver_bloc/email_ver_bloc.dart';
+import 'src/users_managments/blocs/ui_change_bloc/ui_change_bloc.dart';
+import 'src/users_managments/blocs/upload_files_widget_bloc/upload_files_widget_bloc.dart';
+import 'src/users_managments/blocs/user_form_bloc/user_form_bloc.dart';
+import 'src/users_managments/data/client_repository.dart';
+import 'src/users_managments/data/http_client_repository.dart';
+import 'src/users_managments/data/http_s_provider_repository.dart';
+import 'src/users_managments/data/http_user_repository.dart';
+import 'src/users_managments/data/s_provider_repository.dart';
+import 'src/users_managments/data/user_repository.dart';
+import 'src/users_managments/presentation/pages/register_page.dart';
 
 class mobileScreen extends StatelessWidget {
   mobileScreen({super.key});
@@ -46,10 +45,10 @@ class mobileScreen extends StatelessWidget {
                 serviceProviderRepository: _serviceProviderRepository,
               )),
             ),
-            BlocProvider(
-              create: (context) =>
-                  AuthBloc(_userRepository)..add(AuthEventCheckCurrentState()),
-            ),
+            // BlocProvider(
+            //   create: (context) =>
+            //       AuthBloc(_userRepository)..add(AuthEventCheckCurrentState()),
+            // ),
             BlocProvider(
               create: (context) => UiChangeBloc(),
             ),

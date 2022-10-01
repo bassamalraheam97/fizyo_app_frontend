@@ -1,11 +1,11 @@
 import 'package:dio/dio.dart';
-import 'package:fizyo_app_frontend/src/users_managments/data/client_repository.dart';
-import 'package:fizyo_app_frontend/src/users_managments/data/s_provider_repository.dart';
-import 'package:fizyo_app_frontend/src/users_managments/data/user_repository.dart';
-import 'package:fizyo_app_frontend/src/users_managments/domain/client.dart';
-import 'package:fizyo_app_frontend/src/users_managments/domain/documents.dart';
-import 'package:fizyo_app_frontend/src/users_managments/domain/service_provider.dart';
-import 'package:fizyo_app_frontend/src/users_managments/domain/user.dart';
+import '../data/client_repository.dart';
+import '../data/s_provider_repository.dart';
+import '../data/user_repository.dart';
+import '../domain/client.dart';
+import '../domain/documents.dart';
+import '../domain/service_provider.dart';
+import '../domain/user.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 class AccountsService {

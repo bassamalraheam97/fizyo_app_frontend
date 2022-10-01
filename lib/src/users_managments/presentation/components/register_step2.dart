@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:fizyo_app_frontend/src/users_managments/data/http_user_repository.dart';
+import '../../data/http_user_repository.dart';
 import 'package:flutter/material.dart';
-import 'package:fizyo_app_frontend/src/presentation/widgets/form_text_field.dart';
+import '../../../presentation/widgets/form_text_field.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 class RegisterStep2 extends StatelessWidget {

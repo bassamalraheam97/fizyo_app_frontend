@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:fizyo_app_frontend/src/users_managments/data/user_repository.dart';
-import 'package:fizyo_app_frontend/src/users_managments/domain/user.dart';
+import 'user_repository.dart';
+import '../domain/user.dart';
 
 class HttpUserRepository implements UserRepository {
   final Dio client;

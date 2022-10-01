@@ -318,50 +318,51 @@ class RegisterPage extends StatelessWidget {
                             ),
                           ),
                         ),
-                        // uState.currentStep == 1
-                        //     ? Row(
-                        //         mainAxisAlignment: MainAxisAlignment.center,
-                        //         children: [
-                        //           Text(
-                        //             'Already have account?',
-                        //             style: Theme.of(context)
-                        //                 .textTheme
-                        //                 .bodyMedium!
-                        //                 .copyWith(
-                        //                   color: Theme.of(context)
-                        //                       .colorScheme
-                        //                       .outline,
-                        //                   fontWeight: FontWeight.w400,
-                        //                   fontSize: 14,
-                        //                 ),
-                        //           ),
-                        //           TextButton(
-                        //             onPressed: () {
-                        //               Navigator.push(
-                        //                   context,
-                        //                   MaterialPageRoute(
-                        //                       builder: (_) => LoginPage(
-                        //                             showBack: true,
-                        //                             context: context,
-                        //                           )));
-                        //             },
-                        //             child: Text(
-                        //               ' Login',
-                        //               style: Theme.of(context)
-                        //                   .textTheme
-                        //                   .bodyMedium!
-                        //                   .copyWith(
-                        //                     color: Theme.of(context)
-                        //                         .colorScheme
-                        //                         .secondary,
-                        //                     fontWeight: FontWeight.w700,
-                        //                     fontSize: 14,
-                        //                   ),
-                        //             ),
-                        //           ),
-                        //         ],
-                        //       )
-                        //     : SizedBox(),
+                        uState.currentStep == 1
+                            ? Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'Already have account?',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyMedium!
+                                        .copyWith(
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .outline,
+                                          fontWeight: FontWeight.w400,
+                                          fontSize: 14,
+                                        ),
+                                  ),
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (_) => LoginPage(
+                                                    showBack: true,
+                                                    context: context,
+                                                    dio: dio,
+                                                  )));
+                                    },
+                                    child: Text(
+                                      ' Login',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyMedium!
+                                          .copyWith(
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .secondary,
+                                            fontWeight: FontWeight.w700,
+                                            fontSize: 14,
+                                          ),
+                                    ),
+                                  ),
+                                ],
+                              )
+                            : SizedBox(),
                       ],
                     );
                   }),

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'src/users_managments/application/accounts_service.dart';
-import 'src/users_managments/blocs/email_ver_bloc/email_ver_bloc.dart';
 import 'src/users_managments/blocs/ui_change_bloc/ui_change_bloc.dart';
 import 'src/users_managments/blocs/upload_files_widget_bloc/upload_files_widget_bloc.dart';
 import 'src/users_managments/blocs/user_form_bloc/user_form_bloc.dart';
@@ -54,9 +53,6 @@ class mobileScreen extends StatelessWidget {
             ),
             BlocProvider(
               create: (context) => UploadFilesWidgetBloc(),
-            ),
-            BlocProvider(
-              create: (context) => EmailVerBloc(_userRepository),
             ),
           ],
           child: RegisterPage(dio: dio),

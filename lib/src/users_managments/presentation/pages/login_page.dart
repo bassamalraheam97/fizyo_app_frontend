@@ -15,7 +15,9 @@ class LoginPage extends StatelessWidget {
   bool? showBack = false;
   late UserRepository _userRepository;
   final BuildContext context;
-  LoginPage({super.key, this.showBack, required this.context});
+  final Dio dio;
+  LoginPage(
+      {super.key, this.showBack, required this.context, required this.dio});
   final form = FormGroup({
     'email': FormControl<String>(
         validators: [Validators.email, Validators.required]),
@@ -25,13 +27,6 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var options = BaseOptions(
-      baseUrl: 'http://192.168.0.19:8000',
-      connectTimeout: 5000,
-      receiveTimeout: 3000,
-    );
-    Dio dio = Dio(options);
-
     _userRepository = HttpUserRepository(dio);
     return MultiBlocProvider(
       providers: [
@@ -79,98 +74,106 @@ class LoginPage extends StatelessWidget {
             } else {
               return ReactiveForm(
                 formGroup: form,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    // ProgressBar(value: state.value),
-                    const SizedBox(
-                      height: 13,
-                    ),
-                    Text(
-                      "Login",
-                      style: Theme.of(context)
-                          .textTheme
-                          .headlineSmall!
-                          .copyWith(
-                              color: Theme.of(context).colorScheme.onBackground,
-                              fontSize: 24,
-                              fontWeight: FontWeight.w400),
-                    ),
-                    Text(
-                      "Please enter your email or phone number and password,"
-                      "you can reset your password,"
-                      "we will send you reset instruction to your email",
-                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                          color: Theme.of(context).colorScheme.outline,
-                          fontSize: 14),
-                      textAlign: TextAlign.center,
-                    ),
-
-                    const Login(),
-                    Container(
-                      height: 50,
-                      width: double.infinity,
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          primary: Theme.of(context).colorScheme.primary,
-                          padding: const EdgeInsets.symmetric(vertical: 13),
-                        ),
-                        onPressed: () {
-                          context.read<AuthBloc>().add(AuthEventLogin(
-                              form.value["email"] as String,
-                              form.value["password"] as String));
-
-                          print(
-                              "--------------values of form are ${form.value}-------------");
-                        },
-                        child: Text(
-                          "Login",
-                          style: Theme.of(context)
-                              .textTheme
-                              .titleMedium!
-                              .copyWith(color: Color(0xffF7F9FB), fontSize: 16),
-                        ),
+                child: Container(
+                  padding: EdgeInsets.all(10),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      // ProgressBar(value: state.value),
+                      const SizedBox(
+                        height: 13,
                       ),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Forgot your password? ',
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyMedium!
-                              .copyWith(
-                                color: Theme.of(context).colorScheme.outline,
-                                fontWeight: FontWeight.w400,
-                                fontSize: 14,
-                              ),
-                        ),
-                        TextButton(
+                      Text(
+                        "Login",
+                        style: Theme.of(context)
+                            .textTheme
+                            .headlineSmall!
+                            .copyWith(
+                                color:
+                                    Theme.of(context).colorScheme.onBackground,
+                                fontSize: 24,
+                                fontWeight: FontWeight.w400),
+                      ),
+                      Text(
+                        "Please enter your email or phone number and password,"
+                        "you can reset your password,"
+                        "we will send you reset instruction to your email",
+                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                            color: Theme.of(context).colorScheme.outline,
+                            fontSize: 14),
+                        textAlign: TextAlign.center,
+                      ),
+                      const SizedBox(
+                        height: 13,
+                      ),
+                      const Login(),
+                      const SizedBox(
+                        height: 13,
+                      ),
+                      Container(
+                        height: 50,
+                        width: double.infinity,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            primary: Theme.of(context).colorScheme.primary,
+                            padding: const EdgeInsets.symmetric(vertical: 13),
+                          ),
                           onPressed: () {
-                            // Navigator.push(
-                            //     context,
-                            //     MaterialPageRoute(
-                            //         builder: (_) => LoginPage(
-                            //               showBack: true,
-                            //             )));
+                            context.read<AuthBloc>().add(AuthEventLogin(
+                                form.value["email"] as String,
+                                form.value["password"] as String));
+
+                            print(
+                                "--------------values of form are ${form.value}-------------");
                           },
                           child: Text(
-                            ' Reset',
+                            "Login",
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleMedium!
+                                .copyWith(
+                                    color: Color(0xffF7F9FB), fontSize: 16),
+                          ),
+                        ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Forgot your password? ',
                             style: Theme.of(context)
                                 .textTheme
                                 .bodyMedium!
                                 .copyWith(
-                                  color:
-                                      Theme.of(context).colorScheme.secondary,
-                                  fontWeight: FontWeight.w700,
+                                  color: Theme.of(context).colorScheme.outline,
+                                  fontWeight: FontWeight.w400,
                                   fontSize: 14,
                                 ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ],
+                          TextButton(
+                            onPressed: () async {
+                              String email = form.control('email').value;
+                              String r = await _userRepository.forgetPassword(
+                                  email: email);
+                              print(r);
+                            },
+                            child: Text(
+                              ' Reset',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyMedium!
+                                  .copyWith(
+                                    color:
+                                        Theme.of(context).colorScheme.secondary,
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 14,
+                                  ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               );
             }

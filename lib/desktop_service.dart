@@ -38,7 +38,7 @@ class DesktopServices extends StatelessWidget {
                           children: [
                             Expanded(
                               child: Image.asset(
-                                'images/ph.png',
+                                'images/ph.jpg',
                                 height: 200,
                                 width: 200,
                                 fit: BoxFit.contain,

@@ -1,7 +1,8 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'src/users_managments/application/accounts_service.dart';
-import 'src/users_managments/blocs/auth_bloc/auth_bloc.dart';
-import 'src/users_managments/blocs/auth_bloc/auth_event.dart';
 import 'src/users_managments/blocs/email_ver_bloc/email_ver_bloc.dart';
 import 'src/users_managments/blocs/ui_change_bloc/ui_change_bloc.dart';
 import 'src/users_managments/blocs/upload_files_widget_bloc/upload_files_widget_bloc.dart';
@@ -13,8 +14,6 @@ import 'src/users_managments/data/http_user_repository.dart';
 import 'src/users_managments/data/s_provider_repository.dart';
 import 'src/users_managments/data/user_repository.dart';
 import 'src/users_managments/presentation/pages/register_page.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class mobileScreen extends StatelessWidget {
   mobileScreen({super.key});
@@ -57,10 +56,10 @@ class mobileScreen extends StatelessWidget {
               create: (context) => UploadFilesWidgetBloc(),
             ),
             BlocProvider(
-              create: (context) => EmailVerBloc(),
+              create: (context) => EmailVerBloc(_userRepository),
             ),
           ],
-          child: RegisterPage(),
+          child: RegisterPage(dio: dio),
         ),
       ),
       // This trailing comma makes auto-formatting nicer for build methods.

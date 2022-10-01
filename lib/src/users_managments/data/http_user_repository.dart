@@ -71,4 +71,17 @@ class HttpUserRepository implements UserRepository {
       rethrow;
     }
   }
+
+  @override
+  Future<String> sendCode({required String email}) async {
+    final response = await client.post("/users/sendCode/$email");
+    // print(response);
+    return response.data;
+  }
+
+  @override
+  Future<Response> forgetPassword({required String email}) async {
+    final response = await client.post("/users/forgetPassword/$email");
+    return response;
+  }
 }

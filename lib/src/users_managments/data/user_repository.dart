@@ -1,4 +1,5 @@
-import '../domain/user.dart';
+import 'package:dio/dio.dart';
+import 'package:fizyo_app_frontend/src/users_managments/domain/user.dart';
 
 abstract class UserRepository {
   Future<String> login({required String email, required String password});
@@ -7,4 +8,6 @@ abstract class UserRepository {
   Future<void> createUser({required User user});
   Future<void> updateUser({required User user});
   Future<void> deleteUser({required String id});
+  Future<void> forgetPassword({required String email});
+  Future<String> sendCode({required String email});
 }

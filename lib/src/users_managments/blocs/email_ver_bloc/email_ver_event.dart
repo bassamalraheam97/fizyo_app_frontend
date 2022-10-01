@@ -2,9 +2,24 @@ import 'package:equatable/equatable.dart';
 
 abstract class EmailVerEvent extends Equatable {}
 
-class EmailVerEventSend extends EmailVerEvent {
+class EmailVerEventVerification extends EmailVerEvent {
+  // final Map<String, dynamic> formData;
   final String recipients;
-  EmailVerEventSend(this.recipients);
+  EmailVerEventVerification(this.recipients);
+
   @override
-  List<Object?> get props => [recipients];
+  List<Object?> get props => [
+        recipients,
+      ];
+}
+
+class EmailVerEventForgetPassword extends EmailVerEvent {
+  // final Map<String, dynamic> formData;
+  String recipients;
+  EmailVerEventForgetPassword(this.recipients);
+
+  @override
+  List<Object?> get props => [
+        recipients,
+      ];
 }

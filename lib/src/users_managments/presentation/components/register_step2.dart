@@ -13,16 +13,9 @@ class RegisterStep2 extends StatelessWidget {
     required this.form,
   });
 
-  String temp = '123';
-  Future<void> sendCode(String email) async {
-    HttpUserRepository _userRepository = HttpUserRepository(dio);
-    var r = await _userRepository
-        .sendCode(email: email)
-        .then((value) => temp = value);
-  }
-
   @override
   Widget build(BuildContext context) {
+    HttpUserRepository _userRepository = HttpUserRepository(dio);
     return Column(
       // mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
@@ -30,21 +23,22 @@ class RegisterStep2 extends StatelessWidget {
           formControlName: "verificationCode",
           labelText: "Verification Code",
           onChanged: (p0) {
+            print(form.control('verificationCode').value);
+            // if (form.control('tempVerificationCode').value ==
+            //     form.control('verificationCode').value) {
+            //   form.control('tempVerificationCode').updateValue('valid');
+            // }
             print(form.control('tempVerificationCode').value);
-            if (form.control('tempVerificationCode').value ==
-                form.control('verificationCode').value) {
-              form.control('tempVerificationCode').updateValue('valid');
-            }
           },
         ),
         const SizedBox(
           height: 13,
         ),
         GestureDetector(
-          onTap: (() {
-            print('sent');
-            sendCode(form.control("email").value.toString()).toString();
-            form.control('tempVerificationCode').updateValue(temp.toString());
+          onTap: (() async {
+            String email = form.control('email').value;
+            String r = await _userRepository.sendCode(email: email);
+            form.control('tempVerificationCode').updateValue(r.toString());
           }),
           child: Text.rich(
             TextSpan(

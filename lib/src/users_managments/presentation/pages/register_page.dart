@@ -108,7 +108,7 @@ class RegisterPage extends StatelessWidget {
           // 'files': FormControl<List<File>>(),
         }, validators: [
           Validators.mustMatch('password', 'passwordConformation'),
-          // Validators.mustMatch('tempVerificationCode', 'verificationCode'),
+          Validators.mustMatch('tempVerificationCode', 'verificationCode'),
         ]);
       default:
         return FormGroup({});
@@ -163,18 +163,18 @@ class RegisterPage extends StatelessWidget {
     }
   }
 
-  String temp = '123';
-  var r;
-  Future<void> sendCode(String email) async {
-    HttpUserRepository _userRepository = HttpUserRepository(dio);
-    r = await _userRepository
-        .sendCode(email: email)
-        .then((value) => temp = value);
-  }
+  // String temp = '123';
+  // var r;
+  // Future<void> sendCode(String email) async {
+  //   r = await _userRepository
+  //       .sendCode(email: email)
+  //       .then((value) => temp = value);
+  // }
 
   @override
   Widget build(BuildContext context) {
-    //==============================================================================
+    HttpUserRepository _userRepository = HttpUserRepository(dio);
+
     return BlocBuilder<UserFormBloc, UserFormState>(
       //   listener: (context, state) {
       // BotToast.cleanAll();
@@ -253,19 +253,17 @@ class RegisterPage extends StatelessWidget {
                                     form.control('phoneNumber').valid &&
                                     form.control('email').valid) {
                                   next = true;
-                                  sendCode(form
-                                          .control("email")
-                                          .value
-                                          .toString())
-                                      .toString();
-                                  // form
-                                  //     .control('tempVerificationCode')
-                                  //     .updateValue(temp.toString());
-                                  print(r.toString());
+                                  String email = form.control('email').value;
+                                  String r = await _userRepository.sendCode(
+                                      email: email);
+                                  form
+                                      .control('tempVerificationCode')
+                                      .updateValue(r.toString());
                                 }
                               } else if (uState.currentStep == (2)) {
-                                if (form.control('verificationCode').value ==
-                                        'valid' &&
+                                if (form
+                                        .control('tempVerificationCode')
+                                        .valid &&
                                     form.control('password').valid &&
                                     form
                                         .control('passwordConformation')

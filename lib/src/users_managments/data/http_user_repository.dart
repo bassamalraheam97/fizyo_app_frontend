@@ -80,8 +80,8 @@ class HttpUserRepository implements UserRepository {
   }
 
   @override
-  Future<Response> forgetPassword({required String email}) async {
+  Future<String> forgetPassword({required String email}) async {
     final response = await client.post("/users/forgetPassword/$email");
-    return response;
+    return response.toString();
   }
 }
